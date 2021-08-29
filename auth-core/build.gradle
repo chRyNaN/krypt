@@ -1,0 +1,65 @@
+import com.chrynan.auth.buildSrc.LibraryConstants
+
+apply plugin: "kotlin-multiplatform"
+apply plugin: "kotlinx-serialization"
+apply plugin: "maven-publish"
+apply plugin: "org.jetbrains.dokka"
+
+group LibraryConstants.group
+version LibraryConstants.versionName
+
+kotlin {
+    targets {
+        jvm()
+    }
+    sourceSets {
+        all {
+            languageSettings {
+                languageSettings.enableLanguageFeature("InlineClasses")
+            }
+        }
+        commonMain {
+            dependencies {
+                implementation "org.jetbrains.kotlin:kotlin-stdlib-common"
+
+                // Kotlinx Serialization
+                implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2"
+
+                // Kotlinx Coroutines
+                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1"
+            }
+        }
+    }
+}
+
+configurations {
+    compileClasspath
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            url "https://repo.repsy.io/mvn/chrynan/public"
+
+            credentials {
+                username = project.findProperty("repsyUsername") ?: System.getenv("repsyUsername")
+                password = project.findProperty("repsyToken") ?: System.getenv("repsyToken")
+            }
+        }
+    }
+}
+
+// Documentation
+tasks.named("dokkaGfm") {
+    dokkaSourceSets {
+        configureEach {
+            includes.from("Module.md")
+        }
+    }
+}
