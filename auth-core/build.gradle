@@ -13,23 +13,31 @@ kotlin {
         jvm()
     }
     sourceSets {
-        all {
-            languageSettings {
-                languageSettings.enableLanguageFeature("InlineClasses")
-            }
-        }
         commonMain {
             dependencies {
-                implementation "org.jetbrains.kotlin:kotlin-stdlib-common"
+                implementation("org.jetbrains.kotlin:kotlin-stdlib-common")
 
                 // Kotlinx Serialization
-                implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0-RC"
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0-RC")
 
                 // Kotlinx Coroutines
-                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2"
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
 
                 // UUID
-                implementation "com.benasher44:uuid:0.3.1"
+                implementation("com.benasher44:uuid:0.3.1")
+
+                // IO/Encryption
+                implementation("com.squareup.okio:okio:3.0.0-alpha.10")
+
+                // Redacted Wrapper
+                implementation("com.chrynan.redacted:redacted-core:0.1.2")
+            }
+        }
+        jvmMain {
+            dependencies {
+                // Password Hashing
+                implementation("org.springframework.security:spring-security-crypto:5.5.2")
+                implementation("org.bouncycastle:bcprov-jdk15on:1.69")
             }
         }
     }
