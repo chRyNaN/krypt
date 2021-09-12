@@ -4,6 +4,7 @@ package com.chrynan.auth.core
 
 import java.lang.StringBuilder
 import java.security.SecureRandom
+import com.benasher44.uuid.Uuid
 
 /**
  * A cryptographically strong random number generator.
@@ -41,3 +42,5 @@ fun SecureRandom.nextString(length: Int, characters: CharArray = ALPHA_NUMERIC_C
     }
     return stringBuilder.toString()
 }
+
+expect fun SecureRandom.nextUuid(): Uuid

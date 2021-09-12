@@ -1,5 +1,6 @@
 package com.chrynan.auth.core
 
+import com.benasher44.uuid.Uuid
 import okio.ByteString
 import okio.ByteString.Companion.decodeBase64
 import okio.ByteString.Companion.decodeHex
@@ -19,4 +20,6 @@ fun test(byteString: ByteString) {
     random.nextInt(5)
 
     byteString.toByteArray()
+
+    Uuid.randomUUID()
 }
