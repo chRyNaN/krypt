@@ -3,7 +3,6 @@
 package com.chrynan.auth.core
 
 import com.chrynan.redacted.core.RedactedProperty
-import com.chrynan.redacted.core.RedactedPropertyEncoder
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -16,10 +15,9 @@ enum class HashAlgorithm {
     ARGON2ID,
 }
 
-@Serializable
 data class HashResult(
     val algorithm: HashAlgorithm,
-    @Serializable(with = RedactedPropertyEncoder::class) val hash: RedactedProperty<String>,
+    val hash: RedactedProperty<String>,
     val salt: String? = null
 )
 

@@ -2,8 +2,6 @@
 
 package com.chrynan.auth.core
 
-import java.lang.StringBuilder
-import java.security.SecureRandom
 import com.benasher44.uuid.Uuid
 
 /**
