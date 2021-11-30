@@ -35,4 +35,8 @@ interface HashMatcher<Algorithm : HashAlgorithm, Input : Any> {
 }
 
 @Suppress("SpellCheckingInspection")
-interface Hasher<Algorithm : HashAlgorithm, Input : Any, Result : HashResult<Algorithm>>
+interface Hasher<Algorithm : HashAlgorithm, Input : Any, Result : HashResult<Algorithm>> :
+    HashEncoder<Algorithm, Input, Result>, HashMatcher<Algorithm, Input> {
+
+    override val algorithm: Algorithm
+}

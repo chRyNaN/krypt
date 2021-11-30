@@ -17,11 +17,6 @@ kotlin {
         publishLibraryVariantsGroupedByFlavor = true
     }
     jvm()
-    ios()
-    js(BOTH) {
-        browser()
-        nodejs()
-    }
 
     sourceSets {
         all {
@@ -29,7 +24,19 @@ kotlin {
         }
         val commonMain by getting {
             dependencies {
-                api("com.chrynan.redacted:redacted-core:0.1.2")
+                api(project(":auth-hash"))
+            }
+        }
+        val jvmMain by getting {
+            dependencies {
+                implementation("org.springframework.security:spring-security-crypto:5.5.2")
+                implementation("org.bouncycastle:bcprov-jdk15on:1.69")
+            }
+        }
+        val androidMain by getting {
+            dependencies {
+                implementation("org.springframework.security:spring-security-crypto:5.5.2")
+                implementation("org.bouncycastle:bcprov-jdk15on:1.69")
             }
         }
     }
