@@ -18,7 +18,10 @@ kotlin {
     }
     jvm()
     ios()
-    // TODO support Javascript
+    js(BOTH) {
+        browser()
+        nodejs()
+    }
 
     sourceSets {
         all {

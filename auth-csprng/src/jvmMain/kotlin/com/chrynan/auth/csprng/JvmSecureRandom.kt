@@ -2,35 +2,45 @@
 
 package com.chrynan.auth.csprng
 
-import com.benasher44.uuid.Uuid
+import kotlin.random.Random
 
-actual class SecureRandom internal constructor(private val javaSecureRandom: java.security.SecureRandom) {
+actual class SecureRandom : Random {
 
-    actual fun nextBoolean(): Boolean = javaSecureRandom.nextBoolean()
+    private val javaSecureRandom: java.security.SecureRandom
 
-    actual fun nextInt(): Int = javaSecureRandom.nextInt()
-
-    actual fun nextInt(bound: Int): Int = javaSecureRandom.nextInt()
-
-    actual fun nextLong(): Long = javaSecureRandom.nextLong()
-
-    actual fun nextBytes(bytes: ByteArray) {
-        javaSecureRandom.nextBytes(bytes)
+    actual constructor() : super() {
+        javaSecureRandom = java.security.SecureRandom.getInstanceStrong()
     }
 
-    actual fun nextFloat(): Float = javaSecureRandom.nextFloat()
+    constructor(javaSecureRandom: java.security.SecureRandom) : super() {
+        this.javaSecureRandom = javaSecureRandom
+    }
 
-    actual fun nextDouble(): Double = javaSecureRandom.nextDouble()
+    actual override fun nextBits(bitCount: Int): Int = javaSecureRandom.nextInt().takeUpperBits(bitCount = bitCount)
 
-    actual fun nextGaussian(): Double = javaSecureRandom.nextGaussian()
+    override fun nextBoolean(): Boolean = javaSecureRandom.nextBoolean()
 
-    actual fun generateSeed(numBytes: Int): ByteArray = javaSecureRandom.generateSeed(numBytes)
+    override fun nextInt(): Int = javaSecureRandom.nextInt()
+
+    override fun nextInt(until: Int): Int = javaSecureRandom.nextInt()
+
+    override fun nextLong(): Long = javaSecureRandom.nextLong()
+
+    override fun nextBytes(array: ByteArray): ByteArray {
+        javaSecureRandom.nextBytes(array)
+        return array
+    }
+
+    override fun nextFloat(): Float = javaSecureRandom.nextFloat()
+
+    override fun nextDouble(): Double = javaSecureRandom.nextDouble()
+
+    fun nextGaussian(): Double = javaSecureRandom.nextGaussian()
+
+    fun generateSeed(numBytes: Int): ByteArray = javaSecureRandom.generateSeed(numBytes)
 
     actual companion object
 }
-
-actual fun SecureRandom(): SecureRandom =
-    SecureRandom(javaSecureRandom = java.security.SecureRandom.getInstanceStrong())
 
 fun SecureRandom(algorithmName: String?): SecureRandom {
     val javaSecureRandom = algorithmName?.let { java.security.SecureRandom.getInstance(it) }
@@ -38,5 +48,3 @@ fun SecureRandom(algorithmName: String?): SecureRandom {
 
     return SecureRandom(javaSecureRandom = javaSecureRandom)
 }
-
-actual fun SecureRandom.nextUuid(): Uuid = Uuid.randomUUID()
