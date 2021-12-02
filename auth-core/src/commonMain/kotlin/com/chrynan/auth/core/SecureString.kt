@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package com.chrynan.auth.hash
+package com.chrynan.auth.core
 
 import kotlin.jvm.Synchronized
 

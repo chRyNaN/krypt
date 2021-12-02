@@ -29,7 +29,6 @@ kotlin {
         }
         val commonMain by getting {
             dependencies {
-                api(project(":auth-core"))
             }
         }
     }

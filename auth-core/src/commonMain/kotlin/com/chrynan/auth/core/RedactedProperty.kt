@@ -1,4 +1,4 @@
-package com.chrynan.auth.hash
+package com.chrynan.auth.core
 
 /**
  * A wrapper class for any type that needs to be redacted when calling toString so that it doesn't output sensitive
