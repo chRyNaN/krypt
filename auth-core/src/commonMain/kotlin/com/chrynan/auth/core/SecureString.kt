@@ -10,7 +10,7 @@ import kotlin.jvm.Synchronized
  * This implementation was inspired by the following:
  * https://github.com/Password4j/password4j/blob/master/src/main/java/com/password4j/SecureString.java
  */
-class SecureString(chars: CharArray, eraseSource: Boolean = true) : RedactedProperty<Unit>(),
+class SecureString(chars: CharArray = charArrayOf(), eraseSource: Boolean = true) : RedactedProperty<Unit>(),
     CharSequence {
 
     // Deliberately [Unit] so we don't expose the [CharArray] accidentally.

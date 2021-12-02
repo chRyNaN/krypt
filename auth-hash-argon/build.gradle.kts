@@ -31,12 +31,14 @@ kotlin {
             dependencies {
                 implementation("org.springframework.security:spring-security-crypto:5.5.2")
                 implementation("org.bouncycastle:bcprov-jdk15on:1.69")
+                implementation("com.password4j:password4j:1.5.4")
             }
         }
         val androidMain by getting {
             dependencies {
                 implementation("org.springframework.security:spring-security-crypto:5.5.2")
                 implementation("org.bouncycastle:bcprov-jdk15on:1.69")
+                implementation("com.password4j:password4j:1.5.4")
             }
         }
     }
