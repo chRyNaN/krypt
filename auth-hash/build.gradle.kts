@@ -29,7 +29,6 @@ kotlin {
         }
         val commonMain by getting {
             dependencies {
-                api("com.chrynan.redacted:redacted-core:0.1.2")
             }
         }
     }

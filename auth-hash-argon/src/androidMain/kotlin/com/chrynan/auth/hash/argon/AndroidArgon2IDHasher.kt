@@ -24,8 +24,8 @@ internal class AndroidArgon2IDHasher(
 
     private val argon2PasswordEncoder = Argon2PasswordEncoder(saltLength, hashLength, parallelism, memory, iterations)
 
-    override suspend fun hash(source: CharSequence): Argon2IDHashResult =
-        Argon2IDHashResult(
+    override suspend fun hash(source: CharSequence): ArgonHashResult =
+        ArgonHashResult(
             algorithm = algorithm,
             hash = RedactedProperty(value = argon2PasswordEncoder.encode(source)),
             salt = null

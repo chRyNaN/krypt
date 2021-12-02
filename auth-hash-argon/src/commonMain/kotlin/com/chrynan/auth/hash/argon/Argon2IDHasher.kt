@@ -2,7 +2,7 @@ package com.chrynan.auth.hash.argon
 
 import com.chrynan.auth.hash.Hasher
 
-interface Argon2IDHasher : Hasher<Argon2IDHashAlgorithm, CharSequence, Argon2IDHashResult>
+interface Argon2IDHasher : Hasher<Argon2IDHashAlgorithm, CharSequence, ArgonHashResult>
 
 expect fun argon2IDHasher(
     saltLength: Int = 16,
