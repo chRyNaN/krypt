@@ -94,7 +94,7 @@ class SecureString(chars: CharArray = charArrayOf(), eraseSource: Boolean = true
     @Synchronized
     fun clear() = chars.clear()
 
-    fun toUnsecureString(): String = chars.concatToString()
+    fun toInsecureString(): String = chars.concatToString()
 
     companion object
 }
