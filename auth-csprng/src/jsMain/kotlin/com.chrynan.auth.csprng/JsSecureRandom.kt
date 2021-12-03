@@ -3,7 +3,6 @@
 package com.chrynan.auth.csprng
 
 import com.chrynan.auth.core.isNodeJs
-import kotlin.experimental.and
 import kotlin.js.*
 import kotlin.random.Random
 
@@ -12,17 +11,15 @@ actual class SecureRandom actual constructor() : Random() {
     private val cryptoJs by lazy { cryptoJs() }
 
     actual override fun nextBits(bitCount: Int): Int {
-        val bytes = nextBytes(ByteArray((bitCount / 8) + 1))
+        require((bitCount < 0) or (bitCount > 32)) { "bitCount property must be in the range 0 to 32." }
 
-        return (bytes[0] and 0xFF.toByte()).toInt() shl 24 or
-                ((bytes[1] and 0xFF.toByte()).toInt() shl 16) or
-                ((bytes[2] and 0xFF.toByte()).toInt() shl 8) or
-                ((bytes[3] and 0xFF.toByte()).toInt() shl 0)
-    }
+        if (bitCount == 0) return 0
 
-    override fun nextBytes(array: ByteArray): ByteArray {
-        cryptoJs.getRandomValues(array)
-        return array
+        val bytes = ByteArray(bitCount.bytesPerBitCount())
+
+        cryptoJs.getRandomValues(bytes)
+
+        return bytes.toInt()
     }
 
     actual companion object

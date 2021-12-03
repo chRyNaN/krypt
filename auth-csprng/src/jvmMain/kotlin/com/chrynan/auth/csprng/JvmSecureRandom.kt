@@ -16,7 +16,13 @@ actual class SecureRandom : Random {
         this.javaSecureRandom = javaSecureRandom
     }
 
-    actual override fun nextBits(bitCount: Int): Int = javaSecureRandom.nextInt().takeUpperBits(bitCount = bitCount)
+    actual override fun nextBits(bitCount: Int): Int {
+        require((bitCount < 0) or (bitCount > 32)) { "bitCount property must be in the range 0 to 32." }
+
+        if (bitCount == 0) return 0
+
+        return javaSecureRandom.nextInt().takeUpperBits(bitCount = bitCount)
+    }
 
     override fun nextBoolean(): Boolean = javaSecureRandom.nextBoolean()
 
