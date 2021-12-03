@@ -19,7 +19,10 @@ kotlin {
     }
     jvm()
     ios()
-    // TODO support Javascript
+    js(BOTH) {
+        browser()
+        nodejs()
+    }
 
     sourceSets {
         all {
@@ -29,7 +32,7 @@ kotlin {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
 
-                implementation("com.squareup.okio:okio:3.0.0-alpha.11")
+                implementation("com.squareup.okio:okio:3.0.0")
             }
         }
     }
