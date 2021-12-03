@@ -1,6 +1,6 @@
 package com.chrynan.auth.core
 
-interface KeyGenerator {
+interface KeyGenerator<Output> {
 
-    suspend fun generate(): String
+    suspend fun generate(): Output
 }
