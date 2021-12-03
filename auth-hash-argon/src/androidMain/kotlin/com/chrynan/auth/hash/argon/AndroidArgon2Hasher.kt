@@ -46,18 +46,13 @@ internal class AndroidArgon2Hasher(
         )
     }
 
-    override suspend fun matches(source: SecureString, salt: SecureString?, hash: SecureString): Boolean =
-        if (salt != null) {
-            Password.check(source.toJavaSecureString(eraseSource = false), hash.toString())
-                .addSalt(salt.toString())
-                .with(argon2HashFunction)
-        } else {
-            Password.check(source.toJavaSecureString(eraseSource = false), hash.toString())
-                .with(argon2HashFunction)
-        }
+    override suspend fun matches(source: SecureString, result: Argon2HashResult): Boolean =
+        Password.check(source.toJavaSecureString(eraseSource = false), result.hash.toString())
+            .addSalt(result.salt.toString())
+            .with(argon2HashFunction)
 }
 
-actual fun argon2Hasher(
+internal actual fun argon2Hasher(
     type: Argon2Type,
     saltLength: Int,
     hashLength: Int,

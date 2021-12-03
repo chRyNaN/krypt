@@ -2,10 +2,10 @@
 
 package com.chrynan.auth.csprng
 
+import com.chrynan.auth.core.isNodeJs
 import kotlin.experimental.and
 import kotlin.js.*
 import kotlin.random.Random
-
 
 actual class SecureRandom actual constructor() : Random() {
 
@@ -34,9 +34,6 @@ private external class Crypto {
 
     fun randomFillSync(array: ByteArray)
 }
-
-private fun isNodeJs(): Boolean =
-    js("typeof process !== 'undefined' && process.versions != null && process.versions.node != null") as Boolean
 
 // Variable is renamed to `_crypto` so it wouldn't clash with existing `crypto` variable.
 // JS IR backend doesn't reserve names accessed inside js("") calls

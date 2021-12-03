@@ -51,9 +51,6 @@ class SecureString(chars: CharArray = charArrayOf(), eraseSource: Boolean = true
     }
 
     @Synchronized
-    fun clear() = chars.clear()
-
-    @Synchronized
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
 
@@ -80,6 +77,23 @@ class SecureString(chars: CharArray = charArrayOf(), eraseSource: Boolean = true
         return result
     }
 
+    operator fun plus(other: SecureString): SecureString {
+        val charArray = CharArray(this.length + other.length)
+
+        for (i in 0..this.length) {
+            charArray[i] = this.chars[i]
+        }
+
+        for (i in 0..other.length) {
+            charArray[i + this.length] = other.chars[i]
+        }
+
+        return SecureString(chars = chars, eraseSource = true)
+    }
+
+    @Synchronized
+    fun clear() = chars.clear()
+
     fun toUnsecureString(): String = chars.concatToString()
 
     companion object
@@ -96,6 +110,19 @@ fun CharSequence.toSecureString(): SecureString {
     }
 
     return SecureString(chars = tempCharArray, eraseSource = true)
+}
+
+operator fun SecureString.Companion.invoke(charSequence: CharSequence): SecureString =
+    charSequence.toSecureString()
+
+operator fun SecureString.plus(other: CharSequence): SecureString {
+    val otherSecureString = other.toSecureString()
+
+    val result = this + otherSecureString
+
+    otherSecureString.clear()
+
+    return result
 }
 
 internal fun CharArray.clear(char: Char = Char.MIN_VALUE) {

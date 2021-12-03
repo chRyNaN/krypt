@@ -4,6 +4,7 @@ package com.chrynan.auth.csprng
 
 import com.benasher44.uuid.Uuid
 import com.benasher44.uuid.uuidOf
+import com.chrynan.auth.core.SecureString
 import kotlin.experimental.and
 import kotlin.experimental.or
 import kotlin.random.Random
@@ -26,13 +27,23 @@ fun SecureRandom.nextChar(characters: CharArray = ALPHA_NUMERIC_CHARS): Char {
     return characters[index]
 }
 
+fun SecureRandom.nextCharArray(length: Int, characters: CharArray = ALPHA_NUMERIC_CHARS): CharArray {
+    val charArray = CharArray(length)
+    for (i in 0..length) {
+        charArray[i] = nextChar(characters = characters)
+    }
+    return charArray
+}
+
 fun SecureRandom.nextString(length: Int, characters: CharArray = ALPHA_NUMERIC_CHARS): String {
     val stringBuilder = StringBuilder()
-    for (i in 0..length) {
-        stringBuilder.append(nextChar(characters = characters))
-    }
-    Random.nextBoolean()
+    stringBuilder.append(nextCharArray(length = length, characters = characters).concatToString())
     return stringBuilder.toString()
+}
+
+fun SecureRandom.nextSecureString(length: Int, characters: CharArray = ALPHA_NUMERIC_CHARS): SecureString {
+    val charArray = nextCharArray(length = length, characters = characters)
+    return SecureString(chars = charArray, eraseSource = true)
 }
 
 fun SecureRandom.nextUuid(): Uuid {

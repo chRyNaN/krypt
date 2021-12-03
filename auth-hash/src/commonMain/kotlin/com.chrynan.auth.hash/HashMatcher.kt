@@ -2,11 +2,9 @@
 
 package com.chrynan.auth.hash
 
-import com.chrynan.auth.core.SecureString
-
-interface HashMatcher<Algorithm : HashAlgorithm, Input : Any> {
+interface HashMatcher<Algorithm : HashAlgorithm, Input : Any, Result : HashResult<Algorithm>> {
 
     val algorithm: Algorithm
 
-    suspend fun matches(source: Input, salt: SecureString?, hash: SecureString): Boolean
+    suspend fun matches(source: Input, result: Result): Boolean
 }

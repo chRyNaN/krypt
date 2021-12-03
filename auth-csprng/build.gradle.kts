@@ -29,6 +29,8 @@ kotlin {
         }
         val commonMain by getting {
             dependencies {
+                implementation(project(":auth-core"))
+
                 implementation("com.benasher44:uuid:0.3.1")
             }
         }
