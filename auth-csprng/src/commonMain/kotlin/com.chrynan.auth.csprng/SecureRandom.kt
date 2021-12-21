@@ -7,14 +7,13 @@ import com.benasher44.uuid.uuidOf
 import com.chrynan.auth.core.SecureString
 import kotlin.experimental.and
 import kotlin.experimental.or
-import kotlin.math.min
 import kotlin.random.Random
 
 private const val ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 private val ALPHA_NUMERIC_CHARS = ALPHA_NUMERIC_STRING.toCharArray()
 
 /**
- * A cryptographically strong pseudo-random number generator (CSPRNG).
+ * A cryptographically strong pseudo-random number generator (CSPRNG) which implements the [Random] interface.
  */
 expect class SecureRandom constructor() : Random {
 
@@ -58,3 +57,11 @@ fun SecureRandom.nextUuid(): Uuid {
 
     return uuidOf(randomBytes)
 }
+
+/**
+ * Retrieves a [ByteArray] from this [SecureRandom] to be used as a salt, which is typically used when hashing
+ * passwords. This is a convenience function which delegates to the [SecureRandom.nextBytes] function.
+ *
+ * @param [byteCount] The size of the returned [ByteArray].
+ */
+fun SecureRandom.nextSalt(byteCount: Int = 16): ByteArray = nextBytes(byteCount)
