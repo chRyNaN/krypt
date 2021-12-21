@@ -2,6 +2,9 @@
 
 package com.chrynan.auth.csprng
 
+import com.chrynan.auth.core.SecureString
+import com.chrynan.auth.core.toSecureString
+import java.nio.charset.Charset
 import kotlin.random.Random
 
 actual class SecureRandom : Random {
@@ -9,7 +12,11 @@ actual class SecureRandom : Random {
     private val javaSecureRandom: java.security.SecureRandom
 
     actual constructor() : super() {
-        javaSecureRandom = java.security.SecureRandom.getInstanceStrong()
+        javaSecureRandom = try {
+            java.security.SecureRandom.getInstanceStrong()
+        } catch (e: Exception) {
+            java.security.SecureRandom()
+        }
     }
 
     constructor(javaSecureRandom: java.security.SecureRandom) : super() {
@@ -50,7 +57,17 @@ actual class SecureRandom : Random {
 
 fun SecureRandom(algorithmName: String?): SecureRandom {
     val javaSecureRandom = algorithmName?.let { java.security.SecureRandom.getInstance(it) }
-        ?: java.security.SecureRandom.getInstanceStrong()
+        ?: try {
+            java.security.SecureRandom.getInstanceStrong()
+        } catch (e: Exception) {
+            java.security.SecureRandom()
+        }
 
     return SecureRandom(javaSecureRandom = javaSecureRandom)
+}
+
+fun SecureRandom.nextSaltString(byteCount: Int = 16, charset: Charset = Charsets.UTF_8): SecureString {
+    val bytes = nextSalt(byteCount = byteCount)
+
+    return bytes.toString(charset).toSecureString()
 }

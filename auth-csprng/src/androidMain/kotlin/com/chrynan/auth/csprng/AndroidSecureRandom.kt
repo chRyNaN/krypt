@@ -3,6 +3,9 @@
 package com.chrynan.auth.csprng
 
 import android.os.Build
+import com.chrynan.auth.core.SecureString
+import com.chrynan.auth.core.toSecureString
+import java.nio.charset.Charset
 import kotlin.random.Random
 
 actual class SecureRandom : Random {
@@ -11,7 +14,11 @@ actual class SecureRandom : Random {
 
     actual constructor() : super() {
         javaSecureRandom = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            java.security.SecureRandom.getInstanceStrong()
+            try {
+                java.security.SecureRandom.getInstanceStrong()
+            } catch (e: Exception) {
+                java.security.SecureRandom()
+            }
         } else {
             java.security.SecureRandom()
         }
@@ -56,11 +63,21 @@ actual class SecureRandom : Random {
 fun SecureRandom(algorithmName: String?): SecureRandom {
     val javaSecureRandom = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         algorithmName?.let { java.security.SecureRandom.getInstance(it) }
-            ?: java.security.SecureRandom.getInstanceStrong()
+            ?: try {
+                java.security.SecureRandom.getInstanceStrong()
+            } catch (e: Exception) {
+                java.security.SecureRandom()
+            }
     } else {
         algorithmName?.let { java.security.SecureRandom.getInstance(it) }
             ?: java.security.SecureRandom()
     }
 
     return SecureRandom(javaSecureRandom = javaSecureRandom)
+}
+
+fun SecureRandom.nextSaltString(byteCount: Int = 16, charset: Charset = Charsets.UTF_8): SecureString {
+    val bytes = nextSalt(byteCount = byteCount)
+
+    return bytes.toString(charset).toSecureString()
 }
