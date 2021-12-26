@@ -4,7 +4,6 @@ package com.chrynan.auth.srp
 
 import com.chrynan.auth.core.SecureString
 import com.ionspin.kotlin.bignum.integer.BigInteger
-import com.ionspin.kotlin.bignum.integer.Sign
 
 /**
  * Computes the x value used to compute the verifier in the SRP protocol. The algorithm to retrieve the x value is as
@@ -25,7 +24,7 @@ internal suspend fun calculateX(
 ): BigInteger {
     val result = hash(salt + hash("$identifier:$secret".encodeToUByteArray()))
 
-    return BigInteger.fromUByteArray(result, Sign.POSITIVE)
+    return result.toBigInteger()
 }
 
 /**
@@ -57,7 +56,7 @@ internal suspend fun calculateK(hash: HashFunction, group: Group): BigInteger {
 
     val result = hash(nBytes + pad(group.g.toUByteArray(), nBytes.size))
 
-    return BigInteger.fromUByteArray(result, Sign.POSITIVE)
+    return result.toBigInteger()
 }
 
 /**
@@ -113,7 +112,35 @@ internal suspend fun calculateU(
     val paddedA = pad(array = clientPublicKey.toUByteArray(), size = size)
     val paddedB = pad(array = serverPublicKey.toUByteArray(), size = size)
 
-    return BigInteger.fromUByteArray(hash(paddedA + paddedB), Sign.POSITIVE)
+    return hash(paddedA + paddedB).toBigInteger()
+}
+
+/**
+ * Computes the M1 value used in the SRP protocol. The `M1` value is used to prove that the already computed shared key
+ * value matches the server's computed shared key value. The algorithm to retrieve the 'M1' value is as follows:
+ *
+ * ```
+ * M1 = H(H(N) XOR H(g) | H(I) | s | A | B | K)
+ * ```
+ *
+ * @see [RFC-2945](https://datatracker.ietf.org/doc/html/rfc2945)
+ * @see [Wikipedia SRP Article](https://en.wikipedia.org/wiki/Secure_Remote_Password_protocol)
+ * @see [Swift Implementation (Referenced on Dec 22, 2021)](https://github.com/Bouke/SRP/blob/master/Sources/SRP.swift)
+ */
+@ExperimentalUnsignedTypes
+internal suspend fun calculateM1(
+    hash: HashFunction,
+    group: Group,
+    identifier: String,
+    salt: UByteArray,
+    clientPublicKey: BigInteger,
+    serverPublicKey: BigInteger,
+    sharedSessionKey: BigInteger
+): UByteArray {
+    val xorResult = (hash(group.N).toBigInteger() xor hash(group.g).toBigInteger()).toUByteArray()
+    val hI = hash(identifier)
+
+    return hash(xorResult + hI + salt + clientPublicKey + serverPublicKey + sharedSessionKey)
 }
 
 /**
