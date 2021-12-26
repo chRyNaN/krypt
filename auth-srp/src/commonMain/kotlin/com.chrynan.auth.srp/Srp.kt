@@ -117,7 +117,8 @@ internal suspend fun calculateU(
 
 /**
  * Computes the M1 value used in the SRP protocol. The `M1` value is used to prove that the already computed shared key
- * value matches the server's computed shared key value. The algorithm to retrieve the 'M1' value is as follows:
+ * value matches the server's computed shared key value. The [sharedSessionKey] (a.k.a. 'K', not to be confused with
+ * little 'k') is the client's computed session key. The algorithm to retrieve the 'M1' value is as follows:
  *
  * ```
  * M1 = H(H(N) XOR H(g) | H(I) | s | A | B | K)
@@ -142,6 +143,28 @@ internal suspend fun calculateM1(
 
     return hash(xorResult + hI + salt + clientPublicKey + serverPublicKey + sharedSessionKey)
 }
+
+/**
+ * Computes the `M2` value used in the SRP protocol. The `M2` value is used to prove that the already computed shared
+ * key value matches the client's computed shared key value. This function takes in a [m1] value, which is the result
+ * of the [calculateM1] function from the client. The [sharedSessionKey] (a.k.a. 'K', not to be confused with little
+ * 'k') is the server's computed session key. The algorithm to retrieve the 'M2' value is as follows:
+ *
+ * ```
+ * M2 = H(A | M | K)
+ * ```
+ *
+ * @see [RFC-2945](https://datatracker.ietf.org/doc/html/rfc2945)
+ * @see [Wikipedia SRP Article](https://en.wikipedia.org/wiki/Secure_Remote_Password_protocol)
+ * @see [Swift Implementation (Referenced on Dec 22, 2021)](https://github.com/Bouke/SRP/blob/master/Sources/SRP.swift)
+ */
+@ExperimentalUnsignedTypes
+internal suspend fun calculateM2(
+    hash: HashFunction,
+    clientPublicKey: BigInteger,
+    m1: UByteArray,
+    sharedSessionKey: BigInteger
+): UByteArray = hash(clientPublicKey + m1 + sharedSessionKey)
 
 /**
  * Retrieves a padded [ByteArray] that has a size of the provided [size] value. This will add [Byte]s of zero to the
