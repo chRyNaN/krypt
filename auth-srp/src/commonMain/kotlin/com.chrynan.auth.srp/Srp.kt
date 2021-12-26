@@ -2,7 +2,6 @@
 
 package com.chrynan.auth.srp
 
-import com.chrynan.auth.core.SecureString
 import com.ionspin.kotlin.bignum.integer.BigInteger
 
 /**
@@ -19,10 +18,10 @@ import com.ionspin.kotlin.bignum.integer.BigInteger
 internal suspend fun calculateX(
     hash: HashFunction,
     salt: UByteArray,
-    identifier: SecureString,
-    secret: SecureString
+    identifier: CharSequence,
+    secret: CharSequence
 ): BigInteger {
-    val result = hash(salt + hash("$identifier:$secret".encodeToUByteArray()))
+    val result = hash(salt + hash("$identifier:$secret"))
 
     return result.toBigInteger()
 }
@@ -104,21 +103,21 @@ internal suspend fun calculateB(group: Group, k: BigInteger, v: BigInteger, b: B
 internal suspend fun calculateU(
     hash: HashFunction,
     group: Group,
-    clientPublicKey: BigInteger,
-    serverPublicKey: BigInteger
+    A: BigInteger,
+    B: BigInteger
 ): BigInteger {
     val size = group.N.toUByteArray().size
 
-    val paddedA = pad(array = clientPublicKey.toUByteArray(), size = size)
-    val paddedB = pad(array = serverPublicKey.toUByteArray(), size = size)
+    val paddedA = pad(array = A.toUByteArray(), size = size)
+    val paddedB = pad(array = B.toUByteArray(), size = size)
 
     return hash(paddedA + paddedB).toBigInteger()
 }
 
 /**
  * Computes the M1 value used in the SRP protocol. The `M1` value is used to prove that the already computed shared key
- * value matches the server's computed shared key value. The [sharedSessionKey] (a.k.a. 'K', not to be confused with
- * little 'k') is the client's computed session key. The algorithm to retrieve the 'M1' value is as follows:
+ * value matches the server's computed shared key value. The [K1] (a.k.a. 'K', not to be confused with little 'k') is
+ * the client's computed session key. The algorithm to retrieve the 'M1' value is as follows:
  *
  * ```
  * M1 = H(H(N) XOR H(g) | H(I) | s | A | B | K)
@@ -134,21 +133,21 @@ internal suspend fun calculateM1(
     group: Group,
     identifier: String,
     salt: UByteArray,
-    clientPublicKey: BigInteger,
-    serverPublicKey: BigInteger,
-    sharedSessionKey: BigInteger
+    A: BigInteger,
+    B: BigInteger,
+    K1: BigInteger
 ): UByteArray {
     val xorResult = (hash(group.N).toBigInteger() xor hash(group.g).toBigInteger()).toUByteArray()
     val hI = hash(identifier)
 
-    return hash(xorResult + hI + salt + clientPublicKey + serverPublicKey + sharedSessionKey)
+    return hash(xorResult + hI + salt + A + B + K1)
 }
 
 /**
- * Computes the `M2` value used in the SRP protocol. The `M2` value is used to prove that the already computed shared
- * key value matches the client's computed shared key value. This function takes in a [m1] value, which is the result
- * of the [calculateM1] function from the client. The [sharedSessionKey] (a.k.a. 'K', not to be confused with little
- * 'k') is the server's computed session key. The algorithm to retrieve the 'M2' value is as follows:
+ * Computes the M2 value used in the SRP protocol. The `M2` value is used to prove that the already computed shared key
+ * value matches the client's computed shared key value. This function takes in a [M1] value, which is the result of
+ * the [calculateM1] function from the client. The [K2] (a.k.a. 'K', not to be confused with little 'k') is the
+ * server's computed session key. The algorithm to retrieve the 'M2' value is as follows:
  *
  * ```
  * M2 = H(A | M | K)
@@ -161,10 +160,75 @@ internal suspend fun calculateM1(
 @ExperimentalUnsignedTypes
 internal suspend fun calculateM2(
     hash: HashFunction,
-    clientPublicKey: BigInteger,
-    m1: UByteArray,
-    sharedSessionKey: BigInteger
-): UByteArray = hash(clientPublicKey + m1 + sharedSessionKey)
+    A: BigInteger,
+    M1: UByteArray,
+    K2: BigInteger
+): UByteArray = hash(A + M1 + K2)
+
+/**
+ * Computes the S1 value used in the SRP protocol. The 'S1' value is an intermediary value that is used to compute the
+ * shared session key for the client. The algorithm to retrieve the 'S1' value is as follows:
+ *
+ * ```
+ * S1 = (B - kg^x) ^ (a + ux)
+ * ```
+ *
+ * Note that `v = g^x`, and that the result of `B - kg^x` might become negative, which should not be stored in a
+ * [BigInteger] with a positive Sign. To avoid this, we'll add `N` to `B_` and make sure `kv` isn't greater than `N`.
+ *
+ * @see [RFC-2945](https://datatracker.ietf.org/doc/html/rfc2945)
+ * @see [Wikipedia SRP Article](https://en.wikipedia.org/wiki/Secure_Remote_Password_protocol)
+ * @see [Swift Implementation (Referenced on Dec 26, 2021)](https://github.com/Bouke/SRP/blob/master/Sources/Client.swift)
+ */
+internal suspend fun calculateS1(
+    group: Group,
+    k: BigInteger,
+    v: BigInteger,
+    x: BigInteger,
+    u: BigInteger,
+    a: BigInteger,
+    B: BigInteger
+): BigInteger = (B + group.N - k * v % group.N).pow(a + u * x).mod(group.N)
+
+/**
+ * Computes the S2 value used in the SRP protocol. The 'S2' value is an intermediary value that is used to compute the
+ * shared session key for the server. The algorithm to retrieve the 'S2' value is as follows:
+ *
+ * ```
+ * S2 = ((A * v ^ u) mod N) ^ b mod N
+ * ```
+ *
+ * @see [RFC-2945](https://datatracker.ietf.org/doc/html/rfc2945)
+ * @see [Wikipedia SRP Article](https://en.wikipedia.org/wiki/Secure_Remote_Password_protocol)
+ * @see [Swift Implementation (Referenced on Dec 26, 2021)](https://github.com/Bouke/SRP/blob/master/Sources/Server.swift)
+ */
+internal suspend fun calculateS2(
+    group: Group,
+    A: BigInteger,
+    v: BigInteger,
+    u: BigInteger,
+    b: BigInteger
+): BigInteger = (A * v.pow(u).mod(group.N)).pow(b).mod(group.N)
+
+/**
+ * Computes the shared session key value used in the SRP protocol. The shared session key value, also called 'K' (not
+ * to be confused with 'k'), is computed by hashing the provided [S] value which is either the result of the
+ * [calculateS1] or the [calculateS2] function. The value returned from this function should be equal for both 'S1'
+ * and 'S2' provided as [S]. The algorithm to retrieve the 'K' value is as follows:
+ *
+ * ```
+ * K = H(S1)
+ * ```
+ *
+ * @see [RFC-2945](https://datatracker.ietf.org/doc/html/rfc2945)
+ * @see [Wikipedia SRP Article](https://en.wikipedia.org/wiki/Secure_Remote_Password_protocol)
+ * @see [Swift Implementation (Referenced on Dec 26, 2021)](https://github.com/Bouke/SRP/blob/master/Sources/Client.swift)
+ */
+@ExperimentalUnsignedTypes
+internal suspend fun calculateSharedSessionKey(
+    hash: HashFunction,
+    S: BigInteger
+): UByteArray = hash(S)
 
 /**
  * Retrieves a padded [ByteArray] that has a size of the provided [size] value. This will add [Byte]s of zero to the
