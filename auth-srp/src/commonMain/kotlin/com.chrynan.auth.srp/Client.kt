@@ -11,16 +11,11 @@ class Client(
     private val random: SecureRandom = SecureRandom()
 ) {
 
-    private lateinit var privateKey: BigInteger
-    private lateinit var publicKey: BigInteger
+    suspend fun generateKeyPair(): KeyPair<BigInteger> {
+        val privateKey = random.nextBigInteger()
+        val publicKey = calculateA(group = group, a = privateKey)
 
-    private var m2: UByteArray? = null
-
-    suspend fun start(): BigInteger {
-        privateKey = random.nextBigInteger()
-        publicKey = calculateA(group = group, a = privateKey)
-
-        return publicKey
+        return KeyPair(privateKey = privateKey, publicKey = publicKey)
     }
 
     /**
@@ -28,41 +23,44 @@ class Client(
      * @return M1
      */
     suspend fun process(
+        keyPair: KeyPair<BigInteger>,
         identifier: SecureString,
         secret: SecureString,
         salt: UByteArray,
         hostPublicKey: BigInteger
-    ): UByteArray {
+    ): SessionKey {
         require(hostPublicKey % group.N != BigInteger.ZERO) { "" } // TODO update message and possibly throw custom error
 
-        val u = calculateU(hash = hash, group = group, A = publicKey, B = hostPublicKey)
+        val u = calculateU(hash = hash, group = group, A = keyPair.publicKey.value, B = hostPublicKey)
 
         require(u != BigInteger.ZERO) { "" } // TODO update message
 
         val k = calculateK(hash = hash, group = group)
         val x = calculateX(hash = hash, salt = salt, identifier = identifier, secret = secret)
         val v = calculateV(group = group, x = x)
-        val s = calculateS1(group = group, k = k, v = v, x = x, u = u, a = privateKey, B = hostPublicKey)
+        val s = calculateS1(group = group, k = k, v = v, x = x, u = u, a = keyPair.privateKey.value, B = hostPublicKey)
         val sharedKey = calculateSharedSessionKey(hash = hash, S = s)
 
-        val m1 = calculateM1(
+        val clientProof = calculateM1(
             hash = hash,
             group = group,
             identifier = identifier,
             salt = salt,
-            A = publicKey,
+            A = keyPair.publicKey.value,
             B = hostPublicKey,
             K = sharedKey.toBigInteger()
         )
 
-        m2 = calculateM2(hash = hash, A = publicKey, M1 = m1, K = sharedKey.toBigInteger())
+        val hostProof =
+            calculateM2(hash = hash, A = keyPair.publicKey.value, M1 = clientProof, K = sharedKey.toBigInteger())
 
-        return m1
+        return SessionKey(
+            key = sharedKey,
+            clientProof = clientProof,
+            hostProof = hostProof
+        )
     }
 
-    suspend fun verify(keyProof: UByteArray): Boolean {
-        require(m2 != null) { "" } // TODO update message
-
-        return keyProof == m2
-    }
+    fun verify(sharedSessionKey: SessionKey, hostKeyProof: UByteArray): Boolean =
+        hostKeyProof == sharedSessionKey.hostProof
 }

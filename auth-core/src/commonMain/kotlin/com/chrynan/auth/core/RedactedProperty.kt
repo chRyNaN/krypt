@@ -31,3 +31,5 @@ abstract class RedactedProperty<T>(
 
     companion object
 }
+
+class SimpleRedactedProperty<T>(public override val value: T) : RedactedProperty<T>()
