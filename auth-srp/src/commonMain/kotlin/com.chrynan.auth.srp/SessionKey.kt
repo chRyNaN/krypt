@@ -5,6 +5,9 @@ import com.chrynan.auth.core.RedactedProperty
 /**
  * Represents a generated shared session key and its associated proof data used in the SRP protocol.
  *
+ * A [SessionKey.value] can be used to further encrypt the communication between a client and host after they have
+ * verified each other. However, this functionality is outside the responsibility of this class.
+ *
  * **Note:** This class does not enforce any security, and, when initialized, should be treated securely.
  */
 @ExperimentalUnsignedTypes
