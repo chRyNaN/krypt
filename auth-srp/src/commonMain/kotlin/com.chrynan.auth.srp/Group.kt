@@ -200,11 +200,11 @@ private val N4096GroupSingleton: Group = Group(
 /**
  * Represents a [Group] whose [Group.prime] value has 2048 bits.
  */
-val Group.N2048: Group
+val Group.Companion.N2048: Group
     get() = N2048GroupSingleton
 
 /**
  * Represents a [Group] whose [Group.prime] value has 4096 bits.
  */
-val Group.N4096: Group
+val Group.Companion.N4096: Group
     get() = N4096GroupSingleton

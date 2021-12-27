@@ -131,7 +131,7 @@ internal suspend fun calculateU(
 internal suspend fun calculateM1(
     hash: HashFunction,
     group: Group,
-    identifier: String,
+    identifier: CharSequence,
     salt: UByteArray,
     A: BigInteger,
     B: BigInteger,

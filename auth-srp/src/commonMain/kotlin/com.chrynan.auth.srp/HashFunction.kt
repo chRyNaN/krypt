@@ -24,8 +24,8 @@ interface HashFunction {
  * @see [HashFunction.invoke]
  */
 @ExperimentalUnsignedTypes
-suspend operator fun HashFunction.invoke(value: String): UByteArray =
-    invoke(value = value.encodeToUByteArray())
+suspend operator fun HashFunction.invoke(value: CharSequence): UByteArray =
+    invoke(value = value.toString().encodeToUByteArray())
 
 /**
  * Converts the provided [value] to a [UByteArray] using UTF-8 encoding and calls the [invoke] function on the result.
