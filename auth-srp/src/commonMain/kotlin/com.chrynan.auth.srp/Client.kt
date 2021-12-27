@@ -14,6 +14,8 @@ class Client(
     private lateinit var privateKey: BigInteger
     private lateinit var publicKey: BigInteger
 
+    private var m2: UByteArray? = null
+
     suspend fun start(): BigInteger {
         privateKey = random.nextBigInteger()
         publicKey = calculateA(group = group, a = privateKey)
@@ -34,11 +36,15 @@ class Client(
         require(hostPublicKey % group.N != BigInteger.ZERO) { "" } // TODO update message and possibly throw custom error
 
         val u = calculateU(hash = hash, group = group, A = publicKey, B = hostPublicKey)
+
+        require(u != BigInteger.ZERO) { "" } // TODO update message
+
         val k = calculateK(hash = hash, group = group)
         val x = calculateX(hash = hash, salt = salt, identifier = identifier, secret = secret)
         val v = calculateV(group = group, x = x)
         val s = calculateS1(group = group, k = k, v = v, x = x, u = u, a = privateKey, B = hostPublicKey)
         val sharedKey = calculateSharedSessionKey(hash = hash, S = s)
+
         val m1 = calculateM1(
             hash = hash,
             group = group,
@@ -46,14 +52,17 @@ class Client(
             salt = salt,
             A = publicKey,
             B = hostPublicKey,
-            K1 = k
+            K = sharedKey.toBigInteger()
         )
 
-        TODO()
+        m2 = calculateM2(hash = hash, A = publicKey, M1 = m1, K = sharedKey.toBigInteger())
+
+        return m1
     }
 
-    suspend fun verify(sessionKey: String): Boolean {
+    suspend fun verify(keyProof: UByteArray): Boolean {
+        require(m2 != null) { "" } // TODO update message
 
-        return false
+        return keyProof == m2
     }
 }

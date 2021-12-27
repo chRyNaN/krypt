@@ -45,3 +45,13 @@ internal operator fun BigInteger.plus(other: UByteArray): UByteArray = this + ot
  */
 @ExperimentalUnsignedTypes
 internal fun SecureRandom.nextBigInteger(size: Int = 16): BigInteger = nextUBytes(size).toBigInteger()
+
+/**
+ * Clears the content in this [UByteArray] by setting the value for each index to the provided [value] parameter.
+ */
+@ExperimentalUnsignedTypes
+internal fun UByteArray.clear(value: UByte = 0U) {
+    for (i in indices) {
+        this[i] = value
+    }
+}

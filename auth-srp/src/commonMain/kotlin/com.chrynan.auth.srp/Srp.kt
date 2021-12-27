@@ -23,7 +23,12 @@ internal suspend fun calculateX(
 ): BigInteger {
     val result = hash(salt + hash("$identifier:$secret"))
 
-    return result.toBigInteger()
+    val x = result.toBigInteger()
+
+    // Just as a safety measure, clear our the array of 'result' since it is essentially equivalent to the hashed password.
+    result.clear()
+
+    return x
 }
 
 /**
@@ -116,8 +121,8 @@ internal suspend fun calculateU(
 
 /**
  * Computes the M1 value used in the SRP protocol. The `M1` value is used to prove that the already computed shared key
- * value matches the server's computed shared key value. The [K1] (a.k.a. 'K', not to be confused with little 'k') is
- * the client's computed session key. The algorithm to retrieve the 'M1' value is as follows:
+ * value matches the server's computed shared key value. The [K] (not to be confused with little 'k') is the shared
+ * computed session key. The algorithm to retrieve the 'M1' value is as follows:
  *
  * ```
  * M1 = H(H(N) XOR H(g) | H(I) | s | A | B | K)
@@ -135,19 +140,19 @@ internal suspend fun calculateM1(
     salt: UByteArray,
     A: BigInteger,
     B: BigInteger,
-    K1: BigInteger
+    K: BigInteger
 ): UByteArray {
     val xorResult = (hash(group.N).toBigInteger() xor hash(group.g).toBigInteger()).toUByteArray()
     val hI = hash(identifier)
 
-    return hash(xorResult + hI + salt + A + B + K1)
+    return hash(xorResult + hI + salt + A + B + K)
 }
 
 /**
  * Computes the M2 value used in the SRP protocol. The `M2` value is used to prove that the already computed shared key
  * value matches the client's computed shared key value. This function takes in a [M1] value, which is the result of
- * the [calculateM1] function from the client. The [K2] (a.k.a. 'K', not to be confused with little 'k') is the
- * server's computed session key. The algorithm to retrieve the 'M2' value is as follows:
+ * the [calculateM1] function from the client. The [K] (not to be confused with little 'k') is the shared computed
+ * session key. The algorithm to retrieve the 'M2' value is as follows:
  *
  * ```
  * M2 = H(A | M | K)
@@ -162,8 +167,8 @@ internal suspend fun calculateM2(
     hash: HashFunction,
     A: BigInteger,
     M1: UByteArray,
-    K2: BigInteger
-): UByteArray = hash(A + M1 + K2)
+    K: BigInteger
+): UByteArray = hash(A + M1 + K)
 
 /**
  * Computes the S1 value used in the SRP protocol. The 'S1' value is an intermediary value that is used to compute the
