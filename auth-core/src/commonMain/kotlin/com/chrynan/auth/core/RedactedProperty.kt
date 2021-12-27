@@ -32,4 +32,15 @@ abstract class RedactedProperty<T>(
     companion object
 }
 
-class SimpleRedactedProperty<T>(public override val value: T) : RedactedProperty<T>()
+abstract class PublicRedactedProperty<T>(
+    redactedString: String = "█",
+    repeatCount: Int = 3
+) : RedactedProperty<T>(
+    redactedString = redactedString,
+    repeatCount = repeatCount
+) {
+
+    public abstract override val value: T
+}
+
+class SimpleRedactedProperty<T>(override val value: T) : PublicRedactedProperty<T>()

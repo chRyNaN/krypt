@@ -1,5 +1,6 @@
 package com.chrynan.auth.srp
 
+import com.chrynan.auth.core.PublicRedactedProperty
 import com.chrynan.auth.core.SimpleRedactedProperty
 import com.ionspin.kotlin.bignum.integer.BigInteger
 
@@ -9,8 +10,8 @@ import com.ionspin.kotlin.bignum.integer.BigInteger
  * **Note:** This class does not enforce any security, and, when initialized, should be treated securely.
  */
 class KeyPair<T : Any>(
-    val privateKey: SimpleRedactedProperty<T>,
-    val publicKey: SimpleRedactedProperty<T>
+    val privateKey: PublicRedactedProperty<T>,
+    val publicKey: PublicRedactedProperty<T>
 ) {
 
     override fun equals(other: Any?): Boolean {
