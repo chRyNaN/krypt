@@ -8,15 +8,17 @@ import com.ionspin.kotlin.bignum.integer.BigInteger
 class Client(
     private val group: Group = Group.N2048,
     private val hash: HashFunction,
-    private val random: SecureRandom = SecureRandom()
-) {
+    private val random: SecureRandom = SecureRandom(),
+    private val keyPairGenerator: KeyPairGenerator<BigInteger> = object : KeyPairGenerator<BigInteger> {
 
-    suspend fun generateKeyPair(): KeyPair<BigInteger> {
-        val privateKey = random.nextBigInteger()
-        val publicKey = calculateA(group = group, a = privateKey)
+        override suspend fun generateKeyPair(): KeyPair<BigInteger> {
+            val privateKey = random.nextBigInteger()
+            val publicKey = calculateA(group = group, a = privateKey)
 
-        return KeyPair(privateKey = privateKey, publicKey = publicKey)
+            return KeyPair(privateKey = privateKey, publicKey = publicKey)
+        }
     }
+) : KeyPairGenerator<BigInteger> by keyPairGenerator {
 
     /**
      *
