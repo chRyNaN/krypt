@@ -236,9 +236,9 @@ internal suspend fun calculateSharedSessionKey(
 ): UByteArray = hash(S)
 
 /**
- * Retrieves a padded [ByteArray] that has a size of the provided [size] value. This will add [Byte]s of zero to the
- * first indexes that are added to the returned [ByteArray], then concatenate the provided [array] items to the end of
- * the returned [ByteArray]. This function is needed for the SRP implementation.
+ * Retrieves a padded [UByteArray] that has a size of the provided [size] value. This will add [Byte]s of zero to the
+ * first indexes that are added to the returned [UByteArray], then concatenate the provided [array] items to the end of
+ * the returned [UByteArray]. This function is needed for the SRP implementation.
  *
  * **Note:** This function will throw an exception if the provided [size] is greater than or equal to [array]'s size.
  */

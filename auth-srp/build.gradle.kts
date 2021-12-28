@@ -35,6 +35,12 @@ kotlin {
                 implementation("com.squareup.okio:okio:3.0.0")
             }
         }
+        val commonTest by getting {
+            dependencies {
+                implementation(kotlin("test"))
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0")
+            }
+        }
     }
 }
 
