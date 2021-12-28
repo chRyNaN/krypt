@@ -68,6 +68,8 @@ import kotlin.random.nextUBytes
  * **Note:** The communication between a [Client] and [Host] is outside the responsibility of this library. Typically,
  * this is done via HTTPS. However, this library is agnostic of the communication protocol used. In the above examples,
  * an 'api' property is used to indicate the communication between the [Client] and [Host].
+ *
+ * @see [Host]
  */
 @ExperimentalUnsignedTypes
 class Client(
