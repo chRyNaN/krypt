@@ -61,6 +61,49 @@ class SrpTest {
     }
 
     @Test
+    fun calculateK_returns_expected_result() = runTest {
+        val expectedResult = (Group.N2048.N.toUByteArray() + pad(
+            Group.N2048.g.toUByteArray(),
+            Group.N2048.N.toUByteArray().size
+        )).toBigInteger()
+        val result = calculateK(hash = NO_OP_HASH_FUNCTION, group = Group.N2048)
+
+        assertEquals(expected = expectedResult, actual = result)
+    }
+
+    @Test
+    fun calculateA_returns_expected_result() = runTest {
+        var expectedResult = Group.N2048.g.pow(BigInteger.ZERO).mod(Group.N2048.N)
+        var result = calculateA(group = Group.N2048, a = BigInteger.ZERO)
+
+        assertEquals(expected = expectedResult, actual = result)
+
+        expectedResult = Group.N2048.g.pow(BigInteger.ONE).mod(Group.N2048.N)
+        result = calculateA(group = Group.N2048, a = BigInteger.ONE)
+
+        assertEquals(expected = expectedResult, actual = result)
+
+        expectedResult = Group.N2048.g.pow(BigInteger.TWO).mod(Group.N2048.N)
+        result = calculateA(group = Group.N2048, a = BigInteger.TWO)
+
+        assertEquals(expected = expectedResult, actual = result)
+
+        expectedResult = Group.N2048.g.pow(BigInteger.TEN).mod(Group.N2048.N)
+        result = calculateA(group = Group.N2048, a = BigInteger.TEN)
+
+        assertEquals(expected = expectedResult, actual = result)
+    }
+
+    @Test
+    fun calculateB_returns_expected_result() = runTest {
+        val expectedResult =
+            ((BigInteger.ONE * BigInteger.TWO) + Group.N2048.g.pow(BigInteger.TEN).mod(Group.N2048.N)) % Group.N2048.N
+        val result = calculateB(group = Group.N2048, k = BigInteger.ONE, v = BigInteger.TWO, b = BigInteger.TEN)
+
+        assertEquals(expected = expectedResult, actual = result)
+    }
+
+    @Test
     fun calculateSharedSessionKey_returns_expected_result() = runTest {
         var result = calculateSharedSessionKey(hash = NO_OP_HASH_FUNCTION, S = BigInteger.ZERO)
 
