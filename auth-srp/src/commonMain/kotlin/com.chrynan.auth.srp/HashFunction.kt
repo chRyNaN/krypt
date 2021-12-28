@@ -2,6 +2,7 @@
 
 package com.chrynan.auth.srp
 
+import com.chrynan.auth.core.SecureString
 import com.ionspin.kotlin.bignum.integer.BigInteger
 
 /**
@@ -25,7 +26,7 @@ interface HashFunction {
  */
 @ExperimentalUnsignedTypes
 suspend operator fun HashFunction.invoke(value: CharSequence): UByteArray =
-    invoke(value = value.toString().encodeToUByteArray())
+    invoke(value = (if (value is SecureString) value.toInsecureString() else value.toString()).encodeToUByteArray())
 
 /**
  * Converts the provided [value] to a [UByteArray] using UTF-8 encoding and calls the [invoke] function on the result.
