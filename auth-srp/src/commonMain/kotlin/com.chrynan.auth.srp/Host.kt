@@ -86,7 +86,7 @@ class Host(
         val clientProof = calculateM1(
             hash = hash,
             group = group,
-            identifier = identifier,
+            identifier = identifier.toInsecureString(),
             salt = salt,
             A = clientPublicKey,
             B = keyPair.publicKey.value,

@@ -105,7 +105,7 @@ class Client(
         secret: SecureString
     ): VerifierResult {
         val salt = saltGenerator.invoke()
-        val x = calculateX(hash = hash, salt = salt, identifier = identifier, secret = secret)
+        val x = calculateX(hash = hash, salt = salt, identifier = identifier.toInsecureString(), secret = secret.toInsecureString())
         val v = calculateV(group = group, x = x)
 
         return VerifierResult(
@@ -144,7 +144,7 @@ class Client(
         require(u != BigInteger.ZERO) { "The 'u' value must not be zero." }
 
         val k = calculateK(hash = hash, group = group)
-        val x = calculateX(hash = hash, salt = salt, identifier = identifier, secret = secret)
+        val x = calculateX(hash = hash, salt = salt, identifier = identifier.toInsecureString(), secret = secret.toInsecureString())
         val v = calculateV(group = group, x = x)
         val s = calculateS1(group = group, k = k, v = v, x = x, u = u, a = keyPair.privateKey.value, B = hostPublicKey)
         val sharedKey = calculateSharedSessionKey(hash = hash, S = s)
