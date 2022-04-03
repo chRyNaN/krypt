@@ -5,9 +5,6 @@ package com.chrynan.krypt.csprng
 import android.os.Build
 import com.chrynan.krypt.core.SecureString
 import com.chrynan.krypt.core.toSecureString
-import com.chrynan.krypt.csprng.SecureRandom
-import com.chrynan.krypt.csprng.nextSalt
-import com.chrynan.krypt.csprng.takeUpperBits
 import java.nio.charset.Charset
 import kotlin.random.Random
 
@@ -76,9 +73,16 @@ fun SecureRandom(algorithmName: String?): SecureRandom {
             ?: java.security.SecureRandom()
     }
 
-    return com.chrynan.krypt.csprng.SecureRandom(javaSecureRandom = javaSecureRandom)
+    return SecureRandom(javaSecureRandom = javaSecureRandom)
 }
 
+/**
+ * Retrieves a [ByteArray] from this [SecureRandom] to be used as a salt, which is typically used when hashing
+ * passwords. This is a convenience function which delegates to the [SecureRandom.nextBytes] function.
+ *
+ * @param [byteCount] The size of the returned [ByteArray].
+ * @param [charset] The [Charset] used for the returned salt. Defaults to [Charsets.UTF_8].
+ */
 fun SecureRandom.nextSaltString(byteCount: Int = 16, charset: Charset = Charsets.UTF_8): SecureString {
     val bytes = nextSalt(byteCount = byteCount)
 

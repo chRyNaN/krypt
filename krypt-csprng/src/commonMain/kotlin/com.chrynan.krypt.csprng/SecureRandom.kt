@@ -9,11 +9,22 @@ import kotlin.experimental.and
 import kotlin.experimental.or
 import kotlin.random.Random
 
-private const val ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-private val ALPHA_NUMERIC_CHARS = ALPHA_NUMERIC_STRING.toCharArray()
-
 /**
- * A cryptographically strong pseudo-random number generator (CSPRNG) which implements the [Random] interface.
+ * A cryptographically strong pseudo-random number generator (CSPRNG) which implements the [Random] interface. This
+ * class should be suitable for use in cryptography.
+ *
+ * On the JVM and Android, this delegates to the
+ * [java.security.SecureRandom class](https://docs.oracle.com/javase/8/docs/api/java/security/SecureRandom.html).
+ *
+ * For JS, this uses the
+ * [Crypto.getRandomValues](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues) function to
+ * generate cryptographically strong random data.
+ *
+ * And for iOS, this uses the
+ * [SecureRandomCopyBytes](https://developer.apple.com/documentation/security/1399291-secrandomcopybytes) function to
+ * generate cryptographically strong random data.
+ *
+ * @see [Wikipedia explanation](https://en.wikipedia.org/wiki/Cryptographically-secure_pseudorandom_number_generator)
  */
 expect class SecureRandom constructor() : Random {
 
@@ -22,30 +33,17 @@ expect class SecureRandom constructor() : Random {
     companion object
 }
 
-fun SecureRandom.nextChar(characters: CharArray = ALPHA_NUMERIC_CHARS): Char {
-    val index = nextInt(characters.size)
-    return characters[index]
-}
-
-fun SecureRandom.nextCharArray(length: Int, characters: CharArray = ALPHA_NUMERIC_CHARS): CharArray {
-    val charArray = CharArray(length)
-    for (i in 0..length) {
-        charArray[i] = nextChar(characters = characters)
-    }
-    return charArray
-}
-
-fun SecureRandom.nextString(length: Int, characters: CharArray = ALPHA_NUMERIC_CHARS): String {
-    val stringBuilder = StringBuilder()
-    stringBuilder.append(nextCharArray(length = length, characters = characters).concatToString())
-    return stringBuilder.toString()
-}
-
+/**
+ * Gets the next random [SecureString] with the provided [length] and supported [characters].
+ */
 fun SecureRandom.nextSecureString(length: Int, characters: CharArray = ALPHA_NUMERIC_CHARS): SecureString {
     val charArray = nextCharArray(length = length, characters = characters)
     return SecureString(chars = charArray, eraseSource = true)
 }
 
+/**
+ * Gets the next random [Uuid].
+ */
 fun SecureRandom.nextUuid(): Uuid {
     var randomBytes = ByteArray(16)
     randomBytes = nextBytes(randomBytes)
