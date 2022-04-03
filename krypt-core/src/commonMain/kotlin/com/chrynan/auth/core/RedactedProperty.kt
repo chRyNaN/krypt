@@ -2,7 +2,8 @@ package com.chrynan.auth.core
 
 /**
  * A wrapper class for any type that needs to be redacted when calling toString so that it doesn't output sensitive
- * data.
+ * data. Note that the underlying [value] can still be accessed and any direct call to toString on that property will
+ * not be redacted.
  */
 abstract class RedactedProperty<T>(
     private val redactedString: String = "█",
@@ -32,15 +33,14 @@ abstract class RedactedProperty<T>(
     companion object
 }
 
-abstract class PublicRedactedProperty<T>(
+/**
+ * A [RedactedProperty] that allows for the underlying [value] to be accessed publicly.
+ */
+class PublicRedactedProperty<T>(
+    override val value: T,
     redactedString: String = "█",
     repeatCount: Int = 3
 ) : RedactedProperty<T>(
     redactedString = redactedString,
     repeatCount = repeatCount
-) {
-
-    public abstract override val value: T
-}
-
-class SimpleRedactedProperty<T>(override val value: T) : PublicRedactedProperty<T>()
+)

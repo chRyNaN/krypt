@@ -40,6 +40,6 @@ internal fun KeyPair(
     publicKey: BigInteger
 ): KeyPair<BigInteger> =
     KeyPair(
-        privateKey = SimpleRedactedProperty(privateKey),
-        publicKey = SimpleRedactedProperty(publicKey)
+        privateKey = PublicRedactedProperty(privateKey),
+        publicKey = PublicRedactedProperty(publicKey)
     )
