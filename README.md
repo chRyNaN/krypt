@@ -65,6 +65,10 @@ implementation("com.chrynan.krypt:krypt-hash-sha:$VERSION")
 implementation("com.chrynan.krypt:krypt-srp:$VERSION")
 ```
 
+## Status
+
+This project is in early development stages and is not yet considered production ready.
+
 ## Documentation
 
 More detailed documentation is available in the [docs](docs) folder. The entry point to the documentation can be
