@@ -14,7 +14,6 @@ version = LibraryConstants.versionName
 kotlin {
     android {
         publishAllLibraryVariants()
-        publishLibraryVariantsGroupedByFlavor = true
     }
     jvm()
     ios()
