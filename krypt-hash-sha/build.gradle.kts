@@ -29,7 +29,7 @@ kotlin {
         }
         val commonMain by getting {
             dependencies {
-                api(project(":auth-hash"))
+                api(project(":krypt-hash"))
 
                 implementation("com.squareup.okio:okio:3.0.0")
             }

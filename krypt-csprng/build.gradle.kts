@@ -17,6 +17,11 @@ kotlin {
         publishLibraryVariantsGroupedByFlavor = true
     }
     jvm()
+    ios()
+    js(BOTH) {
+        browser()
+        nodejs()
+    }
 
     sourceSets {
         all {
@@ -24,17 +29,14 @@ kotlin {
         }
         val commonMain by getting {
             dependencies {
-                api(project(":auth-hash"))
+                implementation(project(":krypt-core"))
+
+                implementation("com.benasher44:uuid:0.3.1")
             }
         }
-        val jvmMain by getting {
+        val commonTest by getting {
             dependencies {
-                implementation("com.password4j:password4j:1.5.4")
-            }
-        }
-        val androidMain by getting {
-            dependencies {
-                implementation("com.password4j:password4j:1.5.4")
+                implementation(kotlin("test"))
             }
         }
     }

@@ -1,10 +1,10 @@
-rootProject.name = "auth"
+rootProject.name = "krypt"
 
-include(":auth-core")
-include(":auth-csprng")
-include(":auth-base64")
-include(":auth-hash")
-include(":auth-hash-sha")
-include(":auth-hash-argon")
-include(":auth-identity")
-include(":auth-srp")
+include(":krypt-core")
+include(":krypt-csprng")
+include(":krypt-base64")
+include(":krypt-hash")
+include(":krypt-hash-sha")
+include(":krypt-hash-argon")
+include(":krypt-identity")
+include(":krypt-srp")

@@ -29,16 +29,7 @@ kotlin {
         }
         val commonMain by getting {
             dependencies {
-                implementation(project(":auth-core"))
-                implementation(project(":auth-csprng"))
-                implementation("com.ionspin.kotlin:bignum:0.3.3")
-                implementation("com.squareup.okio:okio:3.0.0")
-            }
-        }
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test"))
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0")
+                api(project(":krypt-core"))
             }
         }
     }
