@@ -82,3 +82,18 @@ android {
 }
 
 tasks.withType<Jar> { duplicatesStrategy = DuplicatesStrategy.INHERIT }
+
+afterEvaluate {
+    publishing {
+        repositories {
+            maven {
+                url = uri("https://repo.repsy.io/mvn/chrynan/public")
+
+                credentials {
+                    username = (project.findProperty("repsyUsername") ?: System.getenv("repsyUsername")) as? String
+                    password = (project.findProperty("repsyToken") ?: System.getenv("repsyToken")) as? String
+                }
+            }
+        }
+    }
+}
