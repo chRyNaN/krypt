@@ -6,7 +6,7 @@ import com.chrynan.krypt.core.SecureString
 import com.chrynan.krypt.core.toSecureString
 import com.chrynan.krypt.hash.Hasher
 
-interface Argon2Hasher : Hasher<Argon2HashAlgorithm, SecureString, Argon2HashResult> {
+interface Argon2Hasher : Hasher<Argon2HashAlgorithm, SecureString, SecureString, Argon2HashResult> {
 
     companion object
 }

@@ -7,4 +7,4 @@ data class Argon2HashResult internal constructor(
     override val algorithm: Argon2HashAlgorithm,
     override val hash: SecureString,
     val salt: SecureString
-) : HashResult<Argon2HashAlgorithm>
+) : HashResult<Argon2HashAlgorithm, SecureString>

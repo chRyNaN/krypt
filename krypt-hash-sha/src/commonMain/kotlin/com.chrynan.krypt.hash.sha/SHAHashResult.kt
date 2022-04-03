@@ -6,4 +6,4 @@ import com.chrynan.krypt.hash.HashResult
 data class SHAHashResult internal constructor(
     override val algorithm: SHAHashAlgorithm,
     override val hash: SecureString
-) : HashResult<SHAHashAlgorithm>
+) : HashResult<SHAHashAlgorithm, SecureString>

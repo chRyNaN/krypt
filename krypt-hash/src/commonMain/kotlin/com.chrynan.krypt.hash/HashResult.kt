@@ -1,12 +1,10 @@
 package com.chrynan.krypt.hash
 
-import com.chrynan.krypt.core.SecureString
-
 /**
  * Represents the result of a [HashEncoder]. This result interface contains the [hash] and the [algorithm] information.
  */
-interface HashResult<Algorithm : HashAlgorithm> {
+interface HashResult<Algorithm : HashAlgorithm, Hash> {
 
     val algorithm: Algorithm
-    val hash: SecureString
+    val hash: Hash
 }

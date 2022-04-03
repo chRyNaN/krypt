@@ -7,7 +7,7 @@ import com.chrynan.krypt.core.toSecureString
 import com.chrynan.krypt.hash.Hasher
 import okio.ByteString.Companion.encodeUtf8
 
-interface SHAHasher : Hasher<SHAHashAlgorithm, SecureString, SHAHashResult> {
+interface SHAHasher : Hasher<SHAHashAlgorithm, SecureString, SecureString, SHAHashResult> {
 
     companion object
 }

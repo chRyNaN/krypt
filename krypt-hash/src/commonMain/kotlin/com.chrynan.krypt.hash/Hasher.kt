@@ -8,9 +8,9 @@ package com.chrynan.krypt.hash
  * companion object.
  */
 @Suppress("SpellCheckingInspection")
-interface Hasher<Algorithm : HashAlgorithm, Input : Any, Result : HashResult<Algorithm>> :
-    HashEncoder<Algorithm, Input, Result>,
-    HashMatcher<Algorithm, Input, Result> {
+interface Hasher<Algorithm : HashAlgorithm, Input, Hash, Result : HashResult<Algorithm, Hash>> :
+    HashEncoder<Algorithm, Input, Hash, Result>,
+    HashMatcher<Algorithm, Input, Hash, Result> {
 
     override val algorithm: Algorithm
 
