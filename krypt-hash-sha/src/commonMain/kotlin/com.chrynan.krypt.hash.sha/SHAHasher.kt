@@ -7,19 +7,17 @@ import com.chrynan.krypt.core.toSecureString
 import com.chrynan.krypt.hash.Hasher
 import okio.ByteString.Companion.encodeUtf8
 
-interface SHAHasher : Hasher<SHAHashAlgorithm, SecureString, SecureString, SHAHashResult> {
+interface SHAHasher : Hasher<SHAHashAlgorithm, CharSequence, SecureString, SHAHashResult> {
 
     companion object
 }
-
-suspend fun SHAHasher.hash(source: CharSequence): SHAHashResult = invoke(source = source.toSecureString())
 
 internal class OkioSHAHasher(
     override val algorithm: SHAHashAlgorithm
 ) : SHAHasher {
 
-    override suspend fun invoke(source: SecureString): SHAHashResult {
-        val insecureUtf8String = source.toInsecureString().encodeUtf8()
+    override suspend fun invoke(source: CharSequence): SHAHashResult {
+        val insecureUtf8String = source.toString().encodeUtf8()
 
         val hashedByteString = when (algorithm.type) {
             SHAType.SHA_1 -> insecureUtf8String.sha1()
@@ -40,8 +38,8 @@ internal class OkioSHAHasher(
         )
     }
 
-    override suspend fun matches(source: SecureString, result: SHAHashResult): Boolean {
-        val sourceResult = hash(source = source)
+    override suspend fun matches(source: CharSequence, result: SHAHashResult): Boolean {
+        val sourceResult = invoke(source = source)
 
         return sourceResult.hash == result.hash
     }
