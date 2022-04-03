@@ -1,4 +1,4 @@
-# SRP
+# SRP (Secure Remote Password Protocol)
 
 The secure remote password protocol (SRP) is an approach to authenticating a client to a host service without
 exchanging, or even the host knowing, the password of a user. For more information about SRP, refer to
