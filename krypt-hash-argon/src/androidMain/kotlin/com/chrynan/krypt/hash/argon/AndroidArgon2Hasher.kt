@@ -2,7 +2,6 @@
 
 package com.chrynan.krypt.hash.argon
 
-import com.chrynan.krypt.core.SecureString
 import com.chrynan.krypt.core.toSecureString
 import com.password4j.Argon2Function
 import com.password4j.Password
@@ -34,8 +33,8 @@ internal class AndroidArgon2Hasher(
         algorithm.type.toArgon2()
     ) // TODO handle version appropriately
 
-    override suspend fun invoke(source: SecureString): Argon2HashResult {
-        val hash = Password.hash(source.toJavaSecureString(eraseSource = false))
+    override suspend fun invoke(source: CharSequence): Argon2HashResult {
+        val hash = Password.hash(source.toSecureString().toJavaSecureString(eraseSource = false))
             .addRandomSalt(algorithm.saltLength)
             .with(argon2HashFunction)
 
@@ -46,8 +45,8 @@ internal class AndroidArgon2Hasher(
         )
     }
 
-    override suspend fun matches(source: SecureString, result: Argon2HashResult): Boolean =
-        Password.check(source.toJavaSecureString(eraseSource = false), result.hash.toString())
+    override suspend fun matches(source: CharSequence, result: Argon2HashResult): Boolean =
+        Password.check(source.toSecureString().toJavaSecureString(eraseSource = false), result.hash.toString())
             .addSalt(result.salt.toString())
             .with(argon2HashFunction)
 }

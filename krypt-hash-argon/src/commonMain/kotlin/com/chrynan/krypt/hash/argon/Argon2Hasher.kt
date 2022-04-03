@@ -3,15 +3,12 @@
 package com.chrynan.krypt.hash.argon
 
 import com.chrynan.krypt.core.SecureString
-import com.chrynan.krypt.core.toSecureString
 import com.chrynan.krypt.hash.Hasher
 
-interface Argon2Hasher : Hasher<Argon2HashAlgorithm, SecureString, SecureString, Argon2HashResult> {
+interface Argon2Hasher : Hasher<Argon2HashAlgorithm, CharSequence, SecureString, Argon2HashResult> {
 
     companion object
 }
-
-suspend fun Argon2Hasher.hash(source: CharSequence): Argon2HashResult = invoke(source = source.toSecureString())
 
 fun Hasher.Companion.argon2(
     type: Argon2Type = Argon2Type.ID,
