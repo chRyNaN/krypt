@@ -1,4 +1,4 @@
-# auth
+# krypt
 
 Kotlin multi-platform cryptographic utility library.
 
