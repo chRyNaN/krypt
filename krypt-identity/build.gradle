@@ -18,13 +18,13 @@ kotlin {
                 implementation("org.jetbrains.kotlin:kotlin-stdlib-common")
 
                 // Kotlinx Serialization
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0-RC")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
 
                 // Images
                 implementation("com.chrynan.imagery:imagery-core:0.1.2")
 
                 // Datetime
-                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.2.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.2")
             }
         }
     }

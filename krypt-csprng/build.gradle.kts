@@ -17,6 +17,7 @@ kotlin {
     }
     jvm()
     ios()
+    iosSimulatorArm64()
     js(BOTH) {
         browser()
         nodejs()
@@ -38,6 +39,9 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
+        val iosMain by sourceSets.getting
+        val iosSimulatorArm64Main by sourceSets.getting
+        iosSimulatorArm64Main.dependsOn(iosMain)
     }
 }
 

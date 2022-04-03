@@ -18,6 +18,7 @@ kotlin {
     }
     jvm()
     ios()
+    iosSimulatorArm64()
     js(BOTH) {
         browser()
         nodejs()
@@ -29,11 +30,14 @@ kotlin {
         }
         val commonMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
 
                 implementation("com.squareup.okio:okio:3.0.0")
             }
         }
+        val iosMain by sourceSets.getting
+        val iosSimulatorArm64Main by sourceSets.getting
+        iosSimulatorArm64Main.dependsOn(iosMain)
     }
 }
 
