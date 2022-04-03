@@ -37,7 +37,7 @@ abstract class RedactedProperty<T>(
  * A [RedactedProperty] that allows for the underlying [value] to be accessed publicly.
  */
 class PublicRedactedProperty<T>(
-    override val value: T,
+    public override val value: T,
     redactedString: String = "█",
     repeatCount: Int = 3
 ) : RedactedProperty<T>(
