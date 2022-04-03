@@ -1,10 +1,12 @@
 # auth
 
-Kotlin multi-platform cryptographic utility library. 
+Kotlin multi-platform cryptographic utility library.
 
 ## Usage
 
-TBD
+This library provides independent modules that handle specific cryptographic tasks. For instance,
+the [krypt-csprng](krypt-csprng) module provides a `SecureRandom` implementation which is a cryptographically strong
+psuedo-random number generator. Each module contains a `README` file with more information on usage.
 
 ## Building
 
