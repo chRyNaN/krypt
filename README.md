@@ -1,6 +1,7 @@
 # krypt
 
-Kotlin multi-platform cryptographic utility library.
+Kotlin multi-platform cryptographic utility library. <br/>
+<img alt="GitHub tag (latest by date)" src="https://img.shields.io/github/v/tag/chRyNaN/krypt">
 
 ## Usage
 
