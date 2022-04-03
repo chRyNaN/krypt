@@ -1,0 +1,13 @@
+@file:Suppress("unused")
+
+package com.chrynan.krypt.hash
+
+@Suppress("SpellCheckingInspection")
+interface Hasher<Algorithm : HashAlgorithm, Input : Any, Result : HashResult<Algorithm>> :
+    HashEncoder<Algorithm, Input, Result>,
+    HashMatcher<Algorithm, Input, Result> {
+
+    override val algorithm: Algorithm
+
+    companion object
+}
