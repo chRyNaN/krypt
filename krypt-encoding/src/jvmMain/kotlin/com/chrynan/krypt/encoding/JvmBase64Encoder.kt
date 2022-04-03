@@ -32,9 +32,9 @@ internal class JvmBase64Encoder(
         else -> Base64.getEncoder()
     }
 
-    override fun encode(source: ByteArray): ByteArray = encoder.encode(source)
+    override fun encodeToByteArray(source: ByteArray): ByteArray = encoder.encode(source)
 
-    override fun encode(source: String): ByteArray = encode(source = source.toByteArray(charset))
+    override fun encodeToByteArray(source: String): ByteArray = encodeToByteArray(source = source.toByteArray(charset))
 
     override fun encodeToString(source: ByteArray): String = encoder.encodeToString(source)
 

@@ -23,9 +23,9 @@ internal class JvmBase64Decoder(
         Base64Type.MIME -> Base64.getMimeDecoder()
     }
 
-    override fun decode(source: ByteArray): ByteArray = decoder.decode(source)
+    override fun decodeToByteArray(source: ByteArray): ByteArray = decoder.decode(source)
 
-    override fun decode(source: String): ByteArray = decode(source = source.toByteArray(charset))
+    override fun decodeToByteArray(source: String): ByteArray = decodeToByteArray(source = source.toByteArray(charset))
 
     override fun decodeToString(source: ByteArray): String = decoder.decode(source).decodeToString()
 

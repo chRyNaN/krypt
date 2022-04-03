@@ -4,8 +4,6 @@ package com.chrynan.krypt.encoding
 
 import android.annotation.TargetApi
 import android.os.Build
-import com.chrynan.krypt.encoding.Base64Decoder
-import com.chrynan.krypt.encoding.Base64Type
 import java.nio.charset.Charset
 import java.util.*
 
@@ -30,14 +28,14 @@ internal class AndroidBase64Decoder(
 
     private val androidBase64Type: Int = type.toAndroidType(isWithPadding = isWithPadding)
 
-    override fun decode(source: ByteArray): ByteArray =
+    override fun decodeToByteArray(source: ByteArray): ByteArray =
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             decoder.decode(source)
         } else {
             android.util.Base64.decode(source, androidBase64Type)
         }
 
-    override fun decode(source: String): ByteArray = decode(source = source.toByteArray(charset))
+    override fun decodeToByteArray(source: String): ByteArray = decodeToByteArray(source = source.toByteArray(charset))
 
     override fun decodeToString(source: ByteArray): String =
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

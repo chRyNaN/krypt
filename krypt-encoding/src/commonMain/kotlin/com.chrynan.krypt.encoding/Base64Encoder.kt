@@ -2,34 +2,49 @@
 
 package com.chrynan.krypt.encoding
 
-import okio.ByteString
 import okio.ByteString.Companion.toByteString
 
-interface Base64Encoder {
+/**
+ * A Base64 [Encoder].
+ *
+ * @see [Wikipedia explanation](https://en.wikipedia.org/wiki/Base64)
+ */
+interface Base64Encoder : Encoder,
+    ByteStringEncoder {
 
+    /**
+     * The [Base64Type] of encoding this encoder performs.
+     */
     val type: Base64Type
 
-    fun encode(source: ByteArray): ByteArray
+    /**
+     * Converts a UTF-8 character encoded [String] into a Base64 [ByteArray] representation.
+     */
+    fun encodeToByteArray(source: String): ByteArray = encodeToByteArray(source = source.toUtf8ByteArray())
 
-    fun encode(source: String): ByteArray = encode(source = source.toUtf8ByteArray())
-
-    fun encode(source: ByteString): ByteArray = encode(source = source.toByteArray())
-
-    fun encodeToString(source: ByteArray): String
-
+    /**
+     * Converts a UTF-8 character encoded [String] into a Base64 [String] representation.
+     */
     fun encodeToString(source: String): String = encodeToString(source = source.toUtf8ByteArray())
-
-    fun encodeToString(source: ByteString): String = encodeToString(source = source.toByteArray())
 }
 
+/**
+ * Creates a [Base64Encoder] with the [Base64Type.DEFAULT] type.
+ */
 @Suppress("FunctionName")
 fun Base64Encoder(isWithPadding: Boolean = true): Base64Encoder =
     Base64Encoder(type = Base64Type.DEFAULT, isWithPadding = isWithPadding)
 
+/**
+ * Creates a [Base64Encoder] with the [Base64Type.URL] type.
+ */
 @Suppress("FunctionName")
 fun Base64UrlEncoder(isWithPadding: Boolean = true): Base64Encoder =
     Base64Encoder(type = Base64Type.URL, isWithPadding = isWithPadding)
 
+/**
+ * Creates a [Base64Encoder] with the [Base64Type.MIME] type.
+ */
 @Suppress("FunctionName")
 fun Base64MimeEncoder(isWithPadding: Boolean = true): Base64Encoder =
     Base64Encoder(type = Base64Type.MIME, isWithPadding = isWithPadding)
@@ -39,11 +54,16 @@ internal expect fun Base64Encoder(
     isWithPadding: Boolean = true
 ): Base64Encoder
 
+/**
+ * A multiplatform [Base64Encoder] that uses okio utilities to perform the encoding.
+ *
+ * If there is platform specific support for Base64, prefer that utility.
+ */
 internal class OkioBase64Encoder(
     override val type: Base64Type
 ) : Base64Encoder {
 
-    override fun encode(source: ByteArray): ByteArray {
+    override fun encodeToByteArray(source: ByteArray): ByteArray {
         val byteString = source.toByteString()
 
         return when (type) {
