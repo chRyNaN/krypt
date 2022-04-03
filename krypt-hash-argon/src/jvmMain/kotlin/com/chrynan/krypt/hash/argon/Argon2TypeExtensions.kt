@@ -1,6 +1,5 @@
 package com.chrynan.krypt.hash.argon
 
-import com.chrynan.krypt.hash.argon.Argon2Type
 import com.password4j.types.Argon2
 
 fun Argon2Type.toArgon2(): Argon2 =

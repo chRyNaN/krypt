@@ -16,7 +16,7 @@ import com.ionspin.kotlin.bignum.integer.BigInteger
  */
 @ExperimentalUnsignedTypes
 internal suspend fun calculateX(
-    hash: HashFunction,
+    hash: SrpHashFunction,
     salt: UByteArray,
     identifier: CharSequence,
     secret: CharSequence
@@ -55,7 +55,7 @@ internal suspend fun calculateV(group: Group, x: BigInteger): BigInteger = group
  * @see [Wikipedia SRP Article](https://en.wikipedia.org/wiki/Secure_Remote_Password_protocol)
  */
 @ExperimentalUnsignedTypes
-internal suspend fun calculateK(hash: HashFunction, group: Group): BigInteger {
+internal suspend fun calculateK(hash: SrpHashFunction, group: Group): BigInteger {
     val nBytes = group.N.toUByteArray()
 
     val result = hash(nBytes + pad(group.g.toUByteArray(), nBytes.size))
@@ -106,7 +106,7 @@ internal suspend fun calculateB(group: Group, k: BigInteger, v: BigInteger, b: B
  */
 @ExperimentalUnsignedTypes
 internal suspend fun calculateU(
-    hash: HashFunction,
+    hash: SrpHashFunction,
     group: Group,
     A: BigInteger,
     B: BigInteger
@@ -134,7 +134,7 @@ internal suspend fun calculateU(
  */
 @ExperimentalUnsignedTypes
 internal suspend fun calculateM1(
-    hash: HashFunction,
+    hash: SrpHashFunction,
     group: Group,
     identifier: CharSequence,
     salt: UByteArray,
@@ -164,7 +164,7 @@ internal suspend fun calculateM1(
  */
 @ExperimentalUnsignedTypes
 internal suspend fun calculateM2(
-    hash: HashFunction,
+    hash: SrpHashFunction,
     A: BigInteger,
     M1: UByteArray,
     K: BigInteger
@@ -231,7 +231,7 @@ internal suspend fun calculateS2(
  */
 @ExperimentalUnsignedTypes
 internal suspend fun calculateSharedSessionKey(
-    hash: HashFunction,
+    hash: SrpHashFunction,
     S: BigInteger
 ): UByteArray = hash(S)
 

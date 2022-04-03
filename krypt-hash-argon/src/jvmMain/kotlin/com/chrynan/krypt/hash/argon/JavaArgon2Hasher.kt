@@ -4,10 +4,6 @@ package com.chrynan.krypt.hash.argon
 
 import com.chrynan.krypt.core.SecureString
 import com.chrynan.krypt.core.toSecureString
-import com.chrynan.krypt.hash.argon.Argon2HashAlgorithm
-import com.chrynan.krypt.hash.argon.Argon2HashResult
-import com.chrynan.krypt.hash.argon.Argon2Hasher
-import com.chrynan.krypt.hash.argon.Argon2Type
 import com.password4j.Argon2Function
 import com.password4j.Password
 
@@ -38,7 +34,7 @@ internal class JavaArgon2Hasher(
         algorithm.type.toArgon2()
     ) // TODO handle version appropriately
 
-    override suspend fun hash(source: SecureString): Argon2HashResult {
+    override suspend fun invoke(source: SecureString): Argon2HashResult {
         val hash = Password.hash(source.toJavaSecureString(eraseSource = false))
             .addRandomSalt(algorithm.saltLength)
             .with(argon2HashFunction)

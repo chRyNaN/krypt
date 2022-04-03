@@ -11,7 +11,7 @@ interface Argon2Hasher : Hasher<Argon2HashAlgorithm, SecureString, Argon2HashRes
     companion object
 }
 
-suspend fun Argon2Hasher.hash(source: CharSequence): Argon2HashResult = hash(source = source.toSecureString())
+suspend fun Argon2Hasher.hash(source: CharSequence): Argon2HashResult = invoke(source = source.toSecureString())
 
 fun Hasher.Companion.argon2(
     type: Argon2Type = Argon2Type.ID,

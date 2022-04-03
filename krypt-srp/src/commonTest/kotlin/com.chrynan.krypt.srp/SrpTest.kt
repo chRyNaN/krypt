@@ -1,6 +1,5 @@
 package com.chrynan.krypt.srp
 
-import com.chrynan.krypt.srp.*
 import com.ionspin.kotlin.bignum.integer.BigInteger
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
@@ -181,16 +180,16 @@ class SrpTest {
 
     companion object {
 
-        val NO_OP_HASH_FUNCTION = object : HashFunction {
+        @ExperimentalUnsignedTypes
+        val NO_OP_HASH_FUNCTION = object : SrpHashFunction {
 
-            @ExperimentalUnsignedTypes
-            override suspend fun invoke(value: UByteArray): UByteArray = value
+            override suspend fun invoke(source: UByteArray): UByteArray = source
         }
 
-        val REVERSE_HASH_FUNCTION = object : HashFunction {
+        @ExperimentalUnsignedTypes
+        val REVERSE_HASH_FUNCTION = object : SrpHashFunction {
 
-            @ExperimentalUnsignedTypes
-            override suspend fun invoke(value: UByteArray): UByteArray = value.reversedArray()
+            override suspend fun invoke(source: UByteArray): UByteArray = source.reversedArray()
         }
     }
 }

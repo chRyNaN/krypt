@@ -48,7 +48,7 @@ import com.ionspin.kotlin.bignum.integer.BigInteger
 @ExperimentalUnsignedTypes
 class Host(
     private val group: Group = Group.N2048,
-    private val hash: HashFunction,
+    private val hash: SrpHashFunction,
     private val random: SecureRandom = SecureRandom(),
     private val keyPairGenerator: KeyPairGenerator<BigInteger> = object : KeyPairGenerator<BigInteger> {
 

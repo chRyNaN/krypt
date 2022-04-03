@@ -74,7 +74,7 @@ import kotlin.random.nextUBytes
 @ExperimentalUnsignedTypes
 class Client(
     private val group: Group = Group.N2048,
-    private val hash: HashFunction,
+    private val hash: SrpHashFunction,
     private val random: SecureRandom = SecureRandom(),
     private val saltGenerator: suspend () -> UByteArray = { random.nextUBytes(16) },
     private val keyPairGenerator: KeyPairGenerator<BigInteger> = object : KeyPairGenerator<BigInteger> {

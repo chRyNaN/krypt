@@ -12,13 +12,13 @@ interface SHAHasher : Hasher<SHAHashAlgorithm, SecureString, SHAHashResult> {
     companion object
 }
 
-suspend fun SHAHasher.hash(source: CharSequence): SHAHashResult = hash(source = source.toSecureString())
+suspend fun SHAHasher.hash(source: CharSequence): SHAHashResult = invoke(source = source.toSecureString())
 
 internal class OkioSHAHasher(
     override val algorithm: SHAHashAlgorithm
 ) : SHAHasher {
 
-    override suspend fun hash(source: SecureString): SHAHashResult {
+    override suspend fun invoke(source: SecureString): SHAHashResult {
         val insecureUtf8String = source.toInsecureString().encodeUtf8()
 
         val hashedByteString = when (algorithm.type) {

@@ -32,7 +32,7 @@ actual class SecureRandom actual constructor() : Random() {
 
                 return bytes.toInt()
             } else {
-                throw error("Error occurred attempting to retrieve nextBits(): bitCount = $bitCount")
+                error("Error occurred attempting to retrieve nextBits(): bitCount = $bitCount")
             }
         }
     }
