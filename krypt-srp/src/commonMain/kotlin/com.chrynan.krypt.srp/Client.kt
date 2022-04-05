@@ -77,16 +77,21 @@ class Client(
     private val hash: SrpHashFunction,
     private val random: SecureRandom = SecureRandom(),
     private val saltGenerator: suspend () -> UByteArray = { random.nextUBytes(16) },
-    private val keyPairGenerator: KeyPairGenerator<BigInteger> = object : KeyPairGenerator<BigInteger> {
+    private val keyPairGenerator: SrpKeyPairGenerator<BigInteger> = object : SrpKeyPairGenerator<BigInteger> {
 
-        override suspend fun generateKeyPair(): KeyPair<BigInteger> {
+        override suspend fun invoke(): SrpKeyPair<BigInteger> {
             val privateKey = random.nextBigInteger()
             val publicKey = calculateA(group = group, a = privateKey)
 
-            return KeyPair(privateKey = privateKey, publicKey = publicKey)
+            return SrpKeyPair(privateKey = privateKey, publicKey = publicKey)
         }
     }
-) : KeyPairGenerator<BigInteger> by keyPairGenerator {
+) {
+
+    /**
+     * Generates a [SrpKeyPair] using the provided [keyPairGenerator] when this [Client] was created.
+     */
+    suspend fun generateKeyPair(): SrpKeyPair<BigInteger> = keyPairGenerator.invoke()
 
     /**
      * Creates a salt and verifier to be used in the registration part of the SRP protocol. The returned
@@ -105,7 +110,12 @@ class Client(
         secret: SecureString
     ): VerifierResult {
         val salt = saltGenerator.invoke()
-        val x = calculateX(hash = hash, salt = salt, identifier = identifier.toInsecureString(), secret = secret.toInsecureString())
+        val x = calculateX(
+            hash = hash,
+            salt = salt,
+            identifier = identifier.toInsecureString(),
+            secret = secret.toInsecureString()
+        )
         val v = calculateV(group = group, x = x)
 
         return VerifierResult(
@@ -118,7 +128,7 @@ class Client(
     /**
      * Generates a [SessionKey] from the provided values to be used in the authentication part of the SRP protocol.
      * Before invoking this function, the client must obtain the [salt] and [hostPublicKey] from the host, which is
-     * outside the responsibility of this class. Also, a unique [KeyPair] value should be generated that is going to be
+     * outside the responsibility of this class. Also, a unique [SrpKeyPair] value should be generated that is going to be
      * used in this authentication, and the following verification, steps of the SRP protocol.
      *
      * This function returns a [SessionKey] which must be verified before being used. In order to do so, the
@@ -131,7 +141,7 @@ class Client(
      * [secret] is finished being used. However, this is outside the responsibility of this function.
      */
     suspend fun processChallenge(
-        keyPair: KeyPair<BigInteger>,
+        keyPair: SrpKeyPair<BigInteger>,
         identifier: SecureString,
         secret: SecureString,
         salt: UByteArray,
@@ -144,7 +154,12 @@ class Client(
         require(u != BigInteger.ZERO) { "The 'u' value must not be zero." }
 
         val k = calculateK(hash = hash, group = group)
-        val x = calculateX(hash = hash, salt = salt, identifier = identifier.toInsecureString(), secret = secret.toInsecureString())
+        val x = calculateX(
+            hash = hash,
+            salt = salt,
+            identifier = identifier.toInsecureString(),
+            secret = secret.toInsecureString()
+        )
         val v = calculateV(group = group, x = x)
         val s = calculateS1(group = group, k = k, v = v, x = x, u = u, a = keyPair.privateKey.value, B = hostPublicKey)
         val sharedKey = calculateSharedSessionKey(hash = hash, S = s)

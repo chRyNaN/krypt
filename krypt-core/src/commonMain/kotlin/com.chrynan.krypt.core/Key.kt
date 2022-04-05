@@ -55,17 +55,39 @@ interface SecretKey : Key {
 }
 
 /**
- * Represents a grouping of a [public] and [private] key. Typically, this is used for asymmetric encryption algorithms.
- * Key pairs should be treated securely.
+ * Represents a grouping of a [publicKey] and [privateKey] key. Typically, this is used for asymmetric encryption
+ * algorithms. Key pairs should be treated securely.
  *
  * Note that this interface was inspired by the
  * [java.security.KeyPair interface](https://docs.oracle.com/javase/8/docs/api/java/security/KeyPair.html).
  *
  * @see [java.security.KeyPair interface](https://docs.oracle.com/javase/8/docs/api/java/security/KeyPair.html)
  */
-interface KeyPair<PublicKey : Key, PrivateKey : Key> {
+interface KeyPair<PublicKey, PrivateKey> {
 
-    val public: PublicKey
+    val publicKey: PublicKey
 
-    val private: PrivateKey
+    val privateKey: PrivateKey
 }
+
+/**
+ * A component that generates a [KeyPair] for a particular algorithm.
+ */
+interface KeyPairGenerator<PublicKey, PrivateKey> {
+
+    /**
+     * The name of the cryptographic algorithm this [KeyPairGenerator] generates [KeyPair]s for.
+     */
+    val algorithm: String?
+
+    /**
+     * Generates a new [KeyPair] for use with the cryptographic [algorithm].
+     */
+    suspend operator fun invoke(): KeyPair<PublicKey, PrivateKey>
+}
+
+/**
+ * A convenience function that calls the [invoke] function. Which function is used is up to preference.
+ */
+suspend fun <PublicKey, PrivateKey> KeyPairGenerator<PublicKey, PrivateKey>.generate(): KeyPair<PublicKey, PrivateKey> =
+    invoke()

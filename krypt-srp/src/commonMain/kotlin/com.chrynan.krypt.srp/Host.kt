@@ -50,16 +50,21 @@ class Host(
     private val group: Group = Group.N2048,
     private val hash: SrpHashFunction,
     private val random: SecureRandom = SecureRandom(),
-    private val keyPairGenerator: KeyPairGenerator<BigInteger> = object : KeyPairGenerator<BigInteger> {
+    private val keyPairGenerator: SrpKeyPairGenerator<BigInteger> = object : SrpKeyPairGenerator<BigInteger> {
 
-        override suspend fun generateKeyPair(): KeyPair<BigInteger> {
+        override suspend fun invoke(): SrpKeyPair<BigInteger> {
             val privateKey = random.nextBigInteger()
             val publicKey = calculateA(group = group, a = privateKey)
 
-            return KeyPair(privateKey = privateKey, publicKey = publicKey)
+            return SrpKeyPair(privateKey = privateKey, publicKey = publicKey)
         }
     }
-) : KeyPairGenerator<BigInteger> by keyPairGenerator {
+) {
+
+    /**
+     * Generates a [SrpKeyPair] using the provided [keyPairGenerator] when this [Host] was created.
+     */
+    suspend fun generateKeyPair(): SrpKeyPair<BigInteger> = keyPairGenerator.invoke()
 
     /**
      * Verifies the provided [clientKeyProof] from the [Client] using the provided values. If the verification was
@@ -70,7 +75,7 @@ class Host(
      * This function will throw an exception if verification fails.
      */
     suspend fun verifySession(
-        keyPair: KeyPair<BigInteger>,
+        keyPair: SrpKeyPair<BigInteger>,
         identifier: SecureString,
         salt: UByteArray,
         verifier: BigInteger,

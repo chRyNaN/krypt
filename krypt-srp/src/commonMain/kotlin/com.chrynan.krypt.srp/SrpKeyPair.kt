@@ -1,5 +1,6 @@
 package com.chrynan.krypt.srp
 
+import com.chrynan.krypt.core.KeyPair
 import com.chrynan.krypt.core.PublicRedactedProperty
 import com.ionspin.kotlin.bignum.integer.BigInteger
 
@@ -8,13 +9,13 @@ import com.ionspin.kotlin.bignum.integer.BigInteger
  *
  * **Note:** This class does not enforce any security, and, when initialized, should be treated securely.
  */
-class KeyPair<T : Any>(
-    val privateKey: PublicRedactedProperty<T>,
-    val publicKey: PublicRedactedProperty<T>
-) {
+class SrpKeyPair<T : Any>(
+    override val privateKey: PublicRedactedProperty<T>,
+    override val publicKey: PublicRedactedProperty<T>
+): KeyPair<PublicRedactedProperty<T>, PublicRedactedProperty<T>> {
 
     override fun equals(other: Any?): Boolean {
-        if (other !is KeyPair<*>) return false
+        if (other !is SrpKeyPair<*>) return false
 
         return privateKey == other.privateKey && publicKey == other.publicKey
     }
@@ -31,14 +32,14 @@ class KeyPair<T : Any>(
 }
 
 /**
- * Generates a new instance of a [KeyPair] using the provided [BigInteger] values.
+ * Generates a new instance of a [SrpKeyPair] using the provided [BigInteger] values.
  */
 @Suppress("FunctionName")
-internal fun KeyPair(
+internal fun SrpKeyPair(
     privateKey: BigInteger,
     publicKey: BigInteger
-): KeyPair<BigInteger> =
-    KeyPair(
+): SrpKeyPair<BigInteger> =
+    SrpKeyPair(
         privateKey = PublicRedactedProperty(privateKey),
         publicKey = PublicRedactedProperty(publicKey)
     )
