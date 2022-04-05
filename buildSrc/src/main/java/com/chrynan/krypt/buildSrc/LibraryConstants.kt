@@ -1,4 +1,4 @@
-package com.chrynan.auth.buildSrc
+package com.chrynan.krypt.buildSrc
 
 object LibraryConstants {
 

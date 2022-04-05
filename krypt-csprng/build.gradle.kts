@@ -1,4 +1,4 @@
-import com.chrynan.auth.buildSrc.LibraryConstants
+import com.chrynan.krypt.buildSrc.LibraryConstants
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {

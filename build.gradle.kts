@@ -1,4 +1,4 @@
-import com.chrynan.auth.buildSrc.LibraryConstants
+import com.chrynan.krypt.buildSrc.LibraryConstants
 
 group = LibraryConstants.group
 version = LibraryConstants.versionName

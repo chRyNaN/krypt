@@ -1,4 +1,4 @@
-import com.chrynan.auth.buildSrc.LibraryConstants
+import com.chrynan.krypt.buildSrc.LibraryConstants
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -45,7 +45,7 @@ android {
 
     defaultConfig {
         minSdk = LibraryConstants.Android.minSdkVersion
-        targetSdk = LibraryConstants.Android.targetSdkVersion
+        targetSdk =LibraryConstants.Android.targetSdkVersion
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
