@@ -43,9 +43,16 @@ interface Key {
 interface SecretKey : Key {
 
     /**
-     * Secret keys should return the raw key bytes for the [encoded] property
+     * The raw key bytes for this key.
+     */
+    val raw: ByteArray?
+
+    /**
+     * Secret keys should return the raw key bytes for the [encoded] property. This property delegates to the [raw]
+     * property by default.
      */
     override val encoded: ByteArray?
+        get() = raw
 
     /**
      * Secret keys should return "RAW" for their [format] and the raw key bytes for the [encoded] property.

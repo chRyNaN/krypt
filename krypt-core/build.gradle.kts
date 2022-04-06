@@ -35,6 +35,7 @@ kotlin {
         }
         val commonMain by getting {
             dependencies {
+                api("com.ionspin.kotlin:bignum:0.3.3")
             }
         }
         val iosMain by sourceSets.getting

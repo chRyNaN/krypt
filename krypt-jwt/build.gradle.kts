@@ -6,6 +6,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.dokka")
     id("maven-publish")
+    kotlin("plugin.serialization")
 }
 
 group = LibraryConstants.group
@@ -36,18 +37,11 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(project(":krypt-core"))
-                implementation(project(":krypt-csprng"))
+                implementation(project(":krypt-encoding"))
 
-                implementation("com.ionspin.kotlin:bignum:0.3.3")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
 
-                implementation("com.squareup.okio:okio:3.0.0")
-            }
-        }
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test"))
-
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0")
+                api("com.chrynan.time:time-core:0.7.0")
             }
         }
         val iosMain by sourceSets.getting

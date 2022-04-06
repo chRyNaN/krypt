@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.chrynan.krypt.encoding
 
 import okio.ByteString
@@ -20,6 +22,17 @@ interface Encoder {
      */
     fun encodeToString(source: ByteArray): String
 }
+
+/**
+ * Encodes the provided UTF-8 formatted [String] [source] into a [ByteArray] in the format this encoder supports.
+ */
+fun Encoder.encodeUtf8ToByteArray(source: String): ByteArray = encodeToByteArray(source = source.encodeToByteArray())
+
+/**
+ * Encodes the provided UTF-8 formatted [String] [source] into a [String] in the format this encoder supports. Note
+ * that the character encoding of the [String] return value is defined by this encoder implementation.
+ */
+fun Encoder.encodeUtf8ToString(source: String): String = encodeToString(source = source.encodeToByteArray())
 
 /**
  * An [Encoder] that has overloaded functions for encoding [ByteString]s.
