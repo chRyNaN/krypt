@@ -83,11 +83,11 @@ fun Hasher.Companion.sha256(): SHA2Hasher = SHA2HasherImpl(algorithm = SHA2HashF
  *
  * @see [SHA-2 Specification](https://datatracker.ietf.org/doc/html/rfc4634)
  */
-fun Hasher.Companion.sha384(): SHA2Hasher = SHA2HasherImpl(algorithm = SHA2HashFunction.SupportedAlgorithm.SHA_224)
+fun Hasher.Companion.sha384(): SHA2Hasher = SHA2HasherImpl(algorithm = SHA2HashFunction.SupportedAlgorithm.SHA_384)
 
 /**
  * Creates a [SHA2Hasher] for the SHA-2 512 hashing algorithm.
  *
  * @see [SHA-2 Specification](https://datatracker.ietf.org/doc/html/rfc4634)
  */
-fun Hasher.Companion.sha512(): SHA2Hasher = SHA2HasherImpl(algorithm = SHA2HashFunction.SupportedAlgorithm.SHA_256)
+fun Hasher.Companion.sha512(): SHA2Hasher = SHA2HasherImpl(algorithm = SHA2HashFunction.SupportedAlgorithm.SHA_512)
