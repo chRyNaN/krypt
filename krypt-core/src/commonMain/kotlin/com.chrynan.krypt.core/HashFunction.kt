@@ -16,6 +16,11 @@ package com.chrynan.krypt.core
 interface HashFunction<Input, Output> {
 
     /**
+     * The name of the algorithm this [HashFunction] implements.
+     */
+    val algorithmName: String?
+
+    /**
      * Performs the hash with the provided [source] value and returns a [Output].
      */
     suspend operator fun invoke(source: Input): Output

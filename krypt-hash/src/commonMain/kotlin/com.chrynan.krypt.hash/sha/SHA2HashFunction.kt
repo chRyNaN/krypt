@@ -1,22 +1,46 @@
-package com.chrynan.krypt.core
+package com.chrynan.krypt.hash.sha
 
+import com.chrynan.krypt.core.Endian
+import com.chrynan.krypt.core.HashFunction
+import com.chrynan.krypt.core.toByteArray
+import com.chrynan.krypt.core.toInt
+import com.chrynan.krypt.hash.HashAlgorithm
+
+/**
+ * An SHA-2 [HashFunction] implementation. The supported variants of the SHA-2 algorithm are defined in the
+ * [SupportedAlgorithm] enum class. To utilize this hashing algorithm, use the [SHA2Hasher] interface and one of its
+ * factory functions, such as [sha256].
+ *
+ * @see [SHA-2 Specification](https://datatracker.ietf.org/doc/html/rfc4634)
+ * @see [SHA2Hasher]
+ * @see [sha256]
+ */
 sealed interface SHA2HashFunction : HashFunction<ByteArray, ByteArray> {
 
     val algorithm: SupportedAlgorithm
 
-    val algorithmName: String
+    override val algorithmName: String
         get() = algorithm.name
 
-    enum class SupportedAlgorithm(val algorithmName: String) {
+    /**
+     * The supported variants of the SHA-2 algorithm that the [SHA2HashFunction] implements.
+     */
+    enum class SupportedAlgorithm(val algorithmName: String) : HashAlgorithm {
 
         SHA_224(algorithmName = "SHA-224"),
         SHA_256(algorithmName = "SHA-256"),
         SHA_384(algorithmName = "SHA-384"),
-        SHA_512(algorithmName = "SHA-512")
+        SHA_512(algorithmName = "SHA-512");
+
+        override val version: String
+            get() = "2"
     }
 }
 
-fun SHA2HashFunction(
+/**
+ * Creates an instance of a [SHA2HashFunction] for the provided supported [algorithm].
+ */
+internal fun SHA2HashFunction(
     algorithm: SHA2HashFunction.SupportedAlgorithm
 ): SHA2HashFunction =
     when (algorithm) {
@@ -26,7 +50,12 @@ fun SHA2HashFunction(
         SHA2HashFunction.SupportedAlgorithm.SHA_512 -> SHA384Or512HashFunction(algorithm = algorithm)
     }
 
-internal class SHA224Or256HashFunction(
+/**
+ * An implementation of the SHA-2 224 and 256 hashing algorithms.
+ *
+ * @see [SHA-2 Specification](https://datatracker.ietf.org/doc/html/rfc4634)
+ */
+private class SHA224Or256HashFunction(
     override val algorithm: SHA2HashFunction.SupportedAlgorithm
 ) : SHA2HashFunction {
 
@@ -43,8 +72,26 @@ internal class SHA224Or256HashFunction(
         // Break the message up into 512 bit (64 byte) blocks.
         // Then process each block, using the result of the previously processed block as the input to the
         // next process call. For the first process call, use the initialization vector for the algorithm.
+        var h = if (algorithm == SHA2HashFunction.SupportedAlgorithm.SHA_224) ivH224 else ivH256
         for (i in paddedMessage.indices step 64) {
-            // TODO
+            val block = IntArray(16)
+
+            for ((blockIndex, j) in (i until i + 64 step 4).withIndex()) {
+                // The specification states to use Big Endian.
+                block[blockIndex] = paddedMessage.toInt(startInclusive = j, endExclusive = j + 4, order = Endian.Big)
+            }
+
+            h = processBlock(M = block, H = h)
+        }
+
+        // Produce the final output by concatenating the h value according to the specification:
+        // https://datatracker.ietf.org/doc/html/rfc4634#section-6.2
+        // For SHA-256 this is all the values, for SHA-224 this is all except for the last value.
+        // Then convert it back to a ByteArray and return the result.
+        return if (algorithm == SHA2HashFunction.SupportedAlgorithm.SHA_224) {
+            h.sliceArray(0..6).toByteArray(order = Endian.Big)
+        } else {
+            h.toByteArray(order = Endian.Big)
         }
     }
 
@@ -71,6 +118,7 @@ internal class SHA224Or256HashFunction(
         // (L + 1 - 448) / -1 = K
         // (((L + 1) % 512) - 448) / -1 = K - When considering the modulo 512
         //
+
         val paddedMessage = message.toMutableList()
 
         // Add 80 since that is equivalent to adding a 1 and seven 0s to make up a byte.
@@ -87,26 +135,11 @@ internal class SHA224Or256HashFunction(
 
         // Add the original size of the message as a 64-bit binary block
         // TODO: Could this be more performant? Perhaps inlined instead of creating a ByteArray instance.
-        message.size.toLong().toBytes().forEach {
+        message.size.toLong().toByteArray(order = Endian.Big).forEach {
             paddedMessage.add(it)
         }
 
         return paddedMessage.toByteArray()
-    }
-
-    /**
-     * Converts this [Long] to a [ByteArray]. The resulting [ByteArray] should have a size of 8.
-     */
-    private fun Long.toBytes(): ByteArray {
-        val result = ByteArray(8)
-        var l = this
-
-        for (i in 7 downTo 0) {
-            result[i] = (l and 0xFF).toByte()
-            l = l shr 8
-        }
-
-        return result
     }
 
     /**
@@ -426,7 +459,7 @@ internal class SHA224Or256HashFunction(
     }
 }
 
-internal class SHA384Or512HashFunction(
+private class SHA384Or512HashFunction(
     override val algorithm: SHA2HashFunction.SupportedAlgorithm
 ) : SHA2HashFunction {
 

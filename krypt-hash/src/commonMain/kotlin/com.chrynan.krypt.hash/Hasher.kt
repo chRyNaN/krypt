@@ -14,5 +14,11 @@ interface Hasher<Algorithm : HashAlgorithm, Input, Hash, Result : HashResult<Alg
 
     override val algorithm: Algorithm
 
+    override suspend fun matches(source: Input, result: Result): Boolean {
+        val sourceResult = invoke(source = source)
+
+        return sourceResult.hash == result.hash
+    }
+
     companion object
 }

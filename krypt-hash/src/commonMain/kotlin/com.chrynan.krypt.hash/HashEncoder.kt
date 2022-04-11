@@ -9,6 +9,9 @@ import com.chrynan.krypt.core.HashFunction
 interface HashEncoder<Algorithm : HashAlgorithm, Input, Hash, Result : HashResult<Algorithm, Hash>> :
     HashFunction<Input, Result> {
 
+    override val algorithmName: String
+        get() = algorithm.name
+
     /**
      * The algorithm this [HashEncoder] uses.
      */
