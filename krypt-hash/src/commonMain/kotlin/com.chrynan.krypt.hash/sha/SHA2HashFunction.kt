@@ -123,7 +123,7 @@ private class SHA224Or256HashFunction(
 
         // 8 bits in a byte.
         val bitCount = paddedMessage.size * 8
-        val bytesToAdd = ((((bitCount + 1) % 512) - 448) / -1) / 8
+        val bytesToAdd = (((bitCount % 512) - 448) / -1) / 8
 
         // Add the padding to the end of the list until it is a 512 multiple (minus 64 bits for the original size).
         for (i in 0 until bytesToAdd) {

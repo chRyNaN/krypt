@@ -38,6 +38,12 @@ kotlin {
                 api(project(":krypt-core"))
             }
         }
+        val commonTest by getting {
+            dependencies {
+                implementation(kotlin("test"))
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1")
+            }
+        }
         val iosMain by sourceSets.getting
         val iosSimulatorArm64Main by sourceSets.getting
         iosSimulatorArm64Main.dependsOn(iosMain)
