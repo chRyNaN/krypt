@@ -146,12 +146,12 @@ fun Long.toByteArray(order: Endian = Endian.Big): ByteArray {
     if (order == Endian.Big) {
         for (i in 0 until length) {
             result[length - i - 1] = (value and 0xFF).toByte()
-            value = value shr 8
+            value = value ushr 8
         }
     } else {
         for (i in 0 until length) {
             result[i] = (value and 0xFF).toByte()
-            value = value shr 8
+            value = value ushr 8
         }
     }
 
