@@ -36,6 +36,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(project(":krypt-core"))
+                implementation(project(":krypt-encoding"))
             }
         }
         val commonTest by getting {

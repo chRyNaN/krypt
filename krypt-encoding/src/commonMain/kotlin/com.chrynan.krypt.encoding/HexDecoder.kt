@@ -27,3 +27,15 @@ class HexDecoder : Decoder {
             .toByteArray()
     }
 }
+
+private val hexDecoder = HexDecoder()
+
+/**
+ * Decodes the hexadecimal values within this [String] into a [ByteArray]. This is a shortcut function for using a
+ * [HexDecoder]. This is a convenience since the [HexDecoder.decodeToString] function is not supported and this
+ * helps prevent improper usage of a [HexDecoder].
+ *
+ * @see [HexDecoder]
+ */
+fun String.decodeHexToByteArray(): ByteArray =
+    hexDecoder.decodeToByteArray(source = this)

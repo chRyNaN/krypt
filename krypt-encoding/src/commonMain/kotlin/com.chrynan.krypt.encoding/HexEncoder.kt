@@ -38,3 +38,20 @@ class HexEncoder(
         private val HEX_ARRAY = "0123456789ABCDEF".toCharArray()
     }
 }
+
+private val lowercaseHexEncoder = HexEncoder(lowercase = true)
+private val uppercaseHexEncoder = HexEncoder(lowercase = false)
+
+/**
+ * Encodes the values within this [ByteArray] into a hexadecimal [String]. This is a shortcut function for using a
+ * [HexEncoder]. This is a convenience since the [HexEncoder.encodeToByteArray] function is not supported and this
+ * helps prevent improper usage of a [HexEncoder].
+ *
+ * @see [HexEncoder]
+ */
+fun ByteArray.encodeToHexString(lowercase: Boolean = false): String =
+    if (lowercase) {
+        lowercaseHexEncoder.encodeToString(source = this)
+    } else {
+        uppercaseHexEncoder.encodeToString(source = this)
+    }
