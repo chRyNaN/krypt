@@ -43,9 +43,8 @@ private val lowercaseHexEncoder = HexEncoder(lowercase = true)
 private val uppercaseHexEncoder = HexEncoder(lowercase = false)
 
 /**
- * Encodes the values within this [ByteArray] into a hexadecimal [String]. This is a shortcut function for using a
- * [HexEncoder]. This is a convenience since the [HexEncoder.encodeToByteArray] function is not supported and this
- * helps prevent improper usage of a [HexEncoder].
+ * Encodes the values within this [ByteArray] into a hexadecimal [String]. This is a convenience function for using a
+ * [HexEncoder].
  *
  * @see [HexEncoder]
  */

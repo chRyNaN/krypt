@@ -1,6 +1,7 @@
 package com.chrynan.krypt.hash.sha
 
 import com.chrynan.krypt.encoding.HexEncoder
+import com.chrynan.krypt.encoding.encodeToBitString
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
@@ -21,6 +22,6 @@ class SHA2HashFunctionTest {
 
         val expectedResult = "0218b3506b9b9de4fd357c0865a393471b73fc5ea972c5731219cfae32cee483"
 
-        assertEquals(expected = expectedResult, actual = hexEncoder.encodeToString(result))
+        assertEquals(expected = expectedResult, actual = hexEncoder.encodeToString(result), message = "result = ${result.encodeToBitString()}")
     }
 }
