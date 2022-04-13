@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.chrynan.krypt.jwt
 
 import com.chrynan.krypt.encoding.*

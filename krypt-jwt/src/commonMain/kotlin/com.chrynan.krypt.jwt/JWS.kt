@@ -1,6 +1,5 @@
 package com.chrynan.krypt.jwt
 
-import com.chrynan.krypt.core.Key
 import com.chrynan.krypt.encoding.*
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
@@ -119,9 +118,3 @@ data class DefaultJWS<H : Header, P : Payload> internal constructor(
     @SerialName(value = "payload") override val payload: P,
     @SerialName(value = "signature") override val signature: String
 ) : JWS<H, P>
-
-
-fun <H : Header, P : Payload> JWT<H, P>.signWith(key: Key, algorithm: SignatureAlgorithm? = null): JWS<H, P> =
-    TODO()
-
-fun <H : Header, P : Payload> JWT<H, P>.signWith(signer: (jwt: JWT<H, P>) -> String): JWS<H, P> = TODO()
