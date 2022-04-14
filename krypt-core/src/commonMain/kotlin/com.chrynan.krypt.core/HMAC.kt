@@ -13,6 +13,19 @@ private const val IPAD = 0x36.toByte()
 private const val OPAD = 0x5C.toByte()
 
 /**
+ * A sealed interface for HMAC (Hash-based Message Authentication Code). To perform the function, call the [invoke]
+ * function:
+ *
+ * ```kotlin
+ * HMAC.invoke(key, message, hash, blockSize)
+ * ```
+ */
+sealed interface HMAC {
+
+    companion object
+}
+
+/**
  * A function that can generate a HMAC (Hash-based message authentication code). A message authentication code (MAC) is
  * a value used to verify the data integrity and authenticity of a message (or data). A HMAC is a way of computing a
  * MAC for data using a cryptographic hash function. The returned value is a MAC that can be included with a message to
@@ -31,7 +44,7 @@ private const val OPAD = 0x5C.toByte()
  * @see [Wikipedia Explanation](https://en.wikipedia.org/wiki/HMAC)
  */
 @Suppress("unused")
-suspend fun hmac(
+suspend operator fun HMAC.Companion.invoke(
     key: ByteArray,
     message: ByteArray,
     hash: HashFunction<ByteArray, ByteArray>,
@@ -46,17 +59,17 @@ suspend fun hmac(
 }
 
 /**
- * A convenience function for invoking the [hmac] function with the provided [key] [Key] value.
+ * A convenience function for invoking the [invoke] function with the provided [key] [Key] value.
  *
- * @see [hmac]
+ * @see [invoke]
  */
 @Suppress("unused")
-suspend fun hmac(
+suspend operator fun HMAC.Companion.invoke(
     key: Key,
     message: ByteArray,
     hash: HashFunction<ByteArray, ByteArray>,
     blockSize: Int
-): ByteArray = hmac(
+): ByteArray = invoke(
     key = key.encoded ?: ByteArray(blockSize),
     message = message,
     hash = hash,
