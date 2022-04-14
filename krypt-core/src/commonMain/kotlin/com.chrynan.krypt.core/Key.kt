@@ -62,6 +62,27 @@ interface SecretKey : Key {
 }
 
 /**
+ * A component that generates a [Key] of type [K] for a particular [algorithm].
+ */
+interface KeyGenerator<K : Key> {
+
+    /**
+     * The name of the cryptographic algorithm this [KeyGenerator] generates keys for.
+     */
+    val algorithm: String?
+
+    /**
+     * Generates a new [Key] of type [K] for use with the cryptographic [algorithm].
+     */
+    suspend operator fun invoke(): K
+}
+
+/**
+ * A convenience function that calls the [KeyGenerator.invoke] function. Which function is used is up to preference.
+ */
+suspend fun <K : Key> KeyGenerator<K>.generate(): K = invoke()
+
+/**
  * Represents a grouping of a [publicKey] and [privateKey] key. Typically, this is used for asymmetric encryption
  * algorithms. Key pairs should be treated securely.
  *
