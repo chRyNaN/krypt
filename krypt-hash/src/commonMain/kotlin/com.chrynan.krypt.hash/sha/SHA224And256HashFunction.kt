@@ -77,8 +77,8 @@ internal class SHA224And256HashFunction(
 
         val paddedMessage = message.toMutableList()
 
-        // Add 80 since that is equivalent to adding a 1 and seven 0s to make up a byte.
-        paddedMessage.add(80)
+        // Add -128 since that is equivalent to adding a 1 and seven 0s to make up a byte.
+        paddedMessage.add(-128)
 
         // 8 bits in a byte.
         val bitCount = paddedMessage.size * 8
