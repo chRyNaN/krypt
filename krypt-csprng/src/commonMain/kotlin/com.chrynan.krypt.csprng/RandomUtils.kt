@@ -20,7 +20,7 @@ fun Random.nextChar(characters: CharArray = ALPHA_NUMERIC_CHARS): Char {
  */
 fun Random.nextCharArray(length: Int, characters: CharArray = ALPHA_NUMERIC_CHARS): CharArray {
     val charArray = CharArray(length)
-    for (i in 0..length) {
+    for (i in 0 until length) {
         charArray[i] = nextChar(characters = characters)
     }
     return charArray
