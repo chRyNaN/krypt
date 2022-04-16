@@ -10,7 +10,6 @@ import com.chrynan.krypt.core.toLong
  * @see [SHA-2 Specification](https://datatracker.ietf.org/doc/html/rfc4634)
  * @see [FIPS 180-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf)
  */
-// FIXME: This implementation is broken and I have no idea why.
 internal class SHA384And512HashFunction(
     override val algorithm: SHA2HashFunction.SupportedAlgorithm
 ) : SHA2HashFunction {

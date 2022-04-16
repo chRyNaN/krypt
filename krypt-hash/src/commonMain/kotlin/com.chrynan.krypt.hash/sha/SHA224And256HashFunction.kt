@@ -10,7 +10,6 @@ import com.chrynan.krypt.core.toInt
  * @see [SHA-2 Specification](https://datatracker.ietf.org/doc/html/rfc4634)
  * @see [FIPS 180-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf)
  */
-// FIXME: This implementation is broken and I have no idea why.
 internal class SHA224And256HashFunction(
     override val algorithm: SHA2HashFunction.SupportedAlgorithm
 ) : SHA2HashFunction {
