@@ -30,6 +30,8 @@ interface Key {
      * The name of the primary encoding format for this key, or `null` if this key does not support encoding.
      */
     val format: String?
+
+    companion object
 }
 
 /**
@@ -59,6 +61,8 @@ interface SecretKey : Key {
      */
     override val format: String
         get() = "RAW"
+
+    companion object
 }
 
 /**
@@ -75,6 +79,8 @@ interface KeyGenerator<K : Key> {
      * Generates a new [Key] of type [K] for use with the cryptographic [algorithm].
      */
     suspend operator fun invoke(): K
+
+    companion object
 }
 
 /**
@@ -96,6 +102,8 @@ interface KeyPair<PublicKey, PrivateKey> {
     val publicKey: PublicKey
 
     val privateKey: PrivateKey
+
+    companion object
 }
 
 /**
@@ -112,6 +120,8 @@ interface KeyPairGenerator<PublicKey, PrivateKey> {
      * Generates a new [KeyPair] for use with the cryptographic [algorithm].
      */
     suspend operator fun invoke(): KeyPair<PublicKey, PrivateKey>
+
+    companion object
 }
 
 /**
