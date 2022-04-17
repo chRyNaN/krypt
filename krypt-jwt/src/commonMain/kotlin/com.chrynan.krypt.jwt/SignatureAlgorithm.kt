@@ -11,7 +11,7 @@ package com.chrynan.krypt.jwt
  *
  * @param [value] The JWA algorithm name constant.
  * @param [description] The JWA algorithm description.
- * @param [familyName] The cryptographic family name of the signature algorithm.
+ * @param [family] The cryptographic family name of the signature algorithm.
  * @param [jcaName] The name of the JCA algorithm used to compute the signature.
  * @param [jdkStandard] Returns `true` if the algorithm is supported by standard JDK distributions or `false` if the
  * algorithm implementation is not in the JDK and must be provided by a separate runtime JCA Provider (like
@@ -25,7 +25,7 @@ package com.chrynan.krypt.jwt
 enum class SignatureAlgorithm(
     val value: String,
     val description: String,
-    val familyName: String,
+    val family: Family,
     val jcaName: String?,
     val jdkStandard: Boolean,
     val digestLength: Int,
@@ -39,7 +39,7 @@ enum class SignatureAlgorithm(
     NONE(
         value = "none",
         description = "No digital signature or MAC performed",
-        familyName = "None",
+        family = Family.NONE,
         jcaName = null,
         jdkStandard = false,
         digestLength = 0,
@@ -52,7 +52,7 @@ enum class SignatureAlgorithm(
     HS256(
         value = "HS256",
         description = "HMAC using SHA-256",
-        familyName = "HMAC",
+        family = Family.HMAC,
         jcaName = "HmacSHA256",
         jdkStandard = true,
         digestLength = 256,
@@ -66,7 +66,7 @@ enum class SignatureAlgorithm(
     HS384(
         value = "HS384",
         description = "HMAC using SHA-384",
-        familyName = "HMAC",
+        family = Family.HMAC,
         jcaName = "HmacSHA384",
         jdkStandard = true,
         digestLength = 384,
@@ -80,7 +80,7 @@ enum class SignatureAlgorithm(
     HS512(
         value = "HS512",
         description = "HMAC using SHA-512",
-        familyName = "HMAC",
+        family = Family.HMAC,
         jcaName = "HmacSHA512",
         jdkStandard = true,
         digestLength = 512,
@@ -94,7 +94,7 @@ enum class SignatureAlgorithm(
     RS256(
         value = "RS256",
         description = "RSASSA-PKCS-v1_5 using SHA-256",
-        familyName = "RSA",
+        family = Family.RSA,
         jcaName = "SHA256withRSA",
         jdkStandard = true,
         digestLength = 256,
@@ -107,7 +107,7 @@ enum class SignatureAlgorithm(
     RS384(
         value = "RS384",
         description = "RSASSA-PKCS-v1_5 using SHA-384",
-        familyName = "RSA",
+        family = Family.RSA,
         jcaName = "SHA384withRSA",
         jdkStandard = true,
         digestLength = 384,
@@ -120,7 +120,7 @@ enum class SignatureAlgorithm(
     RS512(
         value = "RS512",
         description = "RSASSA-PKCS-v1_5 using SHA-512",
-        familyName = "RSA",
+        family = Family.RSA,
         jcaName = "SHA512withRSA",
         jdkStandard = true,
         digestLength = 512,
@@ -133,7 +133,7 @@ enum class SignatureAlgorithm(
     ES256(
         value = "ES256",
         description = "ECDSA using P-256 and SHA-256",
-        familyName = "ECDSA",
+        family = Family.ECDSA,
         jcaName = "SHA256withECDSA",
         jdkStandard = true,
         digestLength = 256,
@@ -146,7 +146,7 @@ enum class SignatureAlgorithm(
     ES384(
         value = "ES384",
         description = "ECDSA using P-384 and SHA-384",
-        familyName = "ECDSA",
+        family = Family.ECDSA,
         jcaName = "SHA384withECDSA",
         jdkStandard = true,
         digestLength = 384,
@@ -159,7 +159,7 @@ enum class SignatureAlgorithm(
     ES512(
         value = "ES512",
         description = "ECDSA using P-521 and SHA-512",
-        familyName = "ECDSA",
+        family = Family.ECDSA,
         jcaName = "SHA512withECDSA",
         jdkStandard = true,
         digestLength = 512,
@@ -174,7 +174,7 @@ enum class SignatureAlgorithm(
     PS256(
         value = "PS256",
         description = "RSASSA-PSS using SHA-256 and MGF1 with SHA-256",
-        familyName = "RSA",
+        family = Family.RSA,
         jcaName = "RSASSA-PSS",
         jdkStandard = false,
         digestLength = 256,
@@ -189,7 +189,7 @@ enum class SignatureAlgorithm(
     PS384(
         value = "PS384",
         description = "RSASSA-PSS using SHA-384 and MGF1 with SHA-384",
-        familyName = "RSA",
+        family = Family.RSA,
         jcaName = "RSASSA-PSS",
         jdkStandard = false,
         digestLength = 384,
@@ -204,12 +204,31 @@ enum class SignatureAlgorithm(
     PS512(
         value = "PS512",
         description = "RSASSA-PSS using SHA-512 and MGF1 with SHA-512",
-        familyName = "RSA",
+        family = Family.RSA,
         jcaName = "RSASSA-PSS",
         jdkStandard = false,
         digestLength = 512,
         minKeyLength = 2048
     );
+
+    enum class Family(val typeName: String) {
+
+        NONE(typeName = "None"),
+        RSA(typeName = "RSA"),
+        ECDSA(typeName = "ECDSA"),
+        HMAC(typeName = "HMAC");
+
+        companion object {
+
+            /**
+             * Retrieves the [SignatureAlgorithm.Family] whose [SignatureAlgorithm.Family.typeName] property equals the
+             * provided [value], optionally ingoring case sensitivity depending on the provided [ignoreCase] value, or
+             * `null` if no value was found that matches.
+             */
+            fun getByName(value: String, ignoreCase: Boolean = true): Family? =
+                values().firstOrNull { it.typeName.equals(value, ignoreCase) }
+        }
+    }
 
     companion object {
 
@@ -228,7 +247,7 @@ enum class SignatureAlgorithm(
  *
  * @return `true` if the enum instance represents an HMAC signature algorithm, `false` otherwise.
  */
-fun SignatureAlgorithm.isHmac(): Boolean = familyName == "HMAC"
+fun SignatureAlgorithm.isHmac(): Boolean = family == SignatureAlgorithm.Family.HMAC
 
 /**
  * Returns `true` if the enum instance represents an RSA public/private key pair signature algorithm,
@@ -237,7 +256,7 @@ fun SignatureAlgorithm.isHmac(): Boolean = familyName == "HMAC"
  * @return `true` if the enum instance represents an RSA public/private key pair signature algorithm,
  * `false` otherwise.
  */
-fun SignatureAlgorithm.isRsa(): Boolean = familyName == "RSA"
+fun SignatureAlgorithm.isRsa(): Boolean = family == SignatureAlgorithm.Family.RSA
 
 /**
  * Returns `true` if the enum instance represents an Elliptic Curve ECDSA signature algorithm, `false`
@@ -246,4 +265,4 @@ fun SignatureAlgorithm.isRsa(): Boolean = familyName == "RSA"
  * @return `true` if the enum instance represents an Elliptic Curve ECDSA signature algorithm, `false`
  * otherwise.
  */
-fun SignatureAlgorithm.isEllipticCurve(): Boolean = familyName == "ECDSA"
+fun SignatureAlgorithm.isEllipticCurve(): Boolean = family == SignatureAlgorithm.Family.ECDSA
