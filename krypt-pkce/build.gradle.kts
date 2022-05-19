@@ -36,6 +36,9 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(project(":krypt-core"))
+                implementation(project(":krypt-encoding"))
+                implementation(project(":krypt-csprng"))
+                implementation(project(":krypt-hash"))
             }
         }
         val iosMain by sourceSets.getting
