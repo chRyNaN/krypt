@@ -2,7 +2,7 @@ package com.chrynan.krypt.hash.pbkdf
 
 import com.chrynan.krypt.hash.HashAlgorithm
 
-internal data class PBKDF2Algorithm(
+data class PBKDF2Algorithm internal constructor(
     val salt: ByteArray,
     val iterationCount: Int,
     val hLength: Int,
