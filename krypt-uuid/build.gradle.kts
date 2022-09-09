@@ -36,7 +36,8 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(project(":krypt-core"))
-                api(project(":krypt-uuid"))
+
+                implementation("com.benasher44:uuid:0.5.0")
             }
         }
         val commonTest by getting {
@@ -86,9 +87,6 @@ android {
 
     sourceSets["test"].java.srcDirs("src/androidTest/kotlin")
     sourceSets["test"].res.srcDirs("src/androidTest/res")
-}
-dependencies {
-    implementation(project(mapOf("path" to ":krypt-uuid")))
 }
 
 tasks.withType<Jar> { duplicatesStrategy = DuplicatesStrategy.INHERIT }

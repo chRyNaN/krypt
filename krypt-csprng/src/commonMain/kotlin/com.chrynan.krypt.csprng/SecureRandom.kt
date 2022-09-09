@@ -2,9 +2,8 @@
 
 package com.chrynan.krypt.csprng
 
-import com.benasher44.uuid.Uuid
-import com.benasher44.uuid.uuidOf
 import com.chrynan.krypt.core.SecureString
+import com.chrynan.krypt.uuid.Uuid
 import kotlin.experimental.and
 import kotlin.experimental.or
 import kotlin.random.Random
@@ -53,7 +52,7 @@ fun SecureRandom.nextUuid(): Uuid {
     randomBytes[8] = randomBytes[8] and 0x3f /* clear variant        */
     randomBytes[8] = randomBytes[8] or 0x80.toByte() /* set to IETF variant  */
 
-    return uuidOf(randomBytes)
+    return Uuid.from(randomBytes)
 }
 
 /**

@@ -1,6 +1,7 @@
 rootProject.name = "krypt"
 
 include(":krypt-core")
+include(":krypt-uuid")
 include(":krypt-csprng")
 include(":krypt-encoding")
 include(":krypt-hash")
