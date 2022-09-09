@@ -39,9 +39,9 @@ kotlin {
                 implementation(project(":krypt-core"))
                 implementation(project(":krypt-encoding"))
 
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
 
-                api("com.chrynan.time:time-core:0.7.0")
+                api("com.chrynan.time:time-core:0.8.0")
             }
         }
         val iosMain by sourceSets.getting

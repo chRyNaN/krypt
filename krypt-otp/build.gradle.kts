@@ -37,7 +37,7 @@ kotlin {
             dependencies {
                 implementation(project(":krypt-core"))
 
-                api("com.chrynan.time:time-core:0.7.0")
+                api("com.chrynan.time:time-core:0.8.0")
             }
         }
         val iosMain by sourceSets.getting

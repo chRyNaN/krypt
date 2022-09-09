@@ -37,7 +37,7 @@ kotlin {
             dependencies {
                 implementation(project(":krypt-core"))
 
-                implementation("com.benasher44:uuid:0.3.1")
+                implementation("com.benasher44:uuid:0.5.0")
             }
         }
         val commonTest by getting {

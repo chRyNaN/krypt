@@ -16,7 +16,7 @@ Authentication, Verification.
 val result = srpClient.calculateVerifier(identifier = email, secret = password)
 
 // Provide the verifier to the Host (outside the scope of this library)
-api.register(identifier = result.identifier, salt = result.sal, verifier = result.verifier)
+api.register(identifier = result.identifier, salt = result.salt, verifier = result.verifier)
 ```
 
 ## Authentication
