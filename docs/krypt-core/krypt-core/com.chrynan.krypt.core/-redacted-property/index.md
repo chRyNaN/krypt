@@ -3,7 +3,7 @@
 # RedactedProperty
 
 [common]\
-abstract class [RedactedProperty](index.md)&lt;[T](index.md)&gt;(redactedString: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html), repeatCount: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html))
+abstract class [RedactedProperty](index.md)&lt;[T](index.md)&gt;(redactedString: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) = &quot;█&quot;, repeatCount: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 3)
 
 A wrapper class for any type that needs to be redacted when calling toString so that it doesn't output sensitive data. Note that the underlying [value](../../../../krypt-core/com.chrynan.krypt.core/-redacted-property/value.md) can still be accessed and any direct call to toString on that property will not be redacted.
 
@@ -11,7 +11,7 @@ A wrapper class for any type that needs to be redacted when calling toString so 
 
 | | |
 |---|---|
-| [RedactedProperty](-redacted-property.md) | [common]<br>fun [RedactedProperty](-redacted-property.md)(redactedString: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) = "█", repeatCount: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 3) |
+| [RedactedProperty](-redacted-property.md) | [common]<br>fun [RedactedProperty](-redacted-property.md)(redactedString: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) = &quot;█&quot;, repeatCount: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 3) |
 
 ## Types
 

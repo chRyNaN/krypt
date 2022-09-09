@@ -19,9 +19,9 @@ common
 
 | | |
 |---|---|
-| [MIME](-m-i-m-e/index.md) | [common]<br>[MIME](-m-i-m-e/index.md)("mime") |
-| [URL](-u-r-l/index.md) | [common]<br>[URL](-u-r-l/index.md)("url") |
-| [DEFAULT](-d-e-f-a-u-l-t/index.md) | [common]<br>[DEFAULT](-d-e-f-a-u-l-t/index.md)("default") |
+| [DEFAULT](-d-e-f-a-u-l-t/index.md) | [common]<br>[DEFAULT](-d-e-f-a-u-l-t/index.md) |
+| [URL](-u-r-l/index.md) | [common]<br>[URL](-u-r-l/index.md) |
+| [MIME](-m-i-m-e/index.md) | [common]<br>[MIME](-m-i-m-e/index.md) |
 
 ## Types
 
@@ -33,6 +33,6 @@ common
 
 | Name | Summary |
 |---|---|
-| [name](-d-e-f-a-u-l-t/index.md#-372974862%2FProperties%2F-495624252) | [common]<br>val [name](-d-e-f-a-u-l-t/index.md#-372974862%2FProperties%2F-495624252): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
-| [ordinal](-d-e-f-a-u-l-t/index.md#-739389684%2FProperties%2F-495624252) | [common]<br>val [ordinal](-d-e-f-a-u-l-t/index.md#-739389684%2FProperties%2F-495624252): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) |
+| [name](-m-i-m-e/index.md#-372974862%2FProperties%2F-495624252) | [common]<br>val [name](-m-i-m-e/index.md#-372974862%2FProperties%2F-495624252): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
+| [ordinal](-m-i-m-e/index.md#-739389684%2FProperties%2F-495624252) | [common]<br>val [ordinal](-m-i-m-e/index.md#-739389684%2FProperties%2F-495624252): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) |
 | [typeName](type-name.md) | [common]<br>val [typeName](type-name.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |

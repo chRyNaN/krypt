@@ -5,7 +5,7 @@
 [common]\
 @[ExperimentalUnsignedTypes](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-experimental-unsigned-types/index.html)
 
-class [SessionKey](index.md)(key: [UByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-byte-array/index.html), clientProof: [UByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-byte-array/index.html), hostProof: [UByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-byte-array/index.html)) : [RedactedProperty](../../../../krypt-core/krypt-core/com.chrynan.krypt.core/-redacted-property/index.md)&lt;[UByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-byte-array/index.html)&gt; 
+class [SessionKey](index.md)(key: [UByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-byte-array/index.html), val clientProof: [UByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-byte-array/index.html), val hostProof: [UByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-byte-array/index.html)) : [RedactedProperty](../../../../krypt-core/krypt-core/com.chrynan.krypt.core/-redacted-property/index.md)&lt;[UByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-byte-array/index.html)&gt; 
 
 Represents a generated shared session key and its associated proof data used in the SRP protocol.
 

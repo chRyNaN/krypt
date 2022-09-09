@@ -3,6 +3,6 @@
 # hash
 
 [common]\
-suspend fun &lt;[Input](hash.md), [Result](hash.md)&gt; [HashFunction](-hash-function/index.md)&lt;[Input](hash.md), [Result](hash.md)&gt;.[hash](hash.md)(source: [Input](hash.md)): [Result](hash.md)
+suspend fun &lt;[Input](hash.md), [Output](hash.md)&gt; [HashFunction](-hash-function/index.md)&lt;[Input](hash.md), [Output](hash.md)&gt;.[hash](hash.md)(source: [Input](hash.md)): [Output](hash.md)
 
-A convenience function that delegates to the [invoke](invoke.md) function of the [HashFunction](-hash-function/index.md) interface. This is provided for preference, as it may be preferable to use "hash" instead of "invoke" at the call-site.
+A convenience function that delegates to the [invoke](invoke.md) function of the [HashFunction](-hash-function/index.md) interface. This is provided for preference, as it may be preferable to use &quot;hash&quot; instead of &quot;invoke&quot; at the call-site.

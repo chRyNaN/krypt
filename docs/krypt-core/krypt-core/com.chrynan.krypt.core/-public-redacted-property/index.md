@@ -3,7 +3,7 @@
 # PublicRedactedProperty
 
 [common]\
-class [PublicRedactedProperty](index.md)&lt;[T](index.md)&gt;(value: [T](index.md), redactedString: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html), repeatCount: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)) : [RedactedProperty](../-redacted-property/index.md)&lt;[T](index.md)&gt; 
+class [PublicRedactedProperty](index.md)&lt;[T](index.md)&gt;(val value: [T](index.md), redactedString: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) = &quot;█&quot;, repeatCount: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 3) : [RedactedProperty](../-redacted-property/index.md)&lt;[T](index.md)&gt; 
 
 A [RedactedProperty](../-redacted-property/index.md) that allows for the underlying [value](value.md) to be accessed publicly.
 
@@ -11,7 +11,7 @@ A [RedactedProperty](../-redacted-property/index.md) that allows for the underly
 
 | | |
 |---|---|
-| [PublicRedactedProperty](-public-redacted-property.md) | [common]<br>fun &lt;[T](index.md)&gt; [PublicRedactedProperty](-public-redacted-property.md)(value: [T](index.md), redactedString: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) = "█", repeatCount: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 3) |
+| [PublicRedactedProperty](-public-redacted-property.md) | [common]<br>fun &lt;[T](index.md)&gt; [PublicRedactedProperty](-public-redacted-property.md)(value: [T](index.md), redactedString: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) = &quot;█&quot;, repeatCount: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 3) |
 
 ## Functions
 

@@ -5,7 +5,15 @@
 [common]\
 @[ExperimentalUnsignedTypes](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-experimental-unsigned-types/index.html)
 
-class [Host](index.md)(group: [Group](../-group/index.md), hash: [SrpHashFunction](../-srp-hash-function/index.md), random: [SecureRandom](../../../../krypt-csprng/krypt-csprng/com.chrynan.krypt.csprng/-secure-random/index.md), keyPairGenerator: [KeyPairGenerator](../-key-pair-generator/index.md)&lt;BigInteger&gt;) : [KeyPairGenerator](../-key-pair-generator/index.md)&lt;BigInteger&gt; 
+class [Host](index.md)(group: [Group](../-group/index.md) = Group.N2048, hash: [SrpHashFunction](../-srp-hash-function/index.md), random: [SecureRandom](../../../../krypt-csprng/krypt-csprng/com.chrynan.krypt.csprng/-secure-random/index.md) = SecureRandom(), keyPairGenerator: [SrpKeyPairGenerator](../-srp-key-pair-generator/index.md)&lt;BigInteger&gt; = object : SrpKeyPairGenerator&lt;BigInteger&gt; {
+
+        override suspend fun invoke(): SrpKeyPair&lt;BigInteger&gt; {
+            val privateKey = random.nextBigInteger()
+            val publicKey = calculateA(group = group, a = privateKey)
+
+            return SrpKeyPair(privateKey = privateKey, publicKey = publicKey)
+        }
+    })
 
 Represents the host in the SRP protocol. The host is the party that verifies a session proof from a client and handles authenticating a client.
 
@@ -15,17 +23,19 @@ When a [Client](../-client/index.md) obtains the salt and public key from the [H
 
 Example usage:
 
-val keyPair = host.generateKeyPair()\
-\
-val sessionKey = host.verifySession(\
-                     keyPair = keyPair,\
-                     identifier = email,\
-                     salt = salt,\
-                     verifier = verifier,\
-                     clientPublicKey = clientPublicKey,\
-                     clientKeyProof = clientKeyProof)\
-\
+```kotlin
+val keyPair = host.generateKeyPair()
+
+val sessionKey = host.verifySession(
+                     keyPair = keyPair,
+                     identifier = email,
+                     salt = salt,
+                     verifier = verifier,
+                     clientPublicKey = clientPublicKey,
+                     clientKeyProof = clientKeyProof)
+
 sendProofToClient(proof = sessionKey.hostProof)
+```
 
 **Note:** This class is stateless, so it is fine to use it for multiple sessions.
 
@@ -43,11 +53,11 @@ common
 
 | | |
 |---|---|
-| [Host](-host.md) | [common]<br>fun [Host](-host.md)(group: [Group](../-group/index.md) = Group.N2048, hash: [SrpHashFunction](../-srp-hash-function/index.md), random: [SecureRandom](../../../../krypt-csprng/krypt-csprng/com.chrynan.krypt.csprng/-secure-random/index.md) = SecureRandom(), keyPairGenerator: [KeyPairGenerator](../-key-pair-generator/index.md)&lt;BigInteger&gt; = object : KeyPairGenerator&lt;BigInteger&gt; {<br>        override suspend fun generateKeyPair(): KeyPair&lt;BigInteger&gt; {             val privateKey = random.nextBigInteger()             val publicKey = calculateA(group = group, a = privateKey)<br>            return KeyPair(privateKey = privateKey, publicKey = publicKey)         }     }) |
+| [Host](-host.md) | [common]<br>fun [Host](-host.md)(group: [Group](../-group/index.md) = Group.N2048, hash: [SrpHashFunction](../-srp-hash-function/index.md), random: [SecureRandom](../../../../krypt-csprng/krypt-csprng/com.chrynan.krypt.csprng/-secure-random/index.md) = SecureRandom(), keyPairGenerator: [SrpKeyPairGenerator](../-srp-key-pair-generator/index.md)&lt;BigInteger&gt; = object : SrpKeyPairGenerator&lt;BigInteger&gt; {<br>        override suspend fun invoke(): SrpKeyPair&lt;BigInteger&gt; {             val privateKey = random.nextBigInteger()             val publicKey = calculateA(group = group, a = privateKey)<br>            return SrpKeyPair(privateKey = privateKey, publicKey = publicKey)         }     }) |
 
 ## Functions
 
 | Name | Summary |
 |---|---|
-| [generateKeyPair](../-key-pair-generator/generate-key-pair.md) | [common]<br>open suspend override fun [generateKeyPair](../-key-pair-generator/generate-key-pair.md)(): [KeyPair](../-key-pair/index.md)&lt;BigInteger&gt;<br>Generates a new [KeyPair](../-key-pair/index.md). |
-| [verifySession](verify-session.md) | [common]<br>suspend fun [verifySession](verify-session.md)(keyPair: [KeyPair](../-key-pair/index.md)&lt;BigInteger&gt;, identifier: [SecureString](../../../../krypt-core/krypt-core/com.chrynan.krypt.core/-secure-string/index.md), salt: [UByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-byte-array/index.html), verifier: BigInteger, clientPublicKey: BigInteger, clientKeyProof: [UByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-byte-array/index.html)): [SessionKey](../-session-key/index.md)<br>Verifies the provided [clientKeyProof](verify-session.md) from the [Client](../-client/index.md) using the provided values. If the verification was successful, then a [SessionKey](../-session-key/index.md) will be returned containing the shared session key and its proof values. The [SessionKey.hostProof](../-session-key/host-proof.md) should then be sent to the [Client](../-client/index.md) so that it can verify the [Host](index.md). If all verification is successful, then the [Client](../-client/index.md) can be considered authenticated. |
+| [generateKeyPair](generate-key-pair.md) | [common]<br>suspend fun [generateKeyPair](generate-key-pair.md)(): [SrpKeyPair](../-srp-key-pair/index.md)&lt;BigInteger&gt;<br>Generates a [SrpKeyPair](../-srp-key-pair/index.md) using the provided [keyPairGenerator](../../../../krypt-srp/com.chrynan.krypt.srp/-host/key-pair-generator.md) when this [Host](index.md) was created. |
+| [verifySession](verify-session.md) | [common]<br>suspend fun [verifySession](verify-session.md)(keyPair: [SrpKeyPair](../-srp-key-pair/index.md)&lt;BigInteger&gt;, identifier: [SecureString](../../../../krypt-core/krypt-core/com.chrynan.krypt.core/-secure-string/index.md), salt: [UByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-byte-array/index.html), verifier: BigInteger, clientPublicKey: BigInteger, clientKeyProof: [UByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-byte-array/index.html)): [SessionKey](../-session-key/index.md)<br>Verifies the provided [clientKeyProof](verify-session.md) from the [Client](../-client/index.md) using the provided values. If the verification was successful, then a [SessionKey](../-session-key/index.md) will be returned containing the shared session key and its proof values. The [SessionKey.hostProof](../-session-key/host-proof.md) should then be sent to the [Client](../-client/index.md) so that it can verify the [Host](index.md). If all verification is successful, then the [Client](../-client/index.md) can be considered authenticated. |

@@ -18,6 +18,7 @@ A [HashFunction](../../../../krypt-core/krypt-core/com.chrynan.krypt.core/-hash-
 | Name | Summary |
 |---|---|
 | [algorithm](algorithm.md) | [common]<br>abstract val [algorithm](algorithm.md): [Algorithm](index.md)<br>The algorithm this [HashEncoder](index.md) uses. |
+| [algorithmName](algorithm-name.md) | [common]<br>open override val [algorithmName](algorithm-name.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
 
 ## Inheritors
 

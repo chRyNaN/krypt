@@ -19,3 +19,10 @@ Defines the type of algorithm that is performed by a [Hasher](../-hasher/index.m
 |---|---|
 | [name](name.md) | [common]<br>abstract val [name](name.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)<br>The [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) name of the algorithm. |
 | [version](version.md) | [common]<br>abstract val [version](version.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)<br>The [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) version of the algorithm. |
+
+## Inheritors
+
+| Name |
+|---|
+| [PBKDF2Algorithm](../../com.chrynan.krypt.hash.pbkdf/-p-b-k-d-f2-algorithm/index.md) |
+| [SupportedAlgorithm](../../com.chrynan.krypt.hash.sha/-s-h-a2-hash-function/-supported-algorithm/index.md) |

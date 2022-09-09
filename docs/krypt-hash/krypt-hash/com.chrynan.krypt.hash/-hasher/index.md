@@ -18,10 +18,17 @@ A utility that is both a [HashEncoder](../-hash-encoder/index.md) and a [HashMat
 | Name | Summary |
 |---|---|
 | [invoke](index.md#1807890646%2FFunctions%2F-1850566401) | [common]<br>abstract suspend operator fun [invoke](index.md#1807890646%2FFunctions%2F-1850566401)(source: [Input](index.md)): [Result](index.md) |
-| [matches](../-hash-matcher/matches.md) | [common]<br>abstract suspend fun [matches](../-hash-matcher/matches.md)(source: [Input](index.md), result: [Result](index.md)): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)<br>Performs the hash function on the provided [source](../-hash-matcher/matches.md) to obtain its result and compares it with the provided [result](../-hash-matcher/matches.md) to determine if the values match. |
+| [matches](matches.md) | [common]<br>open suspend override fun [matches](matches.md)(source: [Input](index.md), result: [Result](index.md)): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)<br>Performs the hash function on the provided [source](matches.md) to obtain its result and compares it with the provided [result](matches.md) to determine if the values match. |
 
 ## Properties
 
 | Name | Summary |
 |---|---|
 | [algorithm](algorithm.md) | [common]<br>abstract override val [algorithm](algorithm.md): [Algorithm](index.md)<br>The algorithm this [HashEncoder](../-hash-encoder/index.md) uses. |
+| [algorithmName](../-hash-encoder/algorithm-name.md) | [common]<br>open override val [algorithmName](../-hash-encoder/algorithm-name.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
+
+## Inheritors
+
+| Name |
+|---|
+| [ByteHasher](../-byte-hasher/index.md) |

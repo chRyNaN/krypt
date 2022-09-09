@@ -15,6 +15,12 @@ An interface for a generic hash function used within the SRP protocol. The SRP p
 |---|---|
 | [invoke](invoke.md) | [common]<br>abstract suspend operator override fun [invoke](invoke.md)(source: [UByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-byte-array/index.html)): [UByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-byte-array/index.html)<br>Performs the hash function on the provided [source](invoke.md) to generate a [UByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-byte-array/index.html) value. |
 
+## Properties
+
+| Name | Summary |
+|---|---|
+| [algorithmName](index.md#1834603040%2FProperties%2F460253122) | [common]<br>abstract val [algorithmName](index.md#1834603040%2FProperties%2F460253122): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)? |
+
 ## Extensions
 
 | Name | Summary |
