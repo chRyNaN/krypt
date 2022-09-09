@@ -2,7 +2,7 @@ package com.chrynan.krypt.buildSrc
 
 object LibraryConstants {
 
-    const val group = "com.chrynan.krypto"
+    const val group = "com.chrynan.krypt"
     const val owner = "chrynan"
     const val repoName = "krypt"
     const val versionName = "0.2.0"
