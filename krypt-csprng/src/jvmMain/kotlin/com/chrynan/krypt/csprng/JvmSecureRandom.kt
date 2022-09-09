@@ -24,7 +24,7 @@ actual class SecureRandom : Random {
     }
 
     actual override fun nextBits(bitCount: Int): Int {
-        require((bitCount < 0) or (bitCount > 32)) { "bitCount property must be in the range 0 to 32." }
+        require(bitCount in 0..32) { "bitCount property must be in the range 0 to 32." }
 
         if (bitCount == 0) return 0
 
