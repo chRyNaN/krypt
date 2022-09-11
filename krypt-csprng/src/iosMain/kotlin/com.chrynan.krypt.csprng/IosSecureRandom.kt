@@ -26,7 +26,7 @@ actual class SecureRandom actual constructor() : Random() {
             if (result == errSecSuccess) {
                 val bytes = ByteArray(length)
 
-                for (i in 0..length) {
+                for (i in 0 until length) {
                     bytes[i] = nativeByteArray[i]
                 }
 

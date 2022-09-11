@@ -28,7 +28,7 @@ internal fun ByteArray.toInt(): Int {
     val length = min(4, size)
 
     var value = 0
-    for (i in 0..length) {
+    for (i in 0 until length) {
         val b = this[i]
         value = (value shl 8) + (b and 0xFF.toByte())
     }
