@@ -83,11 +83,11 @@ class SecureString(
     operator fun plus(other: SecureString): SecureString {
         val charArray = CharArray(this.length + other.length)
 
-        for (i in 0..this.length) {
+        for (i in 0 until this.length) {
             charArray[i] = this.chars[i]
         }
 
-        for (i in 0..other.length) {
+        for (i in 0 until other.length) {
             charArray[i + this.length] = other.chars[i]
         }
 
