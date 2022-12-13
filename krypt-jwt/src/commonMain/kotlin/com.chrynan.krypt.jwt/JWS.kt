@@ -26,10 +26,20 @@ import kotlinx.serialization.serializer
  * algorithm can practically be any cryptographic signature algorithm, symmetric or asymmetric, but the natively
  * supported options are defined by the [SignatureAlgorithm] enum class.
  *
+ * A JWT takes the following
+ * encoded form:
+ *
+ * ```
+ * Base64URL-Encoded-Header.Base64URL-Encoded-Payload.Base64URL-Encoded-Signature
+ * ```
+ *
  * @see [JWS Specification](https://datatracker.ietf.org/doc/html/rfc7515)
  */
 interface JWS<H : Header, P : Payload> : JWT<H, P> {
 
+    /**
+     * The signature represented as a Base64 URL encoded [String] of the signature [ByteArray].
+     */
     @SerialName(value = "signature")
     val signature: String
 
@@ -81,7 +91,7 @@ interface JWS<H : Header, P : Payload> : JWT<H, P> {
 
             val decodedHeaderString = decoder.decodeUtf8ToString(parts[0]).trim()
             val decodedPayloadString = decoder.decodeUtf8ToString(parts[1]).trim()
-            val signature = decoder.decodeUtf8ToString(parts[2])
+            val signature = decoder.decodeUtf8ToString(parts[2]).trim()
 
             val header = json.decodeFromString(deserializer = headerSerializer, string = decodedHeaderString)
             val payload = json.decodeFromString(deserializer = payloadSerializer, string = decodedPayloadString)
@@ -107,6 +117,20 @@ fun <H : Header, P : Payload> JWS(
     payload = payload,
     signature = signature
 )
+
+/**
+ * Decodes this [JWS] Base64 URL Encoded [JWS.signature] value as a [ByteArray].
+ */
+@Suppress("unused")
+fun <H : Header, P : Payload> JWS<H, P>.signatureBytes(decoder: Decoder = Base64UrlDecoder()): ByteArray =
+    decoder.decodeUtf8ToByteArray(signature)
+
+/**
+ * Decodes this [JWS] Base64 URL Encoded [JWS.signature] value as a UTF-8 encoded [String].
+ */
+@Suppress("unused")
+fun <H : Header, P : Payload> JWS<H, P>.signatureUtf8(decoder: Decoder = Base64UrlDecoder()): String =
+    decoder.decodeUtf8ToByteArray(signature).decodeToString()
 
 /**
  * A default implementation of the [JWS] interface. This is an immutable data class, to obtain a copy of this instance,

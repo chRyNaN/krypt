@@ -14,7 +14,7 @@ import kotlinx.serialization.serializer
  * encoded form:
  *
  * ```
- * Base64URL-Encoded-Header.Base64URL-Encoded-Payload.Base64URL-Encoded-Signature
+ * Base64URL-Encoded-Header.Base64URL-Encoded-Payload
  * ```
  *
  * The Header is a JSON object, which when encoded it is turned into a JSON [String] and Base64 URL encoded.
@@ -145,6 +145,37 @@ inline fun <reified H : Header, reified P : Payload> JWT<H, P>.format(
     json = json,
     headerSerializer = serializer(),
     payloadSerializer = serializer(),
+    encoder = encoder
+)
+
+/**
+ * A convenience function for invoking the [JWT.format] function. The "compact" name is used in other JWT library
+ * implementations, and IIRC the specification itself, but I prefer the "format" name, so I include both for personal
+ * preference.
+ */
+fun <H : Header, P : Payload> JWT<H, P>.compact(
+    json: Json = Json,
+    headerSerializer: KSerializer<H>,
+    payloadSerializer: KSerializer<P>,
+    encoder: Encoder = Base64UrlEncoder()
+): String = format(
+    json = json,
+    headerSerializer = headerSerializer,
+    payloadSerializer = payloadSerializer,
+    encoder = encoder
+)
+
+
+/**
+ * A convenience function for invoking the [format] function. The "compact" name is used in other JWT library
+ * implementations, and IIRC the specification itself, but I prefer the "format" name, so I include both for personal
+ * preference.
+ */
+inline fun <reified H : Header, reified P : Payload> JWT<H, P>.compact(
+    json: Json = Json,
+    encoder: Encoder = Base64UrlEncoder()
+): String = format(
+    json = json,
     encoder = encoder
 )
 

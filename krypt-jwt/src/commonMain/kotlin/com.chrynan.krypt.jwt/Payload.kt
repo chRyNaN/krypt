@@ -1,5 +1,8 @@
 package com.chrynan.krypt.jwt
 
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.SerialName
+
 /**
  * An interface representing a JWT Payload. JWT Payloads contain optional [ReservedClaims], but any other property can
  * be used. As such, a JWT Payload is any serializable class that extends this interface.
@@ -48,12 +51,13 @@ fun Payload(
  * A default implementation of the [Payload] interface. This implementation only has the properties defined by the
  * [Payload] interface and no extras. To create an instance of this class, use the [Payload] constructor function.
  */
+@Serializable
 data class DefaultPayload internal constructor(
-    override val issuer: String?,
-    override val subject: String?,
-    override val audience: String?,
-    override val expiration: Long?,
-    override val notBefore: Long?,
-    override val issuedAt: Long?,
-    override val id: String?
+    @SerialName(value = ReservedClaims.Names.ISSUER) override val issuer: String?,
+    @SerialName(value = ReservedClaims.Names.SUBJECT) override val subject: String?,
+    @SerialName(value = ReservedClaims.Names.AUDIENCE) override val audience: String?,
+    @SerialName(value = ReservedClaims.Names.EXPIRATION) override val expiration: Long?,
+    @SerialName(value = ReservedClaims.Names.NOT_BEFORE) override val notBefore: Long?,
+    @SerialName(value = ReservedClaims.Names.ISSUED_AT) override val issuedAt: Long?,
+    @SerialName(value = ReservedClaims.Names.ID) override val id: String?
 ) : Payload

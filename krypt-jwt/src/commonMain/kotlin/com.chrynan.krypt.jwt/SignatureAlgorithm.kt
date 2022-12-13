@@ -2,6 +2,9 @@
 
 package com.chrynan.krypt.jwt
 
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.SerialName
+
 /**
  * Representation of standard JWT signature algorithm names as defined in the
  * [JSON Web Algorithms Specification](https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-31).
@@ -22,6 +25,7 @@ package com.chrynan.krypt.jwt
  * @see [JSON Web Algorithms Specification](https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-31)
  * @see [jjwt library](https://github.com/jwtk/jjwt/blob/master/api/src/main/java/io/jsonwebtoken/SignatureAlgorithm.java)
  */
+@Serializable
 enum class SignatureAlgorithm(
     val value: String,
     val description: String,
@@ -36,6 +40,7 @@ enum class SignatureAlgorithm(
     /**
      * JWA name for {@code No digital signature or MAC performed}
      */
+    @SerialName(value = "none")
     NONE(
         value = "none",
         description = "No digital signature or MAC performed",
@@ -49,6 +54,7 @@ enum class SignatureAlgorithm(
     /**
      * JWA algorithm name for {@code HMAC using SHA-256}
      */
+    @SerialName(value = "HS256")
     HS256(
         value = "HS256",
         description = "HMAC using SHA-256",
@@ -63,6 +69,7 @@ enum class SignatureAlgorithm(
     /**
      * JWA algorithm name for {@code HMAC using SHA-384}
      */
+    @SerialName(value = "HS384")
     HS384(
         value = "HS384",
         description = "HMAC using SHA-384",
@@ -77,6 +84,7 @@ enum class SignatureAlgorithm(
     /**
      * JWA algorithm name for {@code HMAC using SHA-512}
      */
+    @SerialName(value = "HS512")
     HS512(
         value = "HS512",
         description = "HMAC using SHA-512",
@@ -91,6 +99,7 @@ enum class SignatureAlgorithm(
     /**
      * JWA algorithm name for {@code RSASSA-PKCS-v1_5 using SHA-256}
      */
+    @SerialName(value = "RS256")
     RS256(
         value = "RS256",
         description = "RSASSA-PKCS-v1_5 using SHA-256",
@@ -104,6 +113,7 @@ enum class SignatureAlgorithm(
     /**
      * JWA algorithm name for {@code RSASSA-PKCS-v1_5 using SHA-384}
      */
+    @SerialName(value = "RS384")
     RS384(
         value = "RS384",
         description = "RSASSA-PKCS-v1_5 using SHA-384",
@@ -117,6 +127,7 @@ enum class SignatureAlgorithm(
     /**
      * JWA algorithm name for {@code RSASSA-PKCS-v1_5 using SHA-512}
      */
+    @SerialName(value = "RS512")
     RS512(
         value = "RS512",
         description = "RSASSA-PKCS-v1_5 using SHA-512",
@@ -130,6 +141,7 @@ enum class SignatureAlgorithm(
     /**
      * JWA algorithm name for {@code ECDSA using P-256 and SHA-256}
      */
+    @SerialName(value = "ES256")
     ES256(
         value = "ES256",
         description = "ECDSA using P-256 and SHA-256",
@@ -143,6 +155,7 @@ enum class SignatureAlgorithm(
     /**
      * JWA algorithm name for {@code ECDSA using P-384 and SHA-384}
      */
+    @SerialName(value = "ES384")
     ES384(
         value = "ES384",
         description = "ECDSA using P-384 and SHA-384",
@@ -156,6 +169,7 @@ enum class SignatureAlgorithm(
     /**
      * JWA algorithm name for {@code ECDSA using P-521 and SHA-512}
      */
+    @SerialName(value = "ES512")
     ES512(
         value = "ES512",
         description = "ECDSA using P-521 and SHA-512",
@@ -171,6 +185,7 @@ enum class SignatureAlgorithm(
      * Java 11 or later or a JCA provider like BouncyCastle to be in the runtime classpath.</b>  If on Java 10 or
      * earlier, BouncyCastle will be used automatically if found in the runtime classpath.
      */
+    @SerialName(value = "PS256")
     PS256(
         value = "PS256",
         description = "RSASSA-PSS using SHA-256 and MGF1 with SHA-256",
@@ -186,6 +201,7 @@ enum class SignatureAlgorithm(
      * Java 11 or later or a JCA provider like BouncyCastle to be in the runtime classpath.</b>  If on Java 10 or
      * earlier, BouncyCastle will be used automatically if found in the runtime classpath.
      */
+    @SerialName(value = "PS384")
     PS384(
         value = "PS384",
         description = "RSASSA-PSS using SHA-384 and MGF1 with SHA-384",
@@ -201,6 +217,7 @@ enum class SignatureAlgorithm(
      * Java 11 or later or a JCA provider like BouncyCastle to be in the runtime classpath.</b>  If on Java 10 or
      * earlier, BouncyCastle will be used automatically if found in the runtime classpath.
      */
+    @SerialName(value = "PS512")
     PS512(
         value = "PS512",
         description = "RSASSA-PSS using SHA-512 and MGF1 with SHA-512",
@@ -211,11 +228,30 @@ enum class SignatureAlgorithm(
         minKeyLength = 2048
     );
 
+    companion object {
+
+        /**
+         * Retrieves the [SignatureAlgorithm] whose [SignatureAlgorithm.value] property equals the provided [value],
+         * optionally ignoring case sensitivity depending on the provided [ignoreCase] value, or `null` if no value was
+         * found that matches.
+         */
+        fun getByName(value: String, ignoreCase: Boolean = true): SignatureAlgorithm? =
+            values().firstOrNull { it.value.equals(value, ignoreCase) }
+    }
+
+    @Serializable
     enum class Family(val typeName: String) {
 
+        @SerialName(value = "None")
         NONE(typeName = "None"),
+
+        @SerialName(value = "RSA")
         RSA(typeName = "RSA"),
+
+        @SerialName(value = "ECDSA")
         ECDSA(typeName = "ECDSA"),
+
+        @SerialName(value = "HMAC")
         HMAC(typeName = "HMAC");
 
         companion object {
@@ -228,17 +264,6 @@ enum class SignatureAlgorithm(
             fun getByName(value: String, ignoreCase: Boolean = true): Family? =
                 values().firstOrNull { it.typeName.equals(value, ignoreCase) }
         }
-    }
-
-    companion object {
-
-        /**
-         * Retrieves the [SignatureAlgorithm] whose [SignatureAlgorithm.value] property equals the provided [value],
-         * optionally ignoring case sensitivity depending on the provided [ignoreCase] value, or `null` if no value was
-         * found that matches.
-         */
-        fun getByName(value: String, ignoreCase: Boolean = true): SignatureAlgorithm? =
-            values().firstOrNull { it.value.equals(value, ignoreCase) }
     }
 }
 

@@ -37,11 +37,12 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(project(":krypt-core"))
+                implementation(project(":krypt-hash"))
                 implementation(project(":krypt-encoding"))
 
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
 
-                api("com.chrynan.time:time-core:0.8.0")
+                api("com.chrynan.time:time-core:0.8.2")
             }
         }
         val iosMain by sourceSets.getting

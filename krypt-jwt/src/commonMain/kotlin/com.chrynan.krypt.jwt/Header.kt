@@ -1,5 +1,8 @@
 package com.chrynan.krypt.jwt
 
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.SerialName
+
 /**
  * An interface representing a JWT Header. JWT Headers contain optional [ReservedHeaderParameters], but any other
  * parameter can be used. As such, a JWT Header is any serializable class that extends this interface.
@@ -60,16 +63,17 @@ fun Header(
  * A default implementation of the [Header] interface. This implementation only has the properties defined by the
  * [Header] interface and no extras. To create an instance of this class, use the [Header] constructor function.
  */
+@Serializable
 data class DefaultHeader internal constructor(
-    override val algorithm: String?,
-    override val jwkSetUrl: String?,
-    override val jwk: String?,
-    override val keyId: String?,
-    override val x5u: String?,
-    override val x5c: String?,
-    override val x5t: String?,
-    override val x5tS256: String?,
-    override val type: String?,
-    override val contentType: String?,
-    override val critical: String?
+    @SerialName(value = ReservedHeaderParameters.Names.ALGORITHM) override val algorithm: String?,
+    @SerialName(value = ReservedHeaderParameters.Names.JWK_SET_URL) override val jwkSetUrl: String?,
+    @SerialName(value = ReservedHeaderParameters.Names.JWK) override val jwk: String?,
+    @SerialName(value = ReservedHeaderParameters.Names.KEY_ID) override val keyId: String?,
+    @SerialName(value = ReservedHeaderParameters.Names.X5U) override val x5u: String?,
+    @SerialName(value = ReservedHeaderParameters.Names.X5C) override val x5c: String?,
+    @SerialName(value = ReservedHeaderParameters.Names.X5T) override val x5t: String?,
+    @SerialName(value = ReservedHeaderParameters.Names.X5T_S256) override val x5tS256: String?,
+    @SerialName(value = ReservedHeaderParameters.Names.TYPE) override val type: String?,
+    @SerialName(value = ReservedHeaderParameters.Names.CONTENT_TYPE) override val contentType: String?,
+    @SerialName(value = ReservedHeaderParameters.Names.CRITICAL) override val critical: String?
 ) : Header

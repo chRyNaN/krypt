@@ -33,3 +33,18 @@ interface HashFunction<Input, Output> {
  * preference, as it may be preferable to use "hash" instead of "invoke" at the call-site.
  */
 suspend fun <Input, Output> HashFunction<Input, Output>.hash(source: Input): Output = invoke(source = source)
+
+/**
+ * Creates a [HashFunction] implementation using the provided [algorithmName] and [hash] function block.
+ */
+@Suppress("FunctionName")
+fun <Input, Output> HashFunction(
+    algorithmName: String? = null,
+    hash: suspend (source: Input) -> Output
+): HashFunction<Input, Output> =
+    object : HashFunction<Input, Output> {
+
+        override val algorithmName: String? = algorithmName
+
+        override suspend fun invoke(source: Input): Output = hash(source)
+    }
