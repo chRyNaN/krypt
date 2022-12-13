@@ -12,10 +12,10 @@ buildscript {
         maven { url = uri("https://maven.pkg.jetbrains.space/public/p/compose/dev") }
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:4.2.2")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10")
-        classpath("org.jetbrains.dokka:dokka-gradle-plugin:1.7.10")
-        classpath("org.jetbrains.kotlin:kotlin-serialization:1.7.10")
+        classpath("com.android.tools.build:gradle:7.0.4")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.21")
+        classpath("org.jetbrains.dokka:dokka-gradle-plugin:1.7.20")
+        classpath("org.jetbrains.kotlin:kotlin-serialization:1.7.21")
     }
 }
 
