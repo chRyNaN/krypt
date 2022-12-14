@@ -12,5 +12,4 @@ interface JwtSigner {
     ): String
 }
 
-@PublishedApi
-internal expect val defaultJwtSigner: JwtSigner
+expect val defaultJwtSigner: JwtSigner

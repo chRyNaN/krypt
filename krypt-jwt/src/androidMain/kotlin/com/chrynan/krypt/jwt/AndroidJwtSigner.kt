@@ -6,7 +6,7 @@ import com.chrynan.krypt.encoding.Encoder
 import io.jsonwebtoken.impl.crypto.DefaultJwtSigner
 import javax.crypto.spec.SecretKeySpec
 
-internal actual val defaultJwtSigner: JwtSigner = AndroidJwtSigner()
+actual val defaultJwtSigner: JwtSigner = AndroidJwtSigner()
 
 class AndroidJwtSigner : JwtSigner {
 
