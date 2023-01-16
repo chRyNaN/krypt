@@ -41,13 +41,13 @@ sendProofToClient(proof = sessionKey.hostProof)
 
 **Note:** The communication between a [Client](../-client/index.md) and [Host](index.md) is outside the responsibility of this library. Typically, this is done via HTTPS. However, this library is agnostic of the communication protocol used. In the above examples, an 'api' property is used to indicate the communication between the [Client](../-client/index.md) and [Host](index.md).
 
-## See also
+#### See also
 
 common
 
-| | |
-|---|---|
-| [com.chrynan.krypt.srp.Client](../-client/index.md) |  |
+| |
+|---|
+| [Client](../-client/index.md) |
 
 ## Constructors
 

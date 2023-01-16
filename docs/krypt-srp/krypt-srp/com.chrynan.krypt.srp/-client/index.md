@@ -65,13 +65,13 @@ val isAuthenticated = srpClient.verifySession(sharedSessionKey = sessionKey, hos
 
 **Note:** The communication between a [Client](index.md) and [Host](../-host/index.md) is outside the responsibility of this library. Typically, this is done via HTTPS. However, this library is agnostic of the communication protocol used. In the above examples, an 'api' property is used to indicate the communication between the [Client](index.md) and [Host](../-host/index.md).
 
-## See also
+#### See also
 
 common
 
-| | |
-|---|---|
-| [com.chrynan.krypt.srp.Host](../-host/index.md) |  |
+| |
+|---|
+| [Host](../-host/index.md) |
 
 ## Constructors
 

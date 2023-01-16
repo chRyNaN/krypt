@@ -1,6 +1,6 @@
 //[krypt-encoding](../../index.md)/[com.chrynan.krypt.encoding](index.md)
 
-# Package com.chrynan.krypt.encoding
+# Package-level declarations
 
 ## Types
 

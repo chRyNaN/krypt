@@ -3,6 +3,8 @@
 # DefaultHeader
 
 [common]\
+@Serializable
+
 data class [DefaultHeader](index.md) : [Header](../-header/index.md)
 
 A default implementation of the [Header](../-header/index.md) interface. This implementation only has the properties defined by the [Header](../-header/index.md) interface and no extras. To create an instance of this class, use the [Header](../-header/index.md) constructor function.

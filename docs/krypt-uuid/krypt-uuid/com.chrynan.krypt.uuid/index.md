@@ -1,6 +1,6 @@
 //[krypt-uuid](../../index.md)/[com.chrynan.krypt.uuid](index.md)
 
-# Package com.chrynan.krypt.uuid
+# Package-level declarations
 
 ## Types
 

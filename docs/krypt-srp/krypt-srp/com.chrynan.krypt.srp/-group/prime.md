@@ -9,10 +9,10 @@ The &quot;prime&quot; (&quot;N&quot;) group parameter defined in the SRP specifi
 
 This is a BigInteger value whose size should be a rather large amount of bits. Typical bit counts could be 1024, 2048, 4096, etc.
 
-## See also
+#### See also
 
 common
 
-| | |
-|---|---|
-| com.ionspin.kotlin.bignum.integer.BigInteger |  |
+| |
+|---|
+| BigInteger |

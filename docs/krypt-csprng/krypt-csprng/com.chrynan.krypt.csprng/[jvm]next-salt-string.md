@@ -7,7 +7,7 @@ fun [SecureRandom](-secure-random/index.md).[nextSaltString]([jvm]next-salt-stri
 
 Retrieves a [ByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html) from this [SecureRandom](-secure-random/index.md) to be used as a salt, which is typically used when hashing passwords. This is a convenience function which delegates to the [SecureRandom.nextBytes](-secure-random/[jvm]next-bytes.md) function.
 
-## Parameters
+#### Parameters
 
 jvm
 

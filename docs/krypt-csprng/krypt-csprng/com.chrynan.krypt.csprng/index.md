@@ -1,6 +1,6 @@
 //[krypt-csprng](../../index.md)/[com.chrynan.krypt.csprng](index.md)
 
-# Package com.chrynan.krypt.csprng
+# Package-level declarations
 
 ## Types
 

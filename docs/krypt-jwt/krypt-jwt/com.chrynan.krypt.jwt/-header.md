@@ -7,7 +7,7 @@ fun [Header](-header.md)(algorithm: [String](https://kotlinlang.org/api/latest/j
 
 Creates a default instance of the [Header](-header/index.md) interface. The returned type is [DefaultHeader](-default-header/index.md), which is an immutable data class, which copies can be made of using the `copy` function.
 
-## Parameters
+#### Parameters
 
 common
 

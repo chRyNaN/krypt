@@ -9,7 +9,7 @@ The &quot;x5t&quot; (X.509 certificate SHA-1 thumbprint) Header Parameter is a b
 
 Value defaults to `null`.
 
-## See also
+#### See also
 
 common
 

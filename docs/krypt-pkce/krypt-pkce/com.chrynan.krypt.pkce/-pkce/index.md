@@ -7,7 +7,7 @@ class [Pkce](index.md)(base64Encoder: [Base64Encoder](../../../../krypt-encoding
 
 A class implementing the Proof Key for Code Exchange (PKCE, pronounced &quot;pixy&quot;), [RFC-7636](https://datatracker.ietf.org/doc/html/rfc7636), protocol. This class contains functions that can be used to perform the protocol. However, note that the communication of the values between the parties involved is not handled by this class and must be handled out-of-band.
 
-## See also
+#### See also
 
 common
 

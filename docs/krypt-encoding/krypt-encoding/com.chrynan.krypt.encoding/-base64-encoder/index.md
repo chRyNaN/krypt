@@ -7,7 +7,7 @@ interface [Base64Encoder](index.md) : [Encoder](../-encoder/index.md), [ByteStri
 
 A Base64 [Encoder](../-encoder/index.md).
 
-## See also
+#### See also
 
 common
 
@@ -27,3 +27,10 @@ common
 | Name | Summary |
 |---|---|
 | [type](type.md) | [common]<br>abstract val [type](type.md): [Base64Type](../-base64-type/index.md)<br>The [Base64Type](../-base64-type/index.md) of encoding this encoder performs. |
+
+## Extensions
+
+| Name | Summary |
+|---|---|
+| [encodeUtf8ToByteArray](../encode-utf8-to-byte-array.md) | [common]<br>fun [Encoder](../-encoder/index.md).[encodeUtf8ToByteArray](../encode-utf8-to-byte-array.md)(source: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)): [ByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html)<br>Encodes the provided UTF-8 formatted [String](../encode-utf8-to-byte-array.md) into a [ByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html) in the format this encoder supports. |
+| [encodeUtf8ToString](../encode-utf8-to-string.md) | [common]<br>fun [Encoder](../-encoder/index.md).[encodeUtf8ToString](../encode-utf8-to-string.md)(source: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)<br>Encodes the provided UTF-8 formatted [String](../encode-utf8-to-string.md) into a [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) in the format this encoder supports. Note that the character encoding of the [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) return value is defined by this encoder implementation. |

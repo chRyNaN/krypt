@@ -1,6 +1,6 @@
 //[krypt-hash](../../index.md)/[com.chrynan.krypt.hash.pbkdf](index.md)
 
-# Package com.chrynan.krypt.hash.pbkdf
+# Package-level declarations
 
 ## Types
 

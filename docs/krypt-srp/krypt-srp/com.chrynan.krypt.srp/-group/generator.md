@@ -9,10 +9,10 @@ The &quot;generator&quot; (&quot;g&quot;) group parameter defined in the SRP spe
 
 This is a BigInteger value, however it typically is a small value, such as '2', but depends on the above-mentioned requirements.
 
-## See also
+#### See also
 
 common
 
-| | |
-|---|---|
-| com.ionspin.kotlin.bignum.integer.BigInteger |  |
+| |
+|---|
+| BigInteger |

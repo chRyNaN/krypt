@@ -7,10 +7,10 @@ val [Group](-group/index.md).[g](g.md): BigInteger
 
 An alias property for [Group.generator](-group/generator.md).
 
-## See also
+#### See also
 
 common
 
-| | |
-|---|---|
-| [com.chrynan.krypt.srp.Group](-group/generator.md) |  |
+| |
+|---|
+| [Group.generator](-group/generator.md) |

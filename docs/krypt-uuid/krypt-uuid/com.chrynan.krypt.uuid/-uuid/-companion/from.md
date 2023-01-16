@@ -12,11 +12,11 @@ fun [from](from.md)(value: [ByteArray](https://kotlinlang.org/api/latest/jvm/std
 
 Creates a [Uuid](../index.md) from the provided [ByteArray](from.md) representation of a [Uuid](../index.md).
 
-## Throws
+#### Throws
 
 | | |
 |---|---|
-| [kotlin.IllegalArgumentException](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-illegal-argument-exception/index.html) | if the provided [ByteArray.count](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index.html) value does not equal 16. |
+| [IllegalArgumentException](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-illegal-argument-exception/index.html) | if the provided [ByteArray.count](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index.html) value does not equal 16. |
 
 [common]\
 fun [from](from.md)(mostSignificantBits: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html), leastSignificantBits: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)): [Uuid](../index.md)

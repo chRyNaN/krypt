@@ -7,7 +7,7 @@ enum [Base64Type](index.md) : [Enum](https://kotlinlang.org/api/latest/jvm/stdli
 
 The type of characters used in Base 64 encoding/decoding.
 
-## See also
+#### See also
 
 common
 
@@ -28,6 +28,13 @@ common
 | Name | Summary |
 |---|---|
 | [Companion](-companion/index.md) | [common]<br>object [Companion](-companion/index.md) |
+
+## Functions
+
+| Name | Summary |
+|---|---|
+| [valueOf](value-of.md) | [common]<br>fun [valueOf](value-of.md)(value: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)): [Base64Type](index.md)<br>Returns the enum constant of this type with the specified name. The string must match exactly an identifier used to declare an enum constant in this type. (Extraneous whitespace characters are not permitted.) |
+| [values](values.md) | [common]<br>fun [values](values.md)(): [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[Base64Type](index.md)&gt;<br>Returns an array containing the constants of this enum type, in the order they're declared. |
 
 ## Properties
 

@@ -9,7 +9,7 @@ A function that can generate a HMAC (Hash-based message authentication code). A 
 
 Any cryptographic hash function may be used in the calculation of a HMAC. This function, which represents the calculation of a HMAC, takes a [hash](invoke.md) parameter which is a [HashFunction](-hash-function/index.md) with an input and output of [ByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html).
 
-## See also
+#### See also
 
 common
 
@@ -17,7 +17,7 @@ common
 |---|---|
 |  | [Wikipedia Explanation](https://en.wikipedia.org/wiki/HMAC) |
 
-## Parameters
+#### Parameters
 
 common
 
@@ -33,13 +33,13 @@ suspend operator fun [HMAC.Companion](-h-m-a-c/-companion/index.md).[invoke](inv
 
 A convenience function for invoking the [invoke](invoke.md) function with the provided [key](-key/index.md) value.
 
-## See also
+#### See also
 
 common
 
-| | |
-|---|---|
-| [invoke](invoke.md) |  |
+| |
+|---|
+| [invoke](invoke.md) |
 
 [common]\
 operator fun [SecureString.Companion](-secure-string/-companion/index.md).[invoke](invoke.md)(charSequence: [CharSequence](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html)): [SecureString](-secure-string/index.md)

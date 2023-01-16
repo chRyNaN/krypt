@@ -15,7 +15,7 @@ Base64URL-Encoded-Header.Base64URL-Encoded-Payload.Base64URL-Encoded-Signature
 
 Note that if this is invoked on a [JWT](index.md) and not a subtype (ex: [JWS](../-j-w-s/index.md)), then it will not include the trailing signature [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) value. If this is a [JWS](../-j-w-s/index.md) instance then it will include the trailing signature [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) value.
 
-## See also
+#### See also
 
 common
 
@@ -23,7 +23,7 @@ common
 |---|---|
 |  | [JWT Specification](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-25#section-7) |
 
-## Parameters
+#### Parameters
 
 common
 

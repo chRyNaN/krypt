@@ -7,10 +7,10 @@ val [Group](-group/index.md).[N](-n.md): BigInteger
 
 An alias property for [Group.prime](-group/prime.md).
 
-## See also
+#### See also
 
 common
 
-| | |
-|---|---|
-| [com.chrynan.krypt.srp.Group](-group/prime.md) |  |
+| |
+|---|
+| [Group.prime](-group/prime.md) |

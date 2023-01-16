@@ -3,13 +3,15 @@
 # SignatureAlgorithm
 
 [common]\
+@Serializable
+
 enum [SignatureAlgorithm](index.md) : [Enum](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html)&lt;[SignatureAlgorithm](index.md)&gt; 
 
 Representation of standard JWT signature algorithm names as defined in the [JSON Web Algorithms Specification](https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-31).
 
 Note that this class was adapted from the open source [JJWT library](https://github.com/jwtk/jjwt/blob/master/api/src/main/java/io/jsonwebtoken/SignatureAlgorithm.java).
 
-## See also
+#### See also
 
 common
 
@@ -17,7 +19,7 @@ common
 |---|---|
 |  | [jjwt library](https://github.com/jwtk/jjwt/blob/master/api/src/main/java/io/jsonwebtoken/SignatureAlgorithm.java) |
 
-## Parameters
+#### Parameters
 
 common
 
@@ -53,7 +55,14 @@ common
 | Name | Summary |
 |---|---|
 | [Companion](-companion/index.md) | [common]<br>object [Companion](-companion/index.md) |
-| [Family](-family/index.md) | [common]<br>enum [Family](-family/index.md) : [Enum](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html)&lt;[SignatureAlgorithm.Family](-family/index.md)&gt; |
+| [Family](-family/index.md) | [common]<br>@Serializable<br>enum [Family](-family/index.md) : [Enum](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html)&lt;[SignatureAlgorithm.Family](-family/index.md)&gt; |
+
+## Functions
+
+| Name | Summary |
+|---|---|
+| [valueOf](value-of.md) | [common]<br>fun [valueOf](value-of.md)(value: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)): [SignatureAlgorithm](index.md)<br>Returns the enum constant of this type with the specified name. The string must match exactly an identifier used to declare an enum constant in this type. (Extraneous whitespace characters are not permitted.) |
+| [values](values.md) | [common]<br>fun [values](values.md)(): [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[SignatureAlgorithm](index.md)&gt;<br>Returns an array containing the constants of this enum type, in the order they're declared. |
 
 ## Properties
 

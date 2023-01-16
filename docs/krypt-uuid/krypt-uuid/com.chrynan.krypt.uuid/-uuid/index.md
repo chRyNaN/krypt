@@ -7,7 +7,7 @@ class [Uuid](index.md) : [Comparable](https://kotlinlang.org/api/latest/jvm/stdl
 
 Represents a Universally Unique Identifier (UUID). A UUID represents a 128-bit value. The implementing class should be considered immutable.
 
-## See also
+#### See also
 
 common
 
@@ -26,6 +26,9 @@ common
 | Name | Summary |
 |---|---|
 | [compareTo](compare-to.md) | [common]<br>open operator override fun [compareTo](compare-to.md)(other: [Uuid](index.md)): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) |
+| [equals](equals.md) | [common]<br>open operator override fun [equals](equals.md)(other: [Any](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html)?): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) |
+| [hashCode](hash-code.md) | [common]<br>open override fun [hashCode](hash-code.md)(): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) |
+| [toString](to-string.md) | [common]<br>open override fun [toString](to-string.md)(): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)<br>Converts this UUID to a UUID string, according to the [RFC-4122](https://www.rfc-editor.org/rfc/rfc4122) specification. |
 
 ## Properties
 

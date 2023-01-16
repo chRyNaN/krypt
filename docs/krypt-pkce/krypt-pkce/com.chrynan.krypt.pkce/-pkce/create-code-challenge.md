@@ -7,7 +7,7 @@ suspend fun [createCodeChallenge](create-code-challenge.md)(verifier: [String](h
 
 Creates a &quot;code_challenge&quot;, specified in the PKCE protocol, from the provided [verifier](create-code-challenge.md), using the provided transformation [method](create-code-challenge.md). If the provided [method](create-code-challenge.md) is [CodeChallengeMethod.PLAIN](../-code-challenge-method/-p-l-a-i-n/index.md), then the [verifier](create-code-challenge.md) is simply returned, otherwise, if the provided [method](create-code-challenge.md) is [CodeChallengeMethod.S256](../-code-challenge-method/-s256/index.md), an SHA-256 hash opertaion is performed and the result is returned.
 
-## See also
+#### See also
 
 common
 

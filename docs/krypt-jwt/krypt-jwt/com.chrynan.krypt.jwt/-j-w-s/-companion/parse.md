@@ -9,7 +9,7 @@ Parses the provided [String](parse.md) representing an encoded JWS (a JWT with t
 
 Note that if the provided [value](parse.md) does not include a signature part, the parsing will fail. In that case, it is best to call the [JWT.Companion.parse](../../-j-w-t/-companion/parse.md) function, which will return a [JWS](../index.md) if it detects a signature, but typed as a [JWT](../../-j-w-t/index.md) return value. Then, a simple type check could be performed to know whether the result is a [JWT](../../-j-w-t/index.md) or a [JWS](../index.md).
 
-## Parameters
+#### Parameters
 
 common
 

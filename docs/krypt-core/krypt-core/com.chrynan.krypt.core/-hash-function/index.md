@@ -7,7 +7,7 @@ interface [HashFunction](index.md)&lt;[Input](index.md), [Output](index.md)&gt;
 
 Represents a cryptographic hash function, or a secure one-way hash function that takes arbitrarily sized input data of type [Input](index.md) and outputs a value of type [Output](index.md), which contains or is a fixed size hash value (&quot;message-digest&quot;) as a result of this function. The result of performing a hash function cannot be reversed, meaning that the input value cannot be obtained by reversing the hash, as a hash function is a one-way function. Different implementations of this interface may represent different hashing algorithms, such as &quot;SHA256&quot; or &quot;Argon2ID&quot;. It is common to use a hash function with a password in an authentication flow for a system.
 
-## See also
+#### See also
 
 common
 

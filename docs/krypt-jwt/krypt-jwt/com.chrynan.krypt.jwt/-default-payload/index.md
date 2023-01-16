@@ -3,6 +3,8 @@
 # DefaultPayload
 
 [common]\
+@Serializable
+
 data class [DefaultPayload](index.md) : [Payload](../-payload/index.md)
 
 A default implementation of the [Payload](../-payload/index.md) interface. This implementation only has the properties defined by the [Payload](../-payload/index.md) interface and no extras. To create an instance of this class, use the [Payload](../-payload/index.md) constructor function.

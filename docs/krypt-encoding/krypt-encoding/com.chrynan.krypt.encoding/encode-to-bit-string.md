@@ -7,10 +7,10 @@ fun [ByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/
 
 Encodes the values within this [ByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html) into a bit [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html). This is a convenience function for using a [BitEncoder](-bit-encoder/index.md).
 
-## See also
+#### See also
 
 common
 
-| | |
-|---|---|
-| [com.chrynan.krypt.encoding.BitEncoder](-bit-encoder/index.md) |  |
+| |
+|---|
+| [BitEncoder](-bit-encoder/index.md) |

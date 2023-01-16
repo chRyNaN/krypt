@@ -1,6 +1,6 @@
 //[krypt-hash-argon](../../index.md)/[com.chrynan.krypt.hash.argon](index.md)
 
-# Package com.chrynan.krypt.hash.argon
+# Package-level declarations
 
 ## Types
 

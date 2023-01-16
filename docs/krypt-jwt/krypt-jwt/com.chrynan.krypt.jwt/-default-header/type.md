@@ -9,7 +9,7 @@ The &quot;typ&quot; (type) Header Parameter is used by JWS applications to decla
 
 Value defaults to `null`.
 
-## See also
+#### See also
 
 common
 

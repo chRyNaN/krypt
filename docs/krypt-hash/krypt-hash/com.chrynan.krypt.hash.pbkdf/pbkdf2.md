@@ -9,7 +9,7 @@ Creates a [PBKDF2Hasher](-p-b-k-d-f2-hasher/index.md) for the PBKDF2 function wi
 
 Note that this function creates a [Hasher](../com.chrynan.krypt.hash/-hasher/index.md) with the provided [salt](pbkdf2.md) value, so subsequent invocations of this [Hasher](../com.chrynan.krypt.hash/-hasher/index.md)'s [Hasher.invoke](../../../krypt-hash/com.chrynan.krypt.hash/-hasher/invoke.md) function will utilize the same [salt](pbkdf2.md). However, each password should be combined with a unique salt value. So, one would have to create a different [PBKDF2Hasher](-p-b-k-d-f2-hasher/index.md) for each password value being hashed.
 
-## See also
+#### See also
 
 common
 
@@ -17,7 +17,7 @@ common
 |---|---|
 |  | [Wikipedia Explanation](https://en.wikipedia.org/wiki/PBKDF2) |
 
-## Parameters
+#### Parameters
 
 common
 

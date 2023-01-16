@@ -21,6 +21,8 @@ The supported variants of the SHA-2 algorithm that the [SHA2HashFunction](../ind
 | Name | Summary |
 |---|---|
 | [isCompatible](../../../com.chrynan.krypt.hash/-hash-algorithm/is-compatible.md) | [common]<br>open fun [isCompatible](../../../com.chrynan.krypt.hash/-hash-algorithm/is-compatible.md)(other: [HashAlgorithm](../../../com.chrynan.krypt.hash/-hash-algorithm/index.md)): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)<br>Determines whether this [HashAlgorithm](../../../com.chrynan.krypt.hash/-hash-algorithm/index.md) is compatible with the provided [other](../../../com.chrynan.krypt.hash/-hash-algorithm/index.md). |
+| [valueOf](value-of.md) | [common]<br>fun [valueOf](value-of.md)(value: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)): [SHA2HashFunction.SupportedAlgorithm](index.md)<br>Returns the enum constant of this type with the specified name. The string must match exactly an identifier used to declare an enum constant in this type. (Extraneous whitespace characters are not permitted.) |
+| [values](values.md) | [common]<br>fun [values](values.md)(): [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[SHA2HashFunction.SupportedAlgorithm](index.md)&gt;<br>Returns an array containing the constants of this enum type, in the order they're declared. |
 
 ## Properties
 

@@ -1,6 +1,7 @@
 $dokka.format:gfm-v1
 $dokka.linkExtension:md
 $dokka.location:com.chrynan.krypt.core////PointingToDeclaration/krypt-core/krypt-core/com.chrynan.krypt.core/index.md
+$dokka.location:com.chrynan.krypt.core//HashFunction/#kotlin.String?#kotlin.coroutines.SuspendFunction1[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/krypt-core/krypt-core/com.chrynan.krypt.core/-hash-function.md
 $dokka.location:com.chrynan.krypt.core//generate/com.chrynan.krypt.core.KeyGenerator[TypeParam(bounds=[com.chrynan.krypt.core.Key])]#/PointingToDeclaration/krypt-core/krypt-core/com.chrynan.krypt.core/generate.md
 $dokka.location:com.chrynan.krypt.core//generate/com.chrynan.krypt.core.KeyPairGenerator[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])]#/PointingToDeclaration/krypt-core/krypt-core/com.chrynan.krypt.core/generate.md
 $dokka.location:com.chrynan.krypt.core//hash/com.chrynan.krypt.core.HashFunction[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])]#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/krypt-core/krypt-core/com.chrynan.krypt.core/hash.md
@@ -16,11 +17,14 @@ $dokka.location:com.chrynan.krypt.core//toByteArray/kotlin.LongArray#com.chrynan
 $dokka.location:com.chrynan.krypt.core//toInt/kotlin.ByteArray#kotlin.Int#kotlin.Int#com.chrynan.krypt.core.Endian/PointingToDeclaration/krypt-core/krypt-core/com.chrynan.krypt.core/to-int.md
 $dokka.location:com.chrynan.krypt.core//toLong/kotlin.ByteArray#kotlin.Int#kotlin.Int#com.chrynan.krypt.core.Endian/PointingToDeclaration/krypt-core/krypt-core/com.chrynan.krypt.core/to-long.md
 $dokka.location:com.chrynan.krypt.core//toMultiplatformKey/java.security.Key#/PointingToDeclaration/krypt-core/krypt-core/com.chrynan.krypt.core/[jvm]to-multiplatform-key.md
+$dokka.location:com.chrynan.krypt.core//toMultiplatformKeyPair/java.security.KeyPair#/PointingToDeclaration/krypt-core/krypt-core/com.chrynan.krypt.core/[jvm]to-multiplatform-key-pair.md
 $dokka.location:com.chrynan.krypt.core//toSecureString/kotlin.CharArray#kotlin.Boolean/PointingToDeclaration/krypt-core/krypt-core/com.chrynan.krypt.core/to-secure-string.md
 $dokka.location:com.chrynan.krypt.core//toSecureString/kotlin.CharSequence#/PointingToDeclaration/krypt-core/krypt-core/com.chrynan.krypt.core/to-secure-string.md
 $dokka.location:com.chrynan.krypt.core/Endian.Big///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}krypt-core/krypt-core/com.chrynan.krypt.core/-endian/-big/index.md
 $dokka.location:com.chrynan.krypt.core/Endian.Little///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}krypt-core/krypt-core/com.chrynan.krypt.core/-endian/-little/index.md
 $dokka.location:com.chrynan.krypt.core/Endian///PointingToDeclaration/krypt-core/krypt-core/com.chrynan.krypt.core/-endian/index.md
+$dokka.location:com.chrynan.krypt.core/Endian/valueOf/#kotlin.String/PointingToDeclaration/krypt-core/krypt-core/com.chrynan.krypt.core/-endian/value-of.md
+$dokka.location:com.chrynan.krypt.core/Endian/values/#/PointingToDeclaration/krypt-core/krypt-core/com.chrynan.krypt.core/-endian/values.md
 $dokka.location:com.chrynan.krypt.core/HMAC.Companion///PointingToDeclaration/krypt-core/krypt-core/com.chrynan.krypt.core/-h-m-a-c/-companion/index.md
 $dokka.location:com.chrynan.krypt.core/HMAC///PointingToDeclaration/krypt-core/krypt-core/com.chrynan.krypt.core/-h-m-a-c/index.md
 $dokka.location:com.chrynan.krypt.core/HashFunction.Companion///PointingToDeclaration/krypt-core/krypt-core/com.chrynan.krypt.core/-hash-function/-companion/index.md
@@ -124,6 +128,8 @@ $dokka.location:com.chrynan.krypt.encoding/Base64Type.MIME///PointingToDeclarati
 $dokka.location:com.chrynan.krypt.encoding/Base64Type.URL///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}krypt-encoding/krypt-encoding/com.chrynan.krypt.encoding/-base64-type/-u-r-l/index.md
 $dokka.location:com.chrynan.krypt.encoding/Base64Type///PointingToDeclaration/krypt-encoding/krypt-encoding/com.chrynan.krypt.encoding/-base64-type/index.md
 $dokka.location:com.chrynan.krypt.encoding/Base64Type/typeName/#/PointingToDeclaration/krypt-encoding/krypt-encoding/com.chrynan.krypt.encoding/-base64-type/type-name.md
+$dokka.location:com.chrynan.krypt.encoding/Base64Type/valueOf/#kotlin.String/PointingToDeclaration/krypt-encoding/krypt-encoding/com.chrynan.krypt.encoding/-base64-type/value-of.md
+$dokka.location:com.chrynan.krypt.encoding/Base64Type/values/#/PointingToDeclaration/krypt-encoding/krypt-encoding/com.chrynan.krypt.encoding/-base64-type/values.md
 $dokka.location:com.chrynan.krypt.encoding/BitEncoder///PointingToDeclaration/krypt-encoding/krypt-encoding/com.chrynan.krypt.encoding/-bit-encoder/index.md
 $dokka.location:com.chrynan.krypt.encoding/BitEncoder/BitEncoder/#kotlin.String#kotlin.Boolean#kotlin.Boolean#kotlin.Boolean/PointingToDeclaration/krypt-encoding/krypt-encoding/com.chrynan.krypt.encoding/-bit-encoder/-bit-encoder.md
 $dokka.location:com.chrynan.krypt.encoding/BitEncoder/encodeToByteArray/#kotlin.ByteArray/PointingToDeclaration/krypt-encoding/krypt-encoding/com.chrynan.krypt.encoding/-bit-encoder/encode-to-byte-array.md
@@ -174,6 +180,8 @@ $dokka.location:com.chrynan.krypt.hash.argon/Argon2Type.I///PointingToDeclaratio
 $dokka.location:com.chrynan.krypt.hash.argon/Argon2Type.ID///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}krypt-hash-argon/krypt-hash-argon/com.chrynan.krypt.hash.argon/-argon2-type/-i-d/index.md
 $dokka.location:com.chrynan.krypt.hash.argon/Argon2Type///PointingToDeclaration/krypt-hash-argon/krypt-hash-argon/com.chrynan.krypt.hash.argon/-argon2-type/index.md
 $dokka.location:com.chrynan.krypt.hash.argon/Argon2Type/typeName/#/PointingToDeclaration/krypt-hash-argon/krypt-hash-argon/com.chrynan.krypt.hash.argon/-argon2-type/type-name.md
+$dokka.location:com.chrynan.krypt.hash.argon/Argon2Type/valueOf/#kotlin.String/PointingToDeclaration/krypt-hash-argon/krypt-hash-argon/com.chrynan.krypt.hash.argon/-argon2-type/value-of.md
+$dokka.location:com.chrynan.krypt.hash.argon/Argon2Type/values/#/PointingToDeclaration/krypt-hash-argon/krypt-hash-argon/com.chrynan.krypt.hash.argon/-argon2-type/values.md
 $dokka.location:com.chrynan.krypt.hash.pbkdf////PointingToDeclaration/krypt-hash/krypt-hash/com.chrynan.krypt.hash.pbkdf/index.md
 $dokka.location:com.chrynan.krypt.hash.pbkdf//pbkdf2/com.chrynan.krypt.hash.Hasher.Companion#kotlin.ByteArray#kotlin.Int#kotlin.Int#kotlin.Int#com.chrynan.krypt.core.HashFunction[kotlin.ByteArray,kotlin.ByteArray]/PointingToDeclaration/krypt-hash/krypt-hash/com.chrynan.krypt.hash.pbkdf/pbkdf2.md
 $dokka.location:com.chrynan.krypt.hash.pbkdf/PBKDF2Algorithm///PointingToDeclaration/krypt-hash/krypt-hash/com.chrynan.krypt.hash.pbkdf/-p-b-k-d-f2-algorithm/index.md
@@ -204,6 +212,8 @@ $dokka.location:com.chrynan.krypt.hash.sha/SHA2HashFunction.SupportedAlgorithm.S
 $dokka.location:com.chrynan.krypt.hash.sha/SHA2HashFunction.SupportedAlgorithm.SHA_512///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}krypt-hash/krypt-hash/com.chrynan.krypt.hash.sha/-s-h-a2-hash-function/-supported-algorithm/-s-h-a_512/index.md
 $dokka.location:com.chrynan.krypt.hash.sha/SHA2HashFunction.SupportedAlgorithm///PointingToDeclaration/krypt-hash/krypt-hash/com.chrynan.krypt.hash.sha/-s-h-a2-hash-function/-supported-algorithm/index.md
 $dokka.location:com.chrynan.krypt.hash.sha/SHA2HashFunction.SupportedAlgorithm/algorithmName/#/PointingToDeclaration/krypt-hash/krypt-hash/com.chrynan.krypt.hash.sha/-s-h-a2-hash-function/-supported-algorithm/algorithm-name.md
+$dokka.location:com.chrynan.krypt.hash.sha/SHA2HashFunction.SupportedAlgorithm/valueOf/#kotlin.String/PointingToDeclaration/krypt-hash/krypt-hash/com.chrynan.krypt.hash.sha/-s-h-a2-hash-function/-supported-algorithm/value-of.md
+$dokka.location:com.chrynan.krypt.hash.sha/SHA2HashFunction.SupportedAlgorithm/values/#/PointingToDeclaration/krypt-hash/krypt-hash/com.chrynan.krypt.hash.sha/-s-h-a2-hash-function/-supported-algorithm/values.md
 $dokka.location:com.chrynan.krypt.hash.sha/SHA2HashFunction.SupportedAlgorithm/version/#/PointingToDeclaration/krypt-hash/krypt-hash/com.chrynan.krypt.hash.sha/-s-h-a2-hash-function/-supported-algorithm/version.md
 $dokka.location:com.chrynan.krypt.hash.sha/SHA2HashFunction///PointingToDeclaration/krypt-hash/krypt-hash/com.chrynan.krypt.hash.sha/-s-h-a2-hash-function/index.md
 $dokka.location:com.chrynan.krypt.hash.sha/SHA2HashFunction/algorithm/#/PointingToDeclaration/krypt-hash/krypt-hash/com.chrynan.krypt.hash.sha/-s-h-a2-hash-function/algorithm.md
@@ -243,13 +253,25 @@ $dokka.location:com.chrynan.krypt.jwt//Header/#kotlin.String?#kotlin.String?#kot
 $dokka.location:com.chrynan.krypt.jwt//JWS/#TypeParam(bounds=[com.chrynan.krypt.jwt.Header])#TypeParam(bounds=[com.chrynan.krypt.jwt.Payload])#kotlin.String/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-j-w-s.md
 $dokka.location:com.chrynan.krypt.jwt//JWT/#TypeParam(bounds=[com.chrynan.krypt.jwt.Header])#TypeParam(bounds=[com.chrynan.krypt.jwt.Payload])/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-j-w-t.md
 $dokka.location:com.chrynan.krypt.jwt//Payload/#kotlin.String?#kotlin.String?#kotlin.String?#kotlin.Long?#kotlin.Long?#kotlin.Long?#kotlin.String?/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-payload.md
+$dokka.location:com.chrynan.krypt.jwt//compact/com.chrynan.krypt.jwt.JWT[TypeParam(bounds=[com.chrynan.krypt.jwt.Header]),TypeParam(bounds=[com.chrynan.krypt.jwt.Payload])]#kotlinx.serialization.json.Json#com.chrynan.krypt.encoding.Encoder/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/compact.md
+$dokka.location:com.chrynan.krypt.jwt//compact/com.chrynan.krypt.jwt.JWT[TypeParam(bounds=[com.chrynan.krypt.jwt.Header]),TypeParam(bounds=[com.chrynan.krypt.jwt.Payload])]#kotlinx.serialization.json.Json#kotlinx.serialization.KSerializer[TypeParam(bounds=[com.chrynan.krypt.jwt.Header])]#kotlinx.serialization.KSerializer[TypeParam(bounds=[com.chrynan.krypt.jwt.Payload])]#com.chrynan.krypt.encoding.Encoder/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/compact.md
+$dokka.location:com.chrynan.krypt.jwt//defaultJwtSigner/#/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/default-jwt-signer.md
 $dokka.location:com.chrynan.krypt.jwt//format/com.chrynan.krypt.jwt.JWT[TypeParam(bounds=[com.chrynan.krypt.jwt.Header]),TypeParam(bounds=[com.chrynan.krypt.jwt.Payload])]#kotlinx.serialization.json.Json#com.chrynan.krypt.encoding.Encoder/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/format.md
+$dokka.location:com.chrynan.krypt.jwt//generateHmacKeyFrom/com.chrynan.krypt.jwt.Keys#kotlin.ByteArray/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/generate-hmac-key-from.md
+$dokka.location:com.chrynan.krypt.jwt//generateKeyPairFor/com.chrynan.krypt.jwt.Keys#com.chrynan.krypt.jwt.SignatureAlgorithm/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/generate-key-pair-for.md
+$dokka.location:com.chrynan.krypt.jwt//generateSecretKeyFor/com.chrynan.krypt.jwt.Keys#com.chrynan.krypt.jwt.SignatureAlgorithm/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/generate-secret-key-for.md
 $dokka.location:com.chrynan.krypt.jwt//isEllipticCurve/com.chrynan.krypt.jwt.SignatureAlgorithm#/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/is-elliptic-curve.md
 $dokka.location:com.chrynan.krypt.jwt//isHmac/com.chrynan.krypt.jwt.SignatureAlgorithm#/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/is-hmac.md
 $dokka.location:com.chrynan.krypt.jwt//isRsa/com.chrynan.krypt.jwt.SignatureAlgorithm#/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/is-rsa.md
-$dokka.location:com.chrynan.krypt.jwt//signWith/com.chrynan.krypt.jwt.JWT[TypeParam(bounds=[com.chrynan.krypt.jwt.Header]),TypeParam(bounds=[com.chrynan.krypt.jwt.Payload])]#com.chrynan.krypt.core.Key#com.chrynan.krypt.jwt.SignatureAlgorithm/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/sign-with.md
-$dokka.location:com.chrynan.krypt.jwt//signWith/com.chrynan.krypt.jwt.JWT[TypeParam(bounds=[com.chrynan.krypt.jwt.Header]),TypeParam(bounds=[com.chrynan.krypt.jwt.Payload])]#kotlin.ByteArray#com.chrynan.krypt.jwt.SignatureAlgorithm/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/sign-with.md
+$dokka.location:com.chrynan.krypt.jwt//signWith/com.chrynan.krypt.jwt.JWT[TypeParam(bounds=[com.chrynan.krypt.jwt.Header]),TypeParam(bounds=[com.chrynan.krypt.jwt.Payload])]#com.chrynan.krypt.core.Key#com.chrynan.krypt.jwt.SignatureAlgorithm#kotlinx.serialization.json.Json#kotlinx.serialization.KSerializer[TypeParam(bounds=[com.chrynan.krypt.jwt.Header])]#kotlinx.serialization.KSerializer[TypeParam(bounds=[com.chrynan.krypt.jwt.Payload])]#com.chrynan.krypt.encoding.Encoder#com.chrynan.krypt.jwt.JwtSigner/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/sign-with.md
+$dokka.location:com.chrynan.krypt.jwt//signWith/com.chrynan.krypt.jwt.JWT[TypeParam(bounds=[com.chrynan.krypt.jwt.Header]),TypeParam(bounds=[com.chrynan.krypt.jwt.Payload])]#com.chrynan.krypt.jwt.SignatureAlgorithmKey#kotlinx.serialization.json.Json#kotlinx.serialization.KSerializer[TypeParam(bounds=[com.chrynan.krypt.jwt.Header])]#kotlinx.serialization.KSerializer[TypeParam(bounds=[com.chrynan.krypt.jwt.Payload])]#com.chrynan.krypt.encoding.Encoder#com.chrynan.krypt.jwt.JwtSigner/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/sign-with.md
+$dokka.location:com.chrynan.krypt.jwt//signWith/com.chrynan.krypt.jwt.JWT[TypeParam(bounds=[com.chrynan.krypt.jwt.Header]),TypeParam(bounds=[com.chrynan.krypt.jwt.Payload])]#kotlin.ByteArray#com.chrynan.krypt.jwt.SignatureAlgorithm#kotlinx.serialization.json.Json#kotlinx.serialization.KSerializer[TypeParam(bounds=[com.chrynan.krypt.jwt.Header])]#kotlinx.serialization.KSerializer[TypeParam(bounds=[com.chrynan.krypt.jwt.Payload])]#com.chrynan.krypt.encoding.Encoder#com.chrynan.krypt.jwt.JwtSigner/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/sign-with.md
 $dokka.location:com.chrynan.krypt.jwt//signWith/com.chrynan.krypt.jwt.JWT[TypeParam(bounds=[com.chrynan.krypt.jwt.Header]),TypeParam(bounds=[com.chrynan.krypt.jwt.Payload])]#kotlin.coroutines.SuspendFunction1[com.chrynan.krypt.jwt.JWT[TypeParam(bounds=[com.chrynan.krypt.jwt.Header]),TypeParam(bounds=[com.chrynan.krypt.jwt.Payload])],kotlin.String]/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/sign-with.md
+$dokka.location:com.chrynan.krypt.jwt//signatureBytes/com.chrynan.krypt.jwt.JWS[TypeParam(bounds=[com.chrynan.krypt.jwt.Header]),TypeParam(bounds=[com.chrynan.krypt.jwt.Payload])]#com.chrynan.krypt.encoding.Decoder/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/signature-bytes.md
+$dokka.location:com.chrynan.krypt.jwt//signatureUtf8/com.chrynan.krypt.jwt.JWS[TypeParam(bounds=[com.chrynan.krypt.jwt.Header]),TypeParam(bounds=[com.chrynan.krypt.jwt.Payload])]#com.chrynan.krypt.encoding.Decoder/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/signature-utf8.md
+$dokka.location:com.chrynan.krypt.jwt/AndroidJwtSigner///PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-android-jwt-signer/index.md
+$dokka.location:com.chrynan.krypt.jwt/AndroidJwtSigner/AndroidJwtSigner/#/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-android-jwt-signer/-android-jwt-signer.md
+$dokka.location:com.chrynan.krypt.jwt/AndroidJwtSigner/sign/#kotlin.ByteArray#com.chrynan.krypt.jwt.SignatureAlgorithm#kotlin.String#com.chrynan.krypt.encoding.Encoder/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-android-jwt-signer/sign.md
 $dokka.location:com.chrynan.krypt.jwt/DefaultHeader///PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-default-header/index.md
 $dokka.location:com.chrynan.krypt.jwt/DefaultHeader/algorithm/#/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-default-header/algorithm.md
 $dokka.location:com.chrynan.krypt.jwt/DefaultHeader/contentType/#/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-default-header/content-type.md
@@ -289,6 +311,12 @@ $dokka.location:com.chrynan.krypt.jwt/JWT///PointingToDeclaration/krypt-jwt/kry
 $dokka.location:com.chrynan.krypt.jwt/JWT/format/#kotlinx.serialization.json.Json#kotlinx.serialization.KSerializer[TypeParam(bounds=[com.chrynan.krypt.jwt.Header])]#kotlinx.serialization.KSerializer[TypeParam(bounds=[com.chrynan.krypt.jwt.Payload])]#com.chrynan.krypt.encoding.Encoder/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-j-w-t/format.md
 $dokka.location:com.chrynan.krypt.jwt/JWT/header/#/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-j-w-t/header.md
 $dokka.location:com.chrynan.krypt.jwt/JWT/payload/#/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-j-w-t/payload.md
+$dokka.location:com.chrynan.krypt.jwt/JvmJwtSigner///PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-jvm-jwt-signer/index.md
+$dokka.location:com.chrynan.krypt.jwt/JvmJwtSigner/JvmJwtSigner/#/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-jvm-jwt-signer/-jvm-jwt-signer.md
+$dokka.location:com.chrynan.krypt.jwt/JvmJwtSigner/sign/#kotlin.ByteArray#com.chrynan.krypt.jwt.SignatureAlgorithm#kotlin.String#com.chrynan.krypt.encoding.Encoder/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-jvm-jwt-signer/sign.md
+$dokka.location:com.chrynan.krypt.jwt/JwtSigner///PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-jwt-signer/index.md
+$dokka.location:com.chrynan.krypt.jwt/JwtSigner/sign/#kotlin.ByteArray#com.chrynan.krypt.jwt.SignatureAlgorithm#kotlin.String#com.chrynan.krypt.encoding.Encoder/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-jwt-signer/sign.md
+$dokka.location:com.chrynan.krypt.jwt/Keys///PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-keys/index.md
 $dokka.location:com.chrynan.krypt.jwt/Payload///PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-payload/index.md
 $dokka.location:com.chrynan.krypt.jwt/ReservedClaims.Names///PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-reserved-claims/-names/index.md
 $dokka.location:com.chrynan.krypt.jwt/ReservedClaims.Names/AUDIENCE/#/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-reserved-claims/-names/-a-u-d-i-e-n-c-e.md
@@ -343,6 +371,8 @@ $dokka.location:com.chrynan.krypt.jwt/SignatureAlgorithm.Family.NONE///PointingT
 $dokka.location:com.chrynan.krypt.jwt/SignatureAlgorithm.Family.RSA///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-signature-algorithm/-family/-r-s-a/index.md
 $dokka.location:com.chrynan.krypt.jwt/SignatureAlgorithm.Family///PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-signature-algorithm/-family/index.md
 $dokka.location:com.chrynan.krypt.jwt/SignatureAlgorithm.Family/typeName/#/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-signature-algorithm/-family/type-name.md
+$dokka.location:com.chrynan.krypt.jwt/SignatureAlgorithm.Family/valueOf/#kotlin.String/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-signature-algorithm/-family/value-of.md
+$dokka.location:com.chrynan.krypt.jwt/SignatureAlgorithm.Family/values/#/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-signature-algorithm/-family/values.md
 $dokka.location:com.chrynan.krypt.jwt/SignatureAlgorithm.HS256///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-signature-algorithm/-h-s256/index.md
 $dokka.location:com.chrynan.krypt.jwt/SignatureAlgorithm.HS384///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-signature-algorithm/-h-s384/index.md
 $dokka.location:com.chrynan.krypt.jwt/SignatureAlgorithm.HS512///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-signature-algorithm/-h-s512/index.md
@@ -362,6 +392,11 @@ $dokka.location:com.chrynan.krypt.jwt/SignatureAlgorithm/jdkStandard/#/PointingT
 $dokka.location:com.chrynan.krypt.jwt/SignatureAlgorithm/minKeyLength/#/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-signature-algorithm/min-key-length.md
 $dokka.location:com.chrynan.krypt.jwt/SignatureAlgorithm/pkcsName/#/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-signature-algorithm/pkcs-name.md
 $dokka.location:com.chrynan.krypt.jwt/SignatureAlgorithm/value/#/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-signature-algorithm/value.md
+$dokka.location:com.chrynan.krypt.jwt/SignatureAlgorithm/valueOf/#kotlin.String/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-signature-algorithm/value-of.md
+$dokka.location:com.chrynan.krypt.jwt/SignatureAlgorithm/values/#/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-signature-algorithm/values.md
+$dokka.location:com.chrynan.krypt.jwt/SignatureAlgorithmKey///PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-signature-algorithm-key/index.md
+$dokka.location:com.chrynan.krypt.jwt/SignatureAlgorithmKey/algorithm/#/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-signature-algorithm-key/algorithm.md
+$dokka.location:com.chrynan.krypt.jwt/SignatureAlgorithmKey/key/#/PointingToDeclaration/krypt-jwt/krypt-jwt/com.chrynan.krypt.jwt/-signature-algorithm-key/key.md
 $dokka.location:com.chrynan.krypt.pkce////PointingToDeclaration/krypt-pkce/krypt-pkce/com.chrynan.krypt.pkce/index.md
 $dokka.location:com.chrynan.krypt.pkce/CodeChallengeMethod.Companion///PointingToDeclaration/krypt-pkce/krypt-pkce/com.chrynan.krypt.pkce/-code-challenge-method/-companion/index.md
 $dokka.location:com.chrynan.krypt.pkce/CodeChallengeMethod.Companion/getByName/#kotlin.String#kotlin.Boolean/PointingToDeclaration/krypt-pkce/krypt-pkce/com.chrynan.krypt.pkce/-code-challenge-method/-companion/get-by-name.md
@@ -369,6 +404,8 @@ $dokka.location:com.chrynan.krypt.pkce/CodeChallengeMethod.PLAIN///PointingToDec
 $dokka.location:com.chrynan.krypt.pkce/CodeChallengeMethod.S256///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}krypt-pkce/krypt-pkce/com.chrynan.krypt.pkce/-code-challenge-method/-s256/index.md
 $dokka.location:com.chrynan.krypt.pkce/CodeChallengeMethod///PointingToDeclaration/krypt-pkce/krypt-pkce/com.chrynan.krypt.pkce/-code-challenge-method/index.md
 $dokka.location:com.chrynan.krypt.pkce/CodeChallengeMethod/typeName/#/PointingToDeclaration/krypt-pkce/krypt-pkce/com.chrynan.krypt.pkce/-code-challenge-method/type-name.md
+$dokka.location:com.chrynan.krypt.pkce/CodeChallengeMethod/valueOf/#kotlin.String/PointingToDeclaration/krypt-pkce/krypt-pkce/com.chrynan.krypt.pkce/-code-challenge-method/value-of.md
+$dokka.location:com.chrynan.krypt.pkce/CodeChallengeMethod/values/#/PointingToDeclaration/krypt-pkce/krypt-pkce/com.chrynan.krypt.pkce/-code-challenge-method/values.md
 $dokka.location:com.chrynan.krypt.pkce/Pkce///PointingToDeclaration/krypt-pkce/krypt-pkce/com.chrynan.krypt.pkce/-pkce/index.md
 $dokka.location:com.chrynan.krypt.pkce/Pkce/Pkce/#com.chrynan.krypt.encoding.Base64Encoder#com.chrynan.krypt.csprng.SecureRandom/PointingToDeclaration/krypt-pkce/krypt-pkce/com.chrynan.krypt.pkce/-pkce/-pkce.md
 $dokka.location:com.chrynan.krypt.pkce/Pkce/createCodeChallenge/#kotlin.String#com.chrynan.krypt.pkce.CodeChallengeMethod/PointingToDeclaration/krypt-pkce/krypt-pkce/com.chrynan.krypt.pkce/-pkce/create-code-challenge.md
@@ -431,8 +468,11 @@ $dokka.location:com.chrynan.krypt.uuid/Uuid.Companion/from/#kotlin.String/Pointi
 $dokka.location:com.chrynan.krypt.uuid/Uuid///PointingToDeclaration/krypt-uuid/krypt-uuid/com.chrynan.krypt.uuid/-uuid/index.md
 $dokka.location:com.chrynan.krypt.uuid/Uuid/bytes/#/PointingToDeclaration/krypt-uuid/krypt-uuid/com.chrynan.krypt.uuid/-uuid/bytes.md
 $dokka.location:com.chrynan.krypt.uuid/Uuid/compareTo/#com.chrynan.krypt.uuid.Uuid/PointingToDeclaration/krypt-uuid/krypt-uuid/com.chrynan.krypt.uuid/-uuid/compare-to.md
+$dokka.location:com.chrynan.krypt.uuid/Uuid/equals/#kotlin.Any?/PointingToDeclaration/krypt-uuid/krypt-uuid/com.chrynan.krypt.uuid/-uuid/equals.md
+$dokka.location:com.chrynan.krypt.uuid/Uuid/hashCode/#/PointingToDeclaration/krypt-uuid/krypt-uuid/com.chrynan.krypt.uuid/-uuid/hash-code.md
 $dokka.location:com.chrynan.krypt.uuid/Uuid/leastSignificantBits/#/PointingToDeclaration/krypt-uuid/krypt-uuid/com.chrynan.krypt.uuid/-uuid/least-significant-bits.md
 $dokka.location:com.chrynan.krypt.uuid/Uuid/mostSignificantBits/#/PointingToDeclaration/krypt-uuid/krypt-uuid/com.chrynan.krypt.uuid/-uuid/most-significant-bits.md
+$dokka.location:com.chrynan.krypt.uuid/Uuid/toString/#/PointingToDeclaration/krypt-uuid/krypt-uuid/com.chrynan.krypt.uuid/-uuid/to-string.md
 $dokka.location:com.chrynan.krypt.uuid/Uuid/variant/#/PointingToDeclaration/krypt-uuid/krypt-uuid/com.chrynan.krypt.uuid/-uuid/variant.md
 $dokka.location:com.chrynan.krypt.uuid/Uuid/version/#/PointingToDeclaration/krypt-uuid/krypt-uuid/com.chrynan.krypt.uuid/-uuid/version.md
 module:krypt-core

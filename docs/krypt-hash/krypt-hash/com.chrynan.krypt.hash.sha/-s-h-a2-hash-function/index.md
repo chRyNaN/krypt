@@ -7,15 +7,15 @@ interface [SHA2HashFunction](index.md) : [HashFunction](../../../../krypt-core/k
 
 An SHA-2 [HashFunction](../../../../krypt-core/krypt-core/com.chrynan.krypt.core/-hash-function/index.md) implementation. The supported variants of the SHA-2 algorithm are defined in the [SupportedAlgorithm](-supported-algorithm/index.md) enum class. To utilize this hashing algorithm, use the [SHA2Hasher](../-s-h-a2-hasher/index.md) interface and one of its factory functions, such as [sha256](../sha256.md).
 
-## See also
+#### See also
 
 common
 
 | | |
 |---|---|
 |  | [FIPS 180-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf) |
-| [com.chrynan.krypt.hash.sha.SHA2Hasher](../-s-h-a2-hasher/index.md) |  |
-| [sha256](../sha256.md) |  |
+| [SHA2Hasher](../-s-h-a2-hasher/index.md) |
+| [sha256](../sha256.md) |
 
 ## Types
 

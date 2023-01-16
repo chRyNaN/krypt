@@ -10,13 +10,13 @@ suspend operator fun [SrpHashFunction](-srp-hash-function/index.md).[invoke](inv
 
 Converts the provided [source](invoke.md) to a [UByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-byte-array/index.html) using UTF-8 encoding and calls the [invoke](invoke.md) function on the result.
 
-## See also
+#### See also
 
 common
 
-| | |
-|---|---|
-| [com.chrynan.krypt.srp.SrpHashFunction](-srp-hash-function/invoke.md) |  |
+| |
+|---|
+| [SrpHashFunction.invoke](-srp-hash-function/invoke.md) |
 
 [common]\
 
@@ -26,10 +26,10 @@ suspend operator fun [SrpHashFunction](-srp-hash-function/index.md).[invoke](inv
 
 Converts the provided [source](invoke.md) to a [UByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-byte-array/index.html) using the BigInteger.toUByteArray function and calls the [invoke](invoke.md) function on the result.
 
-## See also
+#### See also
 
 common
 
-| | |
-|---|---|
-| [com.chrynan.krypt.srp.SrpHashFunction](-srp-hash-function/invoke.md) |  |
+| |
+|---|
+| [SrpHashFunction.invoke](-srp-hash-function/invoke.md) |

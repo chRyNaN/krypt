@@ -1,6 +1,6 @@
 //[krypt-srp](../../index.md)/[com.chrynan.krypt.srp](index.md)
 
-# Package com.chrynan.krypt.srp
+# Package-level declarations
 
 ## Types
 

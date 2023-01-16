@@ -7,15 +7,15 @@ fun [Group](-group.md)(prime: BigInteger, generator: BigInteger): [Group](-group
 
 Creates an instance of a [Group](-group/index.md) for use in the Secure Remote Password (SRP) protocol with the provided values.
 
-## See also
+#### See also
 
 common
 
-| | |
-|---|---|
-| [com.chrynan.krypt.srp.Group](-group/index.md) |  |
+| |
+|---|
+| [Group](-group/index.md) |
 
-## Parameters
+#### Parameters
 
 common
 
@@ -29,15 +29,15 @@ fun [Group](-group.md)(primeString: [String](https://kotlinlang.org/api/latest/j
 
 Creates an instance of a [Group](-group/index.md) for use in the Secure Remote Password (SRP) protocol with the provided values.
 
-## See also
+#### See also
 
 common
 
-| | |
-|---|---|
-| [com.chrynan.krypt.srp.Group](-group/index.md) |  |
+| |
+|---|
+| [Group](-group/index.md) |
 
-## Parameters
+#### Parameters
 
 common
 

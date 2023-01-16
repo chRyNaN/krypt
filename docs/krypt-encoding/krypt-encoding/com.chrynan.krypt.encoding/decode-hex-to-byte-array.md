@@ -7,10 +7,10 @@ fun [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.h
 
 Decodes the hexadecimal values within this [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) into a [ByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html). This is a convenience function for using a [HexDecoder](-hex-decoder/index.md).
 
-## See also
+#### See also
 
 common
 
-| | |
-|---|---|
-| [com.chrynan.krypt.encoding.HexDecoder](-hex-decoder/index.md) |  |
+| |
+|---|
+| [HexDecoder](-hex-decoder/index.md) |

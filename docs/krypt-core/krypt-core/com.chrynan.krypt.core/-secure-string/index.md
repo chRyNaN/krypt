@@ -45,3 +45,4 @@ This implementation was inspired by the following: https://github.com/Password4j
 | Name | Summary |
 |---|---|
 | [plus](../plus.md) | [common]<br>operator fun [SecureString](index.md).[plus](../plus.md)(other: [CharSequence](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html)): [SecureString](index.md) |
+| [toSecureString](../to-secure-string.md) | [common]<br>fun [CharSequence](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html).[toSecureString](../to-secure-string.md)(): [SecureString](index.md) |

@@ -7,7 +7,7 @@ fun [SecureRandom](-secure-random/index.md).[nextSaltString]([android]next-salt-
 
 Retrieves a [ByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html) from this [SecureRandom](-secure-random/index.md) to be used as a salt, which is typically used when hashing passwords. This is a convenience function which delegates to the [SecureRandom.nextBytes](-secure-random/[android]next-bytes.md) function.
 
-## Parameters
+#### Parameters
 
 android
 

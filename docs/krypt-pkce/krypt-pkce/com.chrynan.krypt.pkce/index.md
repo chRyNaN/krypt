@@ -1,6 +1,6 @@
 //[krypt-pkce](../../index.md)/[com.chrynan.krypt.pkce](index.md)
 
-# Package com.chrynan.krypt.pkce
+# Package-level declarations
 
 ## Types
 

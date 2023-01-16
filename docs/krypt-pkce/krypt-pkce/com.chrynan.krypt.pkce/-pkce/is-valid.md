@@ -7,7 +7,7 @@ suspend fun [isValid](is-valid.md)(verifier: [String](https://kotlinlang.org/api
 
 Verifies that the provided [verifier](is-valid.md) equals the provied [challenge](is-valid.md) after it is transformed using the provided [method](is-valid.md). Returns `true` if the values are equal, `false` otherwise.
 
-## See also
+#### See also
 
 common
 

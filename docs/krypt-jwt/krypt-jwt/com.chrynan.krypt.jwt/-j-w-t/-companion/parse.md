@@ -9,7 +9,7 @@ Parses the provided [String](parse.md) representing an encoded JWT. This functio
 
 Note that if the provided [value](parse.md) includes a JWS, and it is desired to retain that information, use the [JWS.Companion.parse](../../-j-w-s/-companion/parse.md) function instead, as that will return a [JWS](../../-j-w-s/index.md) instance. If a signature is detected in the [value](parse.md), this function will internally delegate to the [JWS.Companion.parse](../../-j-w-s/-companion/parse.md) function, but the type returned from this function is still [JWT](../index.md).
 
-## Parameters
+#### Parameters
 
 common
 

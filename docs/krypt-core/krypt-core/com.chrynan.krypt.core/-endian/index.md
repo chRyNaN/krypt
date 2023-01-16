@@ -9,7 +9,7 @@ Represents the order of a &quot;word&quot; or a numeric value that consists of m
 
 Note that technically, the endianness is abstracted away from Kotlin, and each target platform may represent the values using their desired endian order. However, sometimes when working with [ByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html)s, it is required to convert them to numeric values, such as [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) or [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html), so, in those scenarios, it is required to specify the order of how the [Byte](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte/index.html)s are converted to the numerical value. Though this conversion is different from how the value is internally stored or represented, it will result in different numeric values depending on the order.
 
-## See also
+#### See also
 
 common
 
@@ -23,6 +23,13 @@ common
 |---|---|
 | [Big](-big/index.md) | [common]<br>[Big](-big/index.md) |
 | [Little](-little/index.md) | [common]<br>[Little](-little/index.md) |
+
+## Functions
+
+| Name | Summary |
+|---|---|
+| [valueOf](value-of.md) | [common]<br>fun [valueOf](value-of.md)(value: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)): [Endian](index.md)<br>Returns the enum constant of this type with the specified name. The string must match exactly an identifier used to declare an enum constant in this type. (Extraneous whitespace characters are not permitted.) |
+| [values](values.md) | [common]<br>fun [values](values.md)(): [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[Endian](index.md)&gt;<br>Returns an array containing the constants of this enum type, in the order they're declared. |
 
 ## Properties
 

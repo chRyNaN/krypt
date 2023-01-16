@@ -11,7 +11,7 @@ This represents a decoded Header, meaning a Kotlin object representation of the 
 
 Note that this interface works for both JWT and JWS.
 
-## See also
+#### See also
 
 common
 

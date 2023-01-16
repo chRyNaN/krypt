@@ -9,7 +9,7 @@ Converts the specified indices of this [ByteArray](https://kotlinlang.org/api/la
 
 Note that [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)s are 32-bit (4 byte) values. An exception will be thrown if the index range is greater than four or [startInclusive](to-int.md) is greater than or equal to [endExclusive](to-int.md).
 
-## Parameters
+#### Parameters
 
 common
 
