@@ -61,6 +61,20 @@ class Uuid internal constructor(private val uuid: com.benasher44.uuid.Uuid) : Co
 
     override fun compareTo(other: Uuid): Int = uuid.compareTo(other.uuid)
 
+    override fun equals(other: Any?): Boolean {
+        if (other !is Uuid) return false
+
+        return uuid == other.uuid
+    }
+
+    override fun hashCode(): Int = uuid.hashCode()
+
+    /**
+     * Converts this UUID to a UUID string, according to the [RFC-4122](https://www.rfc-editor.org/rfc/rfc4122)
+     * specification.
+     */
+    override fun toString(): String = uuid.toString()
+
     companion object {
 
         /**
