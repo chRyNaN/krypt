@@ -1,0 +1,32 @@
+public final class com/chrynan/krypt/uuid/Uuid : java/lang/Comparable {
+	public static final field Companion Lcom/chrynan/krypt/uuid/Uuid$Companion;
+	public fun compareTo (Lcom/chrynan/krypt/uuid/Uuid;)I
+	public synthetic fun compareTo (Ljava/lang/Object;)I
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBytes ()[B
+	public final fun getLeastSignificantBits ()J
+	public final fun getMostSignificantBits ()J
+	public final fun getVariant ()I
+	public final fun getVersion ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/uuid/Uuid$Companion {
+	public final fun from (JJ)Lcom/chrynan/krypt/uuid/Uuid;
+	public final fun from (Ljava/lang/String;)Lcom/chrynan/krypt/uuid/Uuid;
+	public final fun from ([B)Lcom/chrynan/krypt/uuid/Uuid;
+}
+
+public final class com/chrynan/krypt/uuid/UuidRandomUtilsKt {
+	public static final fun nextUuid (Lcom/chrynan/krypt/csprng/SecureRandom;)Lcom/chrynan/krypt/uuid/Uuid;
+	public static final fun random (Lcom/chrynan/krypt/uuid/Uuid$Companion;)Lcom/chrynan/krypt/uuid/Uuid;
+}
+
+public final class com/chrynan/krypt/uuid/android/BuildConfig {
+	public static final field BUILD_TYPE Ljava/lang/String;
+	public static final field DEBUG Z
+	public static final field LIBRARY_PACKAGE_NAME Ljava/lang/String;
+	public fun <init> ()V
+}
+

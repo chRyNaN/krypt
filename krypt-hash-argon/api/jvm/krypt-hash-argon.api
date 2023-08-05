@@ -1,0 +1,76 @@
+public final class com/chrynan/krypt/hash/argon/Argon2HashAlgorithm : com/chrynan/krypt/hash/HashAlgorithm {
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lcom/chrynan/krypt/hash/argon/Argon2Type;
+	public final fun component3 ()I
+	public final fun component4 ()I
+	public final fun component5 ()I
+	public final fun component6 ()I
+	public final fun component7 ()I
+	public final fun copy (Ljava/lang/String;Lcom/chrynan/krypt/hash/argon/Argon2Type;IIIII)Lcom/chrynan/krypt/hash/argon/Argon2HashAlgorithm;
+	public static synthetic fun copy$default (Lcom/chrynan/krypt/hash/argon/Argon2HashAlgorithm;Ljava/lang/String;Lcom/chrynan/krypt/hash/argon/Argon2Type;IIIIIILjava/lang/Object;)Lcom/chrynan/krypt/hash/argon/Argon2HashAlgorithm;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHashLength ()I
+	public final fun getIterations ()I
+	public final fun getMemory ()I
+	public fun getName ()Ljava/lang/String;
+	public final fun getParallelism ()I
+	public final fun getSaltLength ()I
+	public final fun getType ()Lcom/chrynan/krypt/hash/argon/Argon2Type;
+	public fun getVersion ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun isCompatible (Lcom/chrynan/krypt/hash/HashAlgorithm;)Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/hash/argon/Argon2HashResult : com/chrynan/krypt/hash/HashResult {
+	public final fun component1 ()Lcom/chrynan/krypt/hash/argon/Argon2HashAlgorithm;
+	public final fun component2 ()Lcom/chrynan/krypt/core/SecureString;
+	public final fun component3 ()Lcom/chrynan/krypt/core/SecureString;
+	public final fun copy (Lcom/chrynan/krypt/hash/argon/Argon2HashAlgorithm;Lcom/chrynan/krypt/core/SecureString;Lcom/chrynan/krypt/core/SecureString;)Lcom/chrynan/krypt/hash/argon/Argon2HashResult;
+	public static synthetic fun copy$default (Lcom/chrynan/krypt/hash/argon/Argon2HashResult;Lcom/chrynan/krypt/hash/argon/Argon2HashAlgorithm;Lcom/chrynan/krypt/core/SecureString;Lcom/chrynan/krypt/core/SecureString;ILjava/lang/Object;)Lcom/chrynan/krypt/hash/argon/Argon2HashResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public synthetic fun getAlgorithm ()Lcom/chrynan/krypt/hash/HashAlgorithm;
+	public fun getAlgorithm ()Lcom/chrynan/krypt/hash/argon/Argon2HashAlgorithm;
+	public fun getHash ()Lcom/chrynan/krypt/core/SecureString;
+	public synthetic fun getHash ()Ljava/lang/Object;
+	public final fun getSalt ()Lcom/chrynan/krypt/core/SecureString;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class com/chrynan/krypt/hash/argon/Argon2Hasher : com/chrynan/krypt/hash/Hasher {
+	public static final field Companion Lcom/chrynan/krypt/hash/argon/Argon2Hasher$Companion;
+}
+
+public final class com/chrynan/krypt/hash/argon/Argon2Hasher$Companion {
+}
+
+public final class com/chrynan/krypt/hash/argon/Argon2Hasher$DefaultImpls {
+	public static fun getAlgorithmName (Lcom/chrynan/krypt/hash/argon/Argon2Hasher;)Ljava/lang/String;
+	public static fun matches (Lcom/chrynan/krypt/hash/argon/Argon2Hasher;Ljava/lang/CharSequence;Lcom/chrynan/krypt/hash/argon/Argon2HashResult;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/chrynan/krypt/hash/argon/Argon2HasherKt {
+	public static final fun argon2 (Lcom/chrynan/krypt/hash/Hasher$Companion;Lcom/chrynan/krypt/hash/argon/Argon2Type;IIIII)Lcom/chrynan/krypt/hash/argon/Argon2Hasher;
+	public static synthetic fun argon2$default (Lcom/chrynan/krypt/hash/Hasher$Companion;Lcom/chrynan/krypt/hash/argon/Argon2Type;IIIIIILjava/lang/Object;)Lcom/chrynan/krypt/hash/argon/Argon2Hasher;
+}
+
+public final class com/chrynan/krypt/hash/argon/Argon2Type : java/lang/Enum {
+	public static final field D Lcom/chrynan/krypt/hash/argon/Argon2Type;
+	public static final field I Lcom/chrynan/krypt/hash/argon/Argon2Type;
+	public static final field ID Lcom/chrynan/krypt/hash/argon/Argon2Type;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getTypeName ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/chrynan/krypt/hash/argon/Argon2Type;
+	public static fun values ()[Lcom/chrynan/krypt/hash/argon/Argon2Type;
+}
+
+public final class com/chrynan/krypt/hash/argon/Argon2TypeExtensionsKt {
+	public static final fun toArgon2 (Lcom/chrynan/krypt/hash/argon/Argon2Type;)Lcom/password4j/types/Argon2;
+}
+
+public final class com/chrynan/krypt/hash/argon/SecureStringExtensionsKt {
+	public static final fun toJavaSecureString (Lcom/chrynan/krypt/core/SecureString;Z)Lcom/password4j/SecureString;
+	public static synthetic fun toJavaSecureString$default (Lcom/chrynan/krypt/core/SecureString;ZILjava/lang/Object;)Lcom/password4j/SecureString;
+}
+

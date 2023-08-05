@@ -21,7 +21,13 @@ kotlin {
     jvm()
 
     js(IR) {
-        browser()
+        browser {
+            testTask {
+                useKarma {
+                    useFirefox()
+                }
+            }
+        }
         nodejs()
     }
 
@@ -51,7 +57,6 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(project(":krypt-core"))
-                api(project(":krypt-uuid"))
             }
         }
         val commonTest by getting {
@@ -98,9 +103,6 @@ android {
 
     sourceSets["test"].java.srcDirs("src/androidTest/kotlin")
     sourceSets["test"].res.srcDirs("src/androidTest/res")
-}
-dependencies {
-    implementation(project(mapOf("path" to ":krypt-uuid")))
 }
 
 tasks.withType<Jar> { duplicatesStrategy = DuplicatesStrategy.INHERIT }

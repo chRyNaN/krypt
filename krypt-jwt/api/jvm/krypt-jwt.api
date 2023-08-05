@@ -1,0 +1,407 @@
+public final class com/chrynan/krypt/jwt/DefaultHeader : com/chrynan/krypt/jwt/Header {
+	public static final field Companion Lcom/chrynan/krypt/jwt/DefaultHeader$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component10 ()Ljava/lang/String;
+	public final fun component11 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/chrynan/krypt/jwt/DefaultHeader;
+	public static synthetic fun copy$default (Lcom/chrynan/krypt/jwt/DefaultHeader;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/chrynan/krypt/jwt/DefaultHeader;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAlgorithm ()Ljava/lang/String;
+	public fun getContentType ()Ljava/lang/String;
+	public fun getCritical ()Ljava/lang/String;
+	public fun getJwk ()Ljava/lang/String;
+	public fun getJwkSetUrl ()Ljava/lang/String;
+	public fun getKeyId ()Ljava/lang/String;
+	public fun getType ()Ljava/lang/String;
+	public fun getX5c ()Ljava/lang/String;
+	public fun getX5t ()Ljava/lang/String;
+	public fun getX5tS256 ()Ljava/lang/String;
+	public fun getX5u ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lcom/chrynan/krypt/jwt/DefaultHeader;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class com/chrynan/krypt/jwt/DefaultHeader$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/chrynan/krypt/jwt/DefaultHeader$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/chrynan/krypt/jwt/DefaultHeader;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/chrynan/krypt/jwt/DefaultHeader;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/chrynan/krypt/jwt/DefaultHeader$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/chrynan/krypt/jwt/DefaultJWS : com/chrynan/krypt/jwt/JWS {
+	public static final field Companion Lcom/chrynan/krypt/jwt/DefaultJWS$Companion;
+	public synthetic fun <init> (ILcom/chrynan/krypt/jwt/Header;Lcom/chrynan/krypt/jwt/Payload;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public final fun component1 ()Lcom/chrynan/krypt/jwt/Header;
+	public final fun component2 ()Lcom/chrynan/krypt/jwt/Payload;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Lcom/chrynan/krypt/jwt/Header;Lcom/chrynan/krypt/jwt/Payload;Ljava/lang/String;)Lcom/chrynan/krypt/jwt/DefaultJWS;
+	public static synthetic fun copy$default (Lcom/chrynan/krypt/jwt/DefaultJWS;Lcom/chrynan/krypt/jwt/Header;Lcom/chrynan/krypt/jwt/Payload;Ljava/lang/String;ILjava/lang/Object;)Lcom/chrynan/krypt/jwt/DefaultJWS;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun format (Lkotlinx/serialization/json/Json;Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/KSerializer;Lcom/chrynan/krypt/encoding/Encoder;)Ljava/lang/String;
+	public fun getHeader ()Lcom/chrynan/krypt/jwt/Header;
+	public fun getPayload ()Lcom/chrynan/krypt/jwt/Payload;
+	public fun getSignature ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lcom/chrynan/krypt/jwt/DefaultJWS;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/KSerializer;)V
+}
+
+public final class com/chrynan/krypt/jwt/DefaultJWS$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public synthetic fun <init> (Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/KSerializer;)V
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/chrynan/krypt/jwt/DefaultJWS;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/chrynan/krypt/jwt/DefaultJWS;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/chrynan/krypt/jwt/DefaultJWS$Companion {
+	public final fun serializer (Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/chrynan/krypt/jwt/DefaultJWT : com/chrynan/krypt/jwt/JWT {
+	public static final field Companion Lcom/chrynan/krypt/jwt/DefaultJWT$Companion;
+	public synthetic fun <init> (ILcom/chrynan/krypt/jwt/Header;Lcom/chrynan/krypt/jwt/Payload;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public final fun component1 ()Lcom/chrynan/krypt/jwt/Header;
+	public final fun component2 ()Lcom/chrynan/krypt/jwt/Payload;
+	public final fun copy (Lcom/chrynan/krypt/jwt/Header;Lcom/chrynan/krypt/jwt/Payload;)Lcom/chrynan/krypt/jwt/DefaultJWT;
+	public static synthetic fun copy$default (Lcom/chrynan/krypt/jwt/DefaultJWT;Lcom/chrynan/krypt/jwt/Header;Lcom/chrynan/krypt/jwt/Payload;ILjava/lang/Object;)Lcom/chrynan/krypt/jwt/DefaultJWT;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun format (Lkotlinx/serialization/json/Json;Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/KSerializer;Lcom/chrynan/krypt/encoding/Encoder;)Ljava/lang/String;
+	public fun getHeader ()Lcom/chrynan/krypt/jwt/Header;
+	public fun getPayload ()Lcom/chrynan/krypt/jwt/Payload;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lcom/chrynan/krypt/jwt/DefaultJWT;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/KSerializer;)V
+}
+
+public final class com/chrynan/krypt/jwt/DefaultJWT$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public synthetic fun <init> (Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/KSerializer;)V
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/chrynan/krypt/jwt/DefaultJWT;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/chrynan/krypt/jwt/DefaultJWT;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/chrynan/krypt/jwt/DefaultJWT$Companion {
+	public final fun serializer (Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/chrynan/krypt/jwt/DefaultPayload : com/chrynan/krypt/jwt/Payload {
+	public static final field Companion Lcom/chrynan/krypt/jwt/DefaultPayload$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/Long;
+	public final fun component5 ()Ljava/lang/Long;
+	public final fun component6 ()Ljava/lang/Long;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/String;)Lcom/chrynan/krypt/jwt/DefaultPayload;
+	public static synthetic fun copy$default (Lcom/chrynan/krypt/jwt/DefaultPayload;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/String;ILjava/lang/Object;)Lcom/chrynan/krypt/jwt/DefaultPayload;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAudience ()Ljava/lang/String;
+	public fun getExpiration ()Ljava/lang/Long;
+	public fun getId ()Ljava/lang/String;
+	public fun getIssuedAt ()Ljava/lang/Long;
+	public fun getIssuer ()Ljava/lang/String;
+	public fun getNotBefore ()Ljava/lang/Long;
+	public fun getSubject ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lcom/chrynan/krypt/jwt/DefaultPayload;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class com/chrynan/krypt/jwt/DefaultPayload$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/chrynan/krypt/jwt/DefaultPayload$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/chrynan/krypt/jwt/DefaultPayload;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/chrynan/krypt/jwt/DefaultPayload;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/chrynan/krypt/jwt/DefaultPayload$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class com/chrynan/krypt/jwt/Header : com/chrynan/krypt/jwt/ReservedHeaderParameters {
+}
+
+public final class com/chrynan/krypt/jwt/Header$DefaultImpls {
+	public static fun getAlgorithm (Lcom/chrynan/krypt/jwt/Header;)Ljava/lang/String;
+	public static fun getContentType (Lcom/chrynan/krypt/jwt/Header;)Ljava/lang/String;
+	public static fun getCritical (Lcom/chrynan/krypt/jwt/Header;)Ljava/lang/String;
+	public static fun getJwk (Lcom/chrynan/krypt/jwt/Header;)Ljava/lang/String;
+	public static fun getJwkSetUrl (Lcom/chrynan/krypt/jwt/Header;)Ljava/lang/String;
+	public static fun getKeyId (Lcom/chrynan/krypt/jwt/Header;)Ljava/lang/String;
+	public static fun getType (Lcom/chrynan/krypt/jwt/Header;)Ljava/lang/String;
+	public static fun getX5c (Lcom/chrynan/krypt/jwt/Header;)Ljava/lang/String;
+	public static fun getX5t (Lcom/chrynan/krypt/jwt/Header;)Ljava/lang/String;
+	public static fun getX5tS256 (Lcom/chrynan/krypt/jwt/Header;)Ljava/lang/String;
+	public static fun getX5u (Lcom/chrynan/krypt/jwt/Header;)Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/jwt/HeaderKt {
+	public static final fun Header (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/chrynan/krypt/jwt/DefaultHeader;
+	public static synthetic fun Header$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/chrynan/krypt/jwt/DefaultHeader;
+}
+
+public abstract interface class com/chrynan/krypt/jwt/JWS : com/chrynan/krypt/jwt/JWT {
+	public static final field Companion Lcom/chrynan/krypt/jwt/JWS$Companion;
+	public abstract fun format (Lkotlinx/serialization/json/Json;Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/KSerializer;Lcom/chrynan/krypt/encoding/Encoder;)Ljava/lang/String;
+	public abstract fun getSignature ()Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/jwt/JWS$Companion {
+}
+
+public final class com/chrynan/krypt/jwt/JWS$DefaultImpls {
+	public static fun format (Lcom/chrynan/krypt/jwt/JWS;Lkotlinx/serialization/json/Json;Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/KSerializer;Lcom/chrynan/krypt/encoding/Encoder;)Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/jwt/JWSKt {
+	public static final fun JWS (Lcom/chrynan/krypt/jwt/Header;Lcom/chrynan/krypt/jwt/Payload;Ljava/lang/String;)Lcom/chrynan/krypt/jwt/DefaultJWS;
+	public static final fun signatureBytes (Lcom/chrynan/krypt/jwt/JWS;Lcom/chrynan/krypt/encoding/Decoder;)[B
+	public static synthetic fun signatureBytes$default (Lcom/chrynan/krypt/jwt/JWS;Lcom/chrynan/krypt/encoding/Decoder;ILjava/lang/Object;)[B
+	public static final fun signatureUtf8 (Lcom/chrynan/krypt/jwt/JWS;Lcom/chrynan/krypt/encoding/Decoder;)Ljava/lang/String;
+	public static synthetic fun signatureUtf8$default (Lcom/chrynan/krypt/jwt/JWS;Lcom/chrynan/krypt/encoding/Decoder;ILjava/lang/Object;)Ljava/lang/String;
+}
+
+public abstract interface class com/chrynan/krypt/jwt/JWT {
+	public static final field Companion Lcom/chrynan/krypt/jwt/JWT$Companion;
+	public abstract fun format (Lkotlinx/serialization/json/Json;Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/KSerializer;Lcom/chrynan/krypt/encoding/Encoder;)Ljava/lang/String;
+	public abstract fun getHeader ()Lcom/chrynan/krypt/jwt/Header;
+	public abstract fun getPayload ()Lcom/chrynan/krypt/jwt/Payload;
+}
+
+public final class com/chrynan/krypt/jwt/JWT$Companion {
+}
+
+public final class com/chrynan/krypt/jwt/JWT$DefaultImpls {
+	public static fun format (Lcom/chrynan/krypt/jwt/JWT;Lkotlinx/serialization/json/Json;Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/KSerializer;Lcom/chrynan/krypt/encoding/Encoder;)Ljava/lang/String;
+	public static synthetic fun format$default (Lcom/chrynan/krypt/jwt/JWT;Lkotlinx/serialization/json/Json;Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/KSerializer;Lcom/chrynan/krypt/encoding/Encoder;ILjava/lang/Object;)Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/jwt/JWTKt {
+	public static final fun JWT (Lcom/chrynan/krypt/jwt/Header;Lcom/chrynan/krypt/jwt/Payload;)Lcom/chrynan/krypt/jwt/DefaultJWT;
+	public static final fun compact (Lcom/chrynan/krypt/jwt/JWT;Lkotlinx/serialization/json/Json;Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/KSerializer;Lcom/chrynan/krypt/encoding/Encoder;)Ljava/lang/String;
+	public static synthetic fun compact$default (Lcom/chrynan/krypt/jwt/JWT;Lkotlinx/serialization/json/Json;Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/KSerializer;Lcom/chrynan/krypt/encoding/Encoder;ILjava/lang/Object;)Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/jwt/JvmJwtSigner : com/chrynan/krypt/jwt/JwtSigner {
+	public fun <init> ()V
+	public fun sign ([BLcom/chrynan/krypt/jwt/SignatureAlgorithm;Ljava/lang/String;Lcom/chrynan/krypt/encoding/Encoder;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/chrynan/krypt/jwt/JvmJwtSignerKt {
+	public static final fun getDefaultJwtSigner ()Lcom/chrynan/krypt/jwt/JwtSigner;
+}
+
+public final class com/chrynan/krypt/jwt/JvmKeysKt {
+	public static final fun generateHmacKeyFrom (Lcom/chrynan/krypt/jwt/Keys;[B)Lcom/chrynan/krypt/core/Key;
+	public static final fun generateKeyPairFor (Lcom/chrynan/krypt/jwt/Keys;Lcom/chrynan/krypt/jwt/SignatureAlgorithm;)Lcom/chrynan/krypt/core/KeyPair;
+	public static final fun generateSecretKeyFor (Lcom/chrynan/krypt/jwt/Keys;Lcom/chrynan/krypt/jwt/SignatureAlgorithm;)Lcom/chrynan/krypt/core/Key;
+}
+
+public abstract interface class com/chrynan/krypt/jwt/JwtSigner {
+	public abstract fun sign ([BLcom/chrynan/krypt/jwt/SignatureAlgorithm;Ljava/lang/String;Lcom/chrynan/krypt/encoding/Encoder;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/chrynan/krypt/jwt/Keys {
+	public static final field INSTANCE Lcom/chrynan/krypt/jwt/Keys;
+}
+
+public abstract interface class com/chrynan/krypt/jwt/Payload : com/chrynan/krypt/jwt/ReservedClaims {
+}
+
+public final class com/chrynan/krypt/jwt/Payload$DefaultImpls {
+	public static fun getAudience (Lcom/chrynan/krypt/jwt/Payload;)Ljava/lang/String;
+	public static fun getExpiration (Lcom/chrynan/krypt/jwt/Payload;)Ljava/lang/Long;
+	public static fun getId (Lcom/chrynan/krypt/jwt/Payload;)Ljava/lang/String;
+	public static fun getIssuedAt (Lcom/chrynan/krypt/jwt/Payload;)Ljava/lang/Long;
+	public static fun getIssuer (Lcom/chrynan/krypt/jwt/Payload;)Ljava/lang/String;
+	public static fun getNotBefore (Lcom/chrynan/krypt/jwt/Payload;)Ljava/lang/Long;
+	public static fun getSubject (Lcom/chrynan/krypt/jwt/Payload;)Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/jwt/PayloadKt {
+	public static final fun Payload (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/String;)Lcom/chrynan/krypt/jwt/DefaultPayload;
+	public static synthetic fun Payload$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/String;ILjava/lang/Object;)Lcom/chrynan/krypt/jwt/DefaultPayload;
+}
+
+public abstract interface class com/chrynan/krypt/jwt/ReservedClaims {
+	public abstract fun getAudience ()Ljava/lang/String;
+	public abstract fun getExpiration ()Ljava/lang/Long;
+	public abstract fun getId ()Ljava/lang/String;
+	public abstract fun getIssuedAt ()Ljava/lang/Long;
+	public abstract fun getIssuer ()Ljava/lang/String;
+	public abstract fun getNotBefore ()Ljava/lang/Long;
+	public abstract fun getSubject ()Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/jwt/ReservedClaims$DefaultImpls {
+	public static fun getAudience (Lcom/chrynan/krypt/jwt/ReservedClaims;)Ljava/lang/String;
+	public static fun getExpiration (Lcom/chrynan/krypt/jwt/ReservedClaims;)Ljava/lang/Long;
+	public static fun getId (Lcom/chrynan/krypt/jwt/ReservedClaims;)Ljava/lang/String;
+	public static fun getIssuedAt (Lcom/chrynan/krypt/jwt/ReservedClaims;)Ljava/lang/Long;
+	public static fun getIssuer (Lcom/chrynan/krypt/jwt/ReservedClaims;)Ljava/lang/String;
+	public static fun getNotBefore (Lcom/chrynan/krypt/jwt/ReservedClaims;)Ljava/lang/Long;
+	public static fun getSubject (Lcom/chrynan/krypt/jwt/ReservedClaims;)Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/jwt/ReservedClaims$Names {
+	public static final field AUDIENCE Ljava/lang/String;
+	public static final field EXPIRATION Ljava/lang/String;
+	public static final field ID Ljava/lang/String;
+	public static final field INSTANCE Lcom/chrynan/krypt/jwt/ReservedClaims$Names;
+	public static final field ISSUED_AT Ljava/lang/String;
+	public static final field ISSUER Ljava/lang/String;
+	public static final field NOT_BEFORE Ljava/lang/String;
+	public static final field SUBJECT Ljava/lang/String;
+}
+
+public abstract interface class com/chrynan/krypt/jwt/ReservedHeaderParameters {
+	public abstract fun getAlgorithm ()Ljava/lang/String;
+	public abstract fun getContentType ()Ljava/lang/String;
+	public abstract fun getCritical ()Ljava/lang/String;
+	public abstract fun getJwk ()Ljava/lang/String;
+	public abstract fun getJwkSetUrl ()Ljava/lang/String;
+	public abstract fun getKeyId ()Ljava/lang/String;
+	public abstract fun getType ()Ljava/lang/String;
+	public abstract fun getX5c ()Ljava/lang/String;
+	public abstract fun getX5t ()Ljava/lang/String;
+	public abstract fun getX5tS256 ()Ljava/lang/String;
+	public abstract fun getX5u ()Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/jwt/ReservedHeaderParameters$DefaultImpls {
+	public static fun getAlgorithm (Lcom/chrynan/krypt/jwt/ReservedHeaderParameters;)Ljava/lang/String;
+	public static fun getContentType (Lcom/chrynan/krypt/jwt/ReservedHeaderParameters;)Ljava/lang/String;
+	public static fun getCritical (Lcom/chrynan/krypt/jwt/ReservedHeaderParameters;)Ljava/lang/String;
+	public static fun getJwk (Lcom/chrynan/krypt/jwt/ReservedHeaderParameters;)Ljava/lang/String;
+	public static fun getJwkSetUrl (Lcom/chrynan/krypt/jwt/ReservedHeaderParameters;)Ljava/lang/String;
+	public static fun getKeyId (Lcom/chrynan/krypt/jwt/ReservedHeaderParameters;)Ljava/lang/String;
+	public static fun getType (Lcom/chrynan/krypt/jwt/ReservedHeaderParameters;)Ljava/lang/String;
+	public static fun getX5c (Lcom/chrynan/krypt/jwt/ReservedHeaderParameters;)Ljava/lang/String;
+	public static fun getX5t (Lcom/chrynan/krypt/jwt/ReservedHeaderParameters;)Ljava/lang/String;
+	public static fun getX5tS256 (Lcom/chrynan/krypt/jwt/ReservedHeaderParameters;)Ljava/lang/String;
+	public static fun getX5u (Lcom/chrynan/krypt/jwt/ReservedHeaderParameters;)Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/jwt/ReservedHeaderParameters$Names {
+	public static final field ALGORITHM Ljava/lang/String;
+	public static final field CONTENT_TYPE Ljava/lang/String;
+	public static final field CRITICAL Ljava/lang/String;
+	public static final field INSTANCE Lcom/chrynan/krypt/jwt/ReservedHeaderParameters$Names;
+	public static final field JWK Ljava/lang/String;
+	public static final field JWK_SET_URL Ljava/lang/String;
+	public static final field KEY_ID Ljava/lang/String;
+	public static final field TYPE Ljava/lang/String;
+	public static final field X5C Ljava/lang/String;
+	public static final field X5T Ljava/lang/String;
+	public static final field X5T_S256 Ljava/lang/String;
+	public static final field X5U Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/jwt/SignatureAlgorithm : java/lang/Enum {
+	public static final field Companion Lcom/chrynan/krypt/jwt/SignatureAlgorithm$Companion;
+	public static final field ES256 Lcom/chrynan/krypt/jwt/SignatureAlgorithm;
+	public static final field ES384 Lcom/chrynan/krypt/jwt/SignatureAlgorithm;
+	public static final field ES512 Lcom/chrynan/krypt/jwt/SignatureAlgorithm;
+	public static final field HS256 Lcom/chrynan/krypt/jwt/SignatureAlgorithm;
+	public static final field HS384 Lcom/chrynan/krypt/jwt/SignatureAlgorithm;
+	public static final field HS512 Lcom/chrynan/krypt/jwt/SignatureAlgorithm;
+	public static final field NONE Lcom/chrynan/krypt/jwt/SignatureAlgorithm;
+	public static final field PS256 Lcom/chrynan/krypt/jwt/SignatureAlgorithm;
+	public static final field PS384 Lcom/chrynan/krypt/jwt/SignatureAlgorithm;
+	public static final field PS512 Lcom/chrynan/krypt/jwt/SignatureAlgorithm;
+	public static final field RS256 Lcom/chrynan/krypt/jwt/SignatureAlgorithm;
+	public static final field RS384 Lcom/chrynan/krypt/jwt/SignatureAlgorithm;
+	public static final field RS512 Lcom/chrynan/krypt/jwt/SignatureAlgorithm;
+	public final fun getDescription ()Ljava/lang/String;
+	public final fun getDigestLength ()I
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getFamily ()Lcom/chrynan/krypt/jwt/SignatureAlgorithm$Family;
+	public final fun getJcaName ()Ljava/lang/String;
+	public final fun getJdkStandard ()Z
+	public final fun getMinKeyLength ()I
+	public final fun getPkcsName ()Ljava/lang/String;
+	public final fun getValue ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/chrynan/krypt/jwt/SignatureAlgorithm;
+	public static fun values ()[Lcom/chrynan/krypt/jwt/SignatureAlgorithm;
+}
+
+public final class com/chrynan/krypt/jwt/SignatureAlgorithm$Companion {
+	public final fun getByName (Ljava/lang/String;Z)Lcom/chrynan/krypt/jwt/SignatureAlgorithm;
+	public static synthetic fun getByName$default (Lcom/chrynan/krypt/jwt/SignatureAlgorithm$Companion;Ljava/lang/String;ZILjava/lang/Object;)Lcom/chrynan/krypt/jwt/SignatureAlgorithm;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/chrynan/krypt/jwt/SignatureAlgorithm$Family : java/lang/Enum {
+	public static final field Companion Lcom/chrynan/krypt/jwt/SignatureAlgorithm$Family$Companion;
+	public static final field ECDSA Lcom/chrynan/krypt/jwt/SignatureAlgorithm$Family;
+	public static final field HMAC Lcom/chrynan/krypt/jwt/SignatureAlgorithm$Family;
+	public static final field NONE Lcom/chrynan/krypt/jwt/SignatureAlgorithm$Family;
+	public static final field RSA Lcom/chrynan/krypt/jwt/SignatureAlgorithm$Family;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getTypeName ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/chrynan/krypt/jwt/SignatureAlgorithm$Family;
+	public static fun values ()[Lcom/chrynan/krypt/jwt/SignatureAlgorithm$Family;
+}
+
+public final class com/chrynan/krypt/jwt/SignatureAlgorithm$Family$Companion {
+	public final fun getByName (Ljava/lang/String;Z)Lcom/chrynan/krypt/jwt/SignatureAlgorithm$Family;
+	public static synthetic fun getByName$default (Lcom/chrynan/krypt/jwt/SignatureAlgorithm$Family$Companion;Ljava/lang/String;ZILjava/lang/Object;)Lcom/chrynan/krypt/jwt/SignatureAlgorithm$Family;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/chrynan/krypt/jwt/SignatureAlgorithmKey {
+	public final fun component1 ()Lcom/chrynan/krypt/core/Key;
+	public final fun component2 ()Lcom/chrynan/krypt/jwt/SignatureAlgorithm;
+	public final fun copy (Lcom/chrynan/krypt/core/Key;Lcom/chrynan/krypt/jwt/SignatureAlgorithm;)Lcom/chrynan/krypt/jwt/SignatureAlgorithmKey;
+	public static synthetic fun copy$default (Lcom/chrynan/krypt/jwt/SignatureAlgorithmKey;Lcom/chrynan/krypt/core/Key;Lcom/chrynan/krypt/jwt/SignatureAlgorithm;ILjava/lang/Object;)Lcom/chrynan/krypt/jwt/SignatureAlgorithmKey;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAlgorithm ()Lcom/chrynan/krypt/jwt/SignatureAlgorithm;
+	public final fun getKey ()Lcom/chrynan/krypt/core/Key;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/jwt/SignatureAlgorithmKt {
+	public static final fun isEllipticCurve (Lcom/chrynan/krypt/jwt/SignatureAlgorithm;)Z
+	public static final fun isHmac (Lcom/chrynan/krypt/jwt/SignatureAlgorithm;)Z
+	public static final fun isRsa (Lcom/chrynan/krypt/jwt/SignatureAlgorithm;)Z
+}
+
+public final class com/chrynan/krypt/jwt/SigningUtilsKt {
+	public static final fun safeCompact (Lcom/chrynan/krypt/jwt/JWT;Lkotlinx/serialization/json/Json;Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/KSerializer;Lcom/chrynan/krypt/encoding/Encoder;)Ljava/lang/String;
+	public static synthetic fun safeCompact$default (Lcom/chrynan/krypt/jwt/JWT;Lkotlinx/serialization/json/Json;Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/KSerializer;Lcom/chrynan/krypt/encoding/Encoder;ILjava/lang/Object;)Ljava/lang/String;
+	public static final fun signWith (Lcom/chrynan/krypt/jwt/JWT;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+

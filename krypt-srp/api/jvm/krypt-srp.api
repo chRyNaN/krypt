@@ -1,0 +1,83 @@
+public final class com/chrynan/krypt/srp/Client {
+	public fun <init> (Lcom/chrynan/krypt/srp/Group;Lcom/chrynan/krypt/srp/SrpHashFunction;Lcom/chrynan/krypt/csprng/SecureRandom;Lkotlin/jvm/functions/Function1;Lcom/chrynan/krypt/srp/SrpKeyPairGenerator;)V
+	public synthetic fun <init> (Lcom/chrynan/krypt/srp/Group;Lcom/chrynan/krypt/srp/SrpHashFunction;Lcom/chrynan/krypt/csprng/SecureRandom;Lkotlin/jvm/functions/Function1;Lcom/chrynan/krypt/srp/SrpKeyPairGenerator;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun calculateVerifier (Lcom/chrynan/krypt/core/SecureString;Lcom/chrynan/krypt/core/SecureString;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun generateKeyPair (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun processChallenge-lVixayg (Lcom/chrynan/krypt/srp/SrpKeyPair;Lcom/chrynan/krypt/core/SecureString;Lcom/chrynan/krypt/core/SecureString;[BLcom/ionspin/kotlin/bignum/integer/BigInteger;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun verifySession-VU-fvBY (Lcom/chrynan/krypt/srp/SessionKey;[B)Z
+}
+
+public abstract interface class com/chrynan/krypt/srp/Group {
+	public static final field Companion Lcom/chrynan/krypt/srp/Group$Companion;
+	public abstract fun getGenerator ()Lcom/ionspin/kotlin/bignum/integer/BigInteger;
+	public abstract fun getPrime ()Lcom/ionspin/kotlin/bignum/integer/BigInteger;
+}
+
+public final class com/chrynan/krypt/srp/Group$Companion {
+}
+
+public final class com/chrynan/krypt/srp/GroupKt {
+	public static final fun Group (Lcom/ionspin/kotlin/bignum/integer/BigInteger;Lcom/ionspin/kotlin/bignum/integer/BigInteger;)Lcom/chrynan/krypt/srp/Group;
+	public static final fun Group (Ljava/lang/String;II)Lcom/chrynan/krypt/srp/Group;
+	public static synthetic fun Group$default (Ljava/lang/String;IIILjava/lang/Object;)Lcom/chrynan/krypt/srp/Group;
+	public static final fun getG (Lcom/chrynan/krypt/srp/Group;)Lcom/ionspin/kotlin/bignum/integer/BigInteger;
+	public static final fun getN (Lcom/chrynan/krypt/srp/Group;)Lcom/ionspin/kotlin/bignum/integer/BigInteger;
+	public static final fun getN2048 (Lcom/chrynan/krypt/srp/Group$Companion;)Lcom/chrynan/krypt/srp/Group;
+	public static final fun getN4096 (Lcom/chrynan/krypt/srp/Group$Companion;)Lcom/chrynan/krypt/srp/Group;
+}
+
+public final class com/chrynan/krypt/srp/Host {
+	public fun <init> (Lcom/chrynan/krypt/srp/Group;Lcom/chrynan/krypt/srp/SrpHashFunction;Lcom/chrynan/krypt/csprng/SecureRandom;Lcom/chrynan/krypt/srp/SrpKeyPairGenerator;)V
+	public synthetic fun <init> (Lcom/chrynan/krypt/srp/Group;Lcom/chrynan/krypt/srp/SrpHashFunction;Lcom/chrynan/krypt/csprng/SecureRandom;Lcom/chrynan/krypt/srp/SrpKeyPairGenerator;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun generateKeyPair (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun verifySession-SEHPEcU (Lcom/chrynan/krypt/srp/SrpKeyPair;Lcom/chrynan/krypt/core/SecureString;[BLcom/ionspin/kotlin/bignum/integer/BigInteger;Lcom/ionspin/kotlin/bignum/integer/BigInteger;[BLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/chrynan/krypt/srp/SessionKey : com/chrynan/krypt/core/RedactedProperty {
+	public synthetic fun <init> ([B[B[BLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getClientProof-TcUX1vc ()[B
+	public final fun getHostProof-TcUX1vc ()[B
+	public synthetic fun getValue ()Ljava/lang/Object;
+	public fun hashCode ()I
+}
+
+public abstract interface class com/chrynan/krypt/srp/SrpHashFunction : com/chrynan/krypt/core/HashFunction {
+	public abstract fun invoke-euJbpgo ([BLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/chrynan/krypt/srp/SrpHashFunctionKt {
+	public static final fun invoke (Lcom/chrynan/krypt/srp/SrpHashFunction;Lcom/ionspin/kotlin/bignum/integer/BigInteger;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun invoke (Lcom/chrynan/krypt/srp/SrpHashFunction;Ljava/lang/CharSequence;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/chrynan/krypt/srp/SrpKeyPair : com/chrynan/krypt/core/KeyPair {
+	public fun <init> (Lcom/chrynan/krypt/core/PublicRedactedProperty;Lcom/chrynan/krypt/core/PublicRedactedProperty;)V
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getPrivateKey ()Lcom/chrynan/krypt/core/PublicRedactedProperty;
+	public synthetic fun getPrivateKey ()Ljava/lang/Object;
+	public fun getPublicKey ()Lcom/chrynan/krypt/core/PublicRedactedProperty;
+	public synthetic fun getPublicKey ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class com/chrynan/krypt/srp/SrpKeyPairGenerator : com/chrynan/krypt/core/KeyPairGenerator {
+	public abstract fun getAlgorithm ()Ljava/lang/String;
+	public abstract fun invoke (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/chrynan/krypt/srp/SrpKeyPairGenerator$DefaultImpls {
+	public static fun getAlgorithm (Lcom/chrynan/krypt/srp/SrpKeyPairGenerator;)Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/srp/VerifierResult {
+	public synthetic fun <init> (Lcom/chrynan/krypt/core/SecureString;[BLcom/ionspin/kotlin/bignum/integer/BigInteger;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getIdentifier ()Lcom/chrynan/krypt/core/SecureString;
+	public final fun getSalt-TcUX1vc ()[B
+	public final fun getVerifier ()Lcom/ionspin/kotlin/bignum/integer/BigInteger;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+

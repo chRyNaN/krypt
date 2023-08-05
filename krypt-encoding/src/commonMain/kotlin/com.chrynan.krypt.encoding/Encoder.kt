@@ -6,8 +6,8 @@ import okio.ByteString
 
 /**
  * A utility that can convert a [ByteArray] input type in one format to either a [ByteArray] or [String] type in
- * another format. An [Encoder] will data to a particular, whereas, a [Decoder] will decode from that format into the
- * original format.
+ * another format. An [Encoder] will convert data to a particular, whereas, a [Decoder] will decode from that format
+ * into the original format.
  */
 interface Encoder {
 

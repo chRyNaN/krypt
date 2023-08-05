@@ -1,0 +1,44 @@
+public abstract class com/chrynan/krypt/csprng/AbstractSecureRandom : kotlin/random/Random {
+	public final fun nextBits (I)I
+	public abstract fun nextBytes ([BII)[B
+}
+
+public final class com/chrynan/krypt/csprng/RandomUtilsKt {
+	public static final fun nextChar (Lkotlin/random/Random;[C)C
+	public static synthetic fun nextChar$default (Lkotlin/random/Random;[CILjava/lang/Object;)C
+	public static final fun nextCharArray (Lkotlin/random/Random;I[C)[C
+	public static synthetic fun nextCharArray$default (Lkotlin/random/Random;I[CILjava/lang/Object;)[C
+	public static final fun nextString (Lkotlin/random/Random;I[C)Ljava/lang/String;
+	public static synthetic fun nextString$default (Lkotlin/random/Random;I[CILjava/lang/Object;)Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/csprng/SecureRandom : com/chrynan/krypt/csprng/AbstractSecureRandom {
+	public static final field Companion Lcom/chrynan/krypt/csprng/SecureRandom$Companion;
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;)V
+	public fun <init> (Ljava/security/SecureRandom;)V
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun generateSeed (I)[B
+	public fun hashCode ()I
+	public fun nextBoolean ()Z
+	public fun nextBytes ([B)[B
+	public fun nextBytes ([BII)[B
+	public fun nextDouble ()D
+	public fun nextFloat ()F
+	public final fun nextGaussian ()D
+	public fun nextInt ()I
+	public fun nextInt (I)I
+	public fun nextLong ()J
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/csprng/SecureRandom$Companion {
+}
+
+public final class com/chrynan/krypt/csprng/android/BuildConfig {
+	public static final field BUILD_TYPE Ljava/lang/String;
+	public static final field DEBUG Z
+	public static final field LIBRARY_PACKAGE_NAME Ljava/lang/String;
+	public fun <init> ()V
+}
+

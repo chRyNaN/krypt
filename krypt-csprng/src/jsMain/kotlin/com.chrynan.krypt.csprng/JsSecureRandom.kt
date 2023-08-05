@@ -4,23 +4,29 @@ package com.chrynan.krypt.csprng
 
 import com.chrynan.krypt.core.isNodeJs
 import kotlin.js.*
-import kotlin.random.Random
 
-actual class SecureRandom actual constructor() : Random() {
+actual class SecureRandom actual constructor() : AbstractSecureRandom() {
 
     private val cryptoJs by lazy { cryptoJs() }
 
-    actual override fun nextBits(bitCount: Int): Int {
-        require(bitCount in 0..32) { "bitCount property must be in the range 0 to 32." }
+    actual override fun nextBytes(array: ByteArray, fromIndex: Int, toIndex: Int): ByteArray {
+        cryptoJs.getRandomValues(array)
 
-        if (bitCount == 0) return 0
-
-        val bytes = ByteArray(bitCount.bytesPerBitCount())
-
-        cryptoJs.getRandomValues(bytes)
-
-        return bytes.toInt()
+        return array
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is SecureRandom) return false
+
+        return cryptoJs == other.cryptoJs
+    }
+
+    override fun hashCode(): Int =
+        cryptoJs.hashCode()
+
+    override fun toString(): String =
+        "SecureRandom()"
 
     actual companion object
 }

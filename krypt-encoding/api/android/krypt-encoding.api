@@ -1,0 +1,155 @@
+public abstract interface class com/chrynan/krypt/encoding/Base64Decoder : com/chrynan/krypt/encoding/ByteStringDecoder, com/chrynan/krypt/encoding/Decoder {
+	public abstract fun decodeToByteArray (Ljava/lang/String;)[B
+	public abstract fun decodeToString (Ljava/lang/String;)Ljava/lang/String;
+	public abstract fun getType ()Lcom/chrynan/krypt/encoding/Base64Type;
+}
+
+public final class com/chrynan/krypt/encoding/Base64Decoder$DefaultImpls {
+	public static fun decodeToByteArray (Lcom/chrynan/krypt/encoding/Base64Decoder;Ljava/lang/String;)[B
+	public static fun decodeToByteArray (Lcom/chrynan/krypt/encoding/Base64Decoder;Lokio/ByteString;)[B
+	public static fun decodeToString (Lcom/chrynan/krypt/encoding/Base64Decoder;Ljava/lang/String;)Ljava/lang/String;
+	public static fun decodeToString (Lcom/chrynan/krypt/encoding/Base64Decoder;Lokio/ByteString;)Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/encoding/Base64DecoderKt {
+	public static final fun Base64Decoder (Lcom/chrynan/krypt/encoding/Base64Type;Z)Lcom/chrynan/krypt/encoding/Base64Decoder;
+	public static final fun Base64Decoder (Z)Lcom/chrynan/krypt/encoding/Base64Decoder;
+	public static synthetic fun Base64Decoder$default (Lcom/chrynan/krypt/encoding/Base64Type;ZILjava/lang/Object;)Lcom/chrynan/krypt/encoding/Base64Decoder;
+	public static synthetic fun Base64Decoder$default (ZILjava/lang/Object;)Lcom/chrynan/krypt/encoding/Base64Decoder;
+	public static final fun Base64MimeDecoder (Z)Lcom/chrynan/krypt/encoding/Base64Decoder;
+	public static synthetic fun Base64MimeDecoder$default (ZILjava/lang/Object;)Lcom/chrynan/krypt/encoding/Base64Decoder;
+	public static final fun Base64UrlDecoder (Z)Lcom/chrynan/krypt/encoding/Base64Decoder;
+	public static synthetic fun Base64UrlDecoder$default (ZILjava/lang/Object;)Lcom/chrynan/krypt/encoding/Base64Decoder;
+}
+
+public abstract interface class com/chrynan/krypt/encoding/Base64Encoder : com/chrynan/krypt/encoding/ByteStringEncoder, com/chrynan/krypt/encoding/Encoder {
+	public abstract fun encodeToByteArray (Ljava/lang/String;)[B
+	public abstract fun encodeToString (Ljava/lang/String;)Ljava/lang/String;
+	public abstract fun getType ()Lcom/chrynan/krypt/encoding/Base64Type;
+	public abstract fun test ()V
+}
+
+public final class com/chrynan/krypt/encoding/Base64Encoder$DefaultImpls {
+	public static fun encodeToByteArray (Lcom/chrynan/krypt/encoding/Base64Encoder;Ljava/lang/String;)[B
+	public static fun encodeToByteArray (Lcom/chrynan/krypt/encoding/Base64Encoder;Lokio/ByteString;)[B
+	public static fun encodeToString (Lcom/chrynan/krypt/encoding/Base64Encoder;Ljava/lang/String;)Ljava/lang/String;
+	public static fun encodeToString (Lcom/chrynan/krypt/encoding/Base64Encoder;Lokio/ByteString;)Ljava/lang/String;
+	public static fun test (Lcom/chrynan/krypt/encoding/Base64Encoder;)V
+}
+
+public final class com/chrynan/krypt/encoding/Base64EncoderKt {
+	public static final fun Base64Encoder (Lcom/chrynan/krypt/encoding/Base64Type;Z)Lcom/chrynan/krypt/encoding/Base64Encoder;
+	public static final fun Base64Encoder (Z)Lcom/chrynan/krypt/encoding/Base64Encoder;
+	public static synthetic fun Base64Encoder$default (Lcom/chrynan/krypt/encoding/Base64Type;ZILjava/lang/Object;)Lcom/chrynan/krypt/encoding/Base64Encoder;
+	public static synthetic fun Base64Encoder$default (ZILjava/lang/Object;)Lcom/chrynan/krypt/encoding/Base64Encoder;
+	public static final fun Base64MimeEncoder (Z)Lcom/chrynan/krypt/encoding/Base64Encoder;
+	public static synthetic fun Base64MimeEncoder$default (ZILjava/lang/Object;)Lcom/chrynan/krypt/encoding/Base64Encoder;
+	public static final fun Base64UrlEncoder (Z)Lcom/chrynan/krypt/encoding/Base64Encoder;
+	public static synthetic fun Base64UrlEncoder$default (ZILjava/lang/Object;)Lcom/chrynan/krypt/encoding/Base64Encoder;
+}
+
+public final class com/chrynan/krypt/encoding/Base64Type : java/lang/Enum {
+	public static final field Companion Lcom/chrynan/krypt/encoding/Base64Type$Companion;
+	public static final field DEFAULT Lcom/chrynan/krypt/encoding/Base64Type;
+	public static final field MIME Lcom/chrynan/krypt/encoding/Base64Type;
+	public static final field URL Lcom/chrynan/krypt/encoding/Base64Type;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getTypeName ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/chrynan/krypt/encoding/Base64Type;
+	public static fun values ()[Lcom/chrynan/krypt/encoding/Base64Type;
+}
+
+public final class com/chrynan/krypt/encoding/Base64Type$Companion {
+	public final fun getByName (Ljava/lang/String;Z)Lcom/chrynan/krypt/encoding/Base64Type;
+	public static synthetic fun getByName$default (Lcom/chrynan/krypt/encoding/Base64Type$Companion;Ljava/lang/String;ZILjava/lang/Object;)Lcom/chrynan/krypt/encoding/Base64Type;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/chrynan/krypt/encoding/BitEncoder : com/chrynan/krypt/encoding/Encoder {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;ZZZ)V
+	public synthetic fun <init> (Ljava/lang/String;ZZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun encodeToByteArray ([B)[B
+	public fun encodeToString ([B)Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/encoding/BitEncoderKt {
+	public static final fun encodeToBitString ([BLjava/lang/String;ZZZ)Ljava/lang/String;
+	public static synthetic fun encodeToBitString$default ([BLjava/lang/String;ZZZILjava/lang/Object;)Ljava/lang/String;
+}
+
+public abstract interface class com/chrynan/krypt/encoding/ByteStringDecoder : com/chrynan/krypt/encoding/Decoder {
+	public abstract fun decodeToByteArray (Lokio/ByteString;)[B
+	public abstract fun decodeToString (Lokio/ByteString;)Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/encoding/ByteStringDecoder$DefaultImpls {
+	public static fun decodeToByteArray (Lcom/chrynan/krypt/encoding/ByteStringDecoder;Lokio/ByteString;)[B
+	public static fun decodeToString (Lcom/chrynan/krypt/encoding/ByteStringDecoder;Lokio/ByteString;)Ljava/lang/String;
+}
+
+public abstract interface class com/chrynan/krypt/encoding/ByteStringEncoder : com/chrynan/krypt/encoding/Encoder {
+	public abstract fun encodeToByteArray (Lokio/ByteString;)[B
+	public abstract fun encodeToString (Lokio/ByteString;)Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/encoding/ByteStringEncoder$DefaultImpls {
+	public static fun encodeToByteArray (Lcom/chrynan/krypt/encoding/ByteStringEncoder;Lokio/ByteString;)[B
+	public static fun encodeToString (Lcom/chrynan/krypt/encoding/ByteStringEncoder;Lokio/ByteString;)Ljava/lang/String;
+}
+
+public abstract interface class com/chrynan/krypt/encoding/Decoder {
+	public abstract fun decodeToByteArray ([B)[B
+	public abstract fun decodeToString ([B)Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/encoding/DecoderKt {
+	public static final fun decodeUtf8ToByteArray (Lcom/chrynan/krypt/encoding/Decoder;Ljava/lang/String;)[B
+	public static final fun decodeUtf8ToString (Lcom/chrynan/krypt/encoding/Decoder;Ljava/lang/String;)Ljava/lang/String;
+}
+
+public abstract interface class com/chrynan/krypt/encoding/Encoder {
+	public abstract fun encodeToByteArray ([B)[B
+	public abstract fun encodeToString ([B)Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/encoding/EncoderKt {
+	public static final fun encodeUtf8ToByteArray (Lcom/chrynan/krypt/encoding/Encoder;Ljava/lang/String;)[B
+	public static final fun encodeUtf8ToString (Lcom/chrynan/krypt/encoding/Encoder;Ljava/lang/String;)Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/encoding/HexDecoder : com/chrynan/krypt/encoding/Decoder {
+	public fun <init> ()V
+	public final fun decodeToByteArray (Ljava/lang/String;)[B
+	public fun decodeToByteArray ([B)[B
+	public fun decodeToString ([B)Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/encoding/HexDecoderKt {
+	public static final fun decodeHexToByteArray (Ljava/lang/String;)[B
+}
+
+public final class com/chrynan/krypt/encoding/HexEncoder : com/chrynan/krypt/encoding/Encoder {
+	public static final field Companion Lcom/chrynan/krypt/encoding/HexEncoder$Companion;
+	public fun <init> ()V
+	public fun <init> (Z)V
+	public synthetic fun <init> (ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun encodeToByteArray ([B)[B
+	public fun encodeToString ([B)Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/encoding/HexEncoder$Companion {
+}
+
+public final class com/chrynan/krypt/encoding/HexEncoderKt {
+	public static final fun encodeToHexString ([BZ)Ljava/lang/String;
+	public static synthetic fun encodeToHexString$default ([BZILjava/lang/Object;)Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/encoding/android/BuildConfig {
+	public static final field BUILD_TYPE Ljava/lang/String;
+	public static final field DEBUG Z
+	public static final field LIBRARY_PACKAGE_NAME Ljava/lang/String;
+	public fun <init> ()V
+}
+

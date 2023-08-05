@@ -2,12 +2,7 @@
 
 package com.chrynan.krypt.csprng
 
-import com.chrynan.krypt.core.SecureString
-import com.chrynan.krypt.core.toSecureString
-import java.nio.charset.Charset
-import kotlin.random.Random
-
-actual class SecureRandom : Random {
+actual class SecureRandom : AbstractSecureRandom {
 
     private val javaSecureRandom: java.security.SecureRandom
 
@@ -23,12 +18,19 @@ actual class SecureRandom : Random {
         this.javaSecureRandom = javaSecureRandom
     }
 
-    actual override fun nextBits(bitCount: Int): Int {
-        require(bitCount in 0..32) { "bitCount property must be in the range 0 to 32." }
+    constructor(algorithmName: String?) : super() {
+        javaSecureRandom = algorithmName?.let { java.security.SecureRandom.getInstance(it) }
+            ?: try {
+                java.security.SecureRandom.getInstanceStrong()
+            } catch (e: Exception) {
+                java.security.SecureRandom()
+            }
+    }
 
-        if (bitCount == 0) return 0
+    actual override fun nextBytes(array: ByteArray, fromIndex: Int, toIndex: Int): ByteArray {
+        javaSecureRandom.nextBytes(array)
 
-        return javaSecureRandom.nextInt().takeUpperBits(bitCount = bitCount)
+        return array.copyOfRange(fromIndex = fromIndex, toIndex = toIndex)
     }
 
     override fun nextBoolean(): Boolean = javaSecureRandom.nextBoolean()
@@ -52,29 +54,18 @@ actual class SecureRandom : Random {
 
     fun generateSeed(numBytes: Int): ByteArray = javaSecureRandom.generateSeed(numBytes)
 
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is SecureRandom) return false
+
+        return javaSecureRandom == other.javaSecureRandom
+    }
+
+    override fun hashCode(): Int =
+        javaSecureRandom.hashCode()
+
+    override fun toString(): String =
+        "SecureRandom(javaSecureRandom=$javaSecureRandom)"
+
     actual companion object
-}
-
-fun SecureRandom(algorithmName: String?): SecureRandom {
-    val javaSecureRandom = algorithmName?.let { java.security.SecureRandom.getInstance(it) }
-        ?: try {
-            java.security.SecureRandom.getInstanceStrong()
-        } catch (e: Exception) {
-            java.security.SecureRandom()
-        }
-
-    return SecureRandom(javaSecureRandom = javaSecureRandom)
-}
-
-/**
- * Retrieves a [ByteArray] from this [SecureRandom] to be used as a salt, which is typically used when hashing
- * passwords. This is a convenience function which delegates to the [SecureRandom.nextBytes] function.
- *
- * @param [byteCount] The size of the returned [ByteArray].
- * @param [charset] The [Charset] used for the returned salt. Defaults to [Charsets.UTF_8].
- */
-fun SecureRandom.nextSaltString(byteCount: Int = 16, charset: Charset = Charsets.UTF_8): SecureString {
-    val bytes = nextSalt(byteCount = byteCount)
-
-    return bytes.toString(charset).toSecureString()
 }

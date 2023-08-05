@@ -2,63 +2,58 @@
 
 package com.chrynan.krypt.csprng
 
-import com.chrynan.krypt.core.SecureString
-import com.chrynan.krypt.uuid.Uuid
-import kotlin.experimental.and
-import kotlin.experimental.or
+import com.chrynan.krypt.core.toInt
 import kotlin.random.Random
 
 /**
- * A cryptographically strong pseudo-random number generator (CSPRNG) which implements the [Random] interface. This
- * class should be suitable for use in cryptography.
+ * The base class of all [SecureRandom] implementations.
  *
- * On the JVM and Android, this delegates to the
- * [java.security.SecureRandom class](https://docs.oracle.com/javase/8/docs/api/java/security/SecureRandom.html).
+ * @see [SecureRandom] for more details.
+ */
+abstract class AbstractSecureRandom internal constructor() : Random() {
+
+    final override fun nextBits(bitCount: Int): Int {
+        require(bitCount in 0..32) { "'bitCount' property must be in the range 0 to 32." }
+
+        if (bitCount == 0) return 0
+
+        val bytes = nextBytes(array = ByteArray(size = bitCount))
+
+        return bytes.toInt().takeUpperBits(bitCount)
+    }
+
+    abstract override fun nextBytes(array: ByteArray, fromIndex: Int, toIndex: Int): ByteArray
+}
+
+/**
+ * A cryptographically strong pseudo-random number generator (CSPRNG) which implements the [Random] abstract class.
+ * This class should be suitable for use in cryptography.
  *
- * For JS, this uses the
- * [Crypto.getRandomValues](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues) function to
- * generate cryptographically strong random data.
+ * **Note:** that [SecureRandom] implementations are not guaranteed to be thread safe. It is up to the call-site to use
+ * it in a thread safe manner.
  *
- * And for iOS, this uses the
- * [SecureRandomCopyBytes](https://developer.apple.com/documentation/security/1399291-secrandomcopybytes) function to
- * generate cryptographically strong random data.
+ * ## Implementation Highlights
+ *
+ * ### JVM and Android:
+ * [java.security.SecureRandom class](https://docs.oracle.com/javase/8/docs/api/java/security/SecureRandom.html)
+ *
+ * ### JS:
+ * [Crypto.getRandomValues](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues)
+ *
+ * ### iOS and Mac:
+ * [SecureRandomCopyBytes](https://developer.apple.com/documentation/security/1399291-secrandomcopybytes)
+ *
+ * ### Windows:
+ * [bcryptgenrandom](https://learn.microsoft.com/en-us/windows/win32/api/bcrypt/nf-bcrypt-bcryptgenrandom)
+ *
+ * ### Linux:
+ * [getrandom](https://man7.org/linux/man-pages/man2/getrandom.2.html) / `/dev/urandom`
  *
  * @see [Wikipedia explanation](https://en.wikipedia.org/wiki/Cryptographically-secure_pseudorandom_number_generator)
  */
-expect class SecureRandom constructor() : Random {
+expect class SecureRandom() : AbstractSecureRandom {
 
-    override fun nextBits(bitCount: Int): Int
+    override fun nextBytes(array: ByteArray, fromIndex: Int, toIndex: Int): ByteArray
 
     companion object
 }
-
-/**
- * Gets the next random [SecureString] with the provided [length] and supported [characters].
- */
-fun SecureRandom.nextSecureString(length: Int, characters: CharArray = ALPHA_NUMERIC_CHARS): SecureString {
-    val charArray = nextCharArray(length = length, characters = characters)
-    return SecureString(chars = charArray, eraseSource = true)
-}
-
-/**
- * Gets the next random [Uuid].
- */
-fun SecureRandom.nextUuid(): Uuid {
-    var randomBytes = ByteArray(16)
-    randomBytes = nextBytes(randomBytes)
-
-    randomBytes[6] = randomBytes[6] and 0x0f /* clear version        */
-    randomBytes[6] = randomBytes[6] or 0x40 /* set to version 4     */
-    randomBytes[8] = randomBytes[8] and 0x3f /* clear variant        */
-    randomBytes[8] = randomBytes[8] or 0x80.toByte() /* set to IETF variant  */
-
-    return Uuid.from(randomBytes)
-}
-
-/**
- * Retrieves a [ByteArray] from this [SecureRandom] to be used as a salt, which is typically used when hashing
- * passwords. This is a convenience function which delegates to the [SecureRandom.nextBytes] function.
- *
- * @param [byteCount] The size of the returned [ByteArray].
- */
-fun SecureRandom.nextSalt(byteCount: Int = 16): ByteArray = nextBytes(byteCount)
