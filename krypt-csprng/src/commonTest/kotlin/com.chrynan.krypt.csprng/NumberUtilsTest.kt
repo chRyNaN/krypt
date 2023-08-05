@@ -1,6 +1,5 @@
 package com.chrynan.krypt.csprng
 
-import com.chrynan.krypt.csprng.bytesPerBitCount
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

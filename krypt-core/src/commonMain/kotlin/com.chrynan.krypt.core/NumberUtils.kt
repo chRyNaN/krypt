@@ -40,6 +40,8 @@ fun ByteArray.toInt(
 ): Int {
     require(endExclusive > startInclusive) { "startInclusive value must be less than endExclusive value." }
     require((endExclusive - startInclusive) < 5) { "Cannot convert more than 4 bytes to an Int, as an Int value is 32-bits (4 bytes)." }
+    require(startInclusive in indices) { "startInclusive value must be within the ByteArray indices range." }
+    require(endExclusive in 0..size) { "endExclusive value must not be greater than the size of the ByteArray and must not be less than zero." }
 
     var result = 0
 
@@ -82,6 +84,8 @@ fun ByteArray.toLong(
 ): Long {
     require(endExclusive > startInclusive) { "startInclusive value must be less than endExclusive value." }
     require((endExclusive - startInclusive) < 9) { "Cannot convert more than 8 bytes to an Long, as a Long value is 64-bits (8 bytes)." }
+    require(startInclusive in indices) { "startInclusive value must be within the ByteArray indices range." }
+    require(endExclusive in 0..size) { "endExclusive value must not be greater than the size of the ByteArray and must not be less than zero." }
 
     var result = 0L
 

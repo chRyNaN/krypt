@@ -21,7 +21,13 @@ kotlin {
     jvm()
 
     js(IR) {
-        browser()
+        browser {
+            testTask {
+                useKarma {
+                    useFirefox()
+                }
+            }
+        }
         nodejs()
     }
 
@@ -51,6 +57,11 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api("com.ionspin.kotlin:bignum:_")
+            }
+        }
+        val commonTest by getting {
+            dependencies {
+                implementation(kotlin("test"))
             }
         }
     }
