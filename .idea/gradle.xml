@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/buildSrc" />
+            <option value="$PROJECT_DIR$/krypt-core" />
+            <option value="$PROJECT_DIR$/krypt-csprng" />
+            <option value="$PROJECT_DIR$/krypt-encoding" />
+            <option value="$PROJECT_DIR$/krypt-hash" />
+            <option value="$PROJECT_DIR$/krypt-hash-argon" />
+            <option value="$PROJECT_DIR$/krypt-jwt" />
+            <option value="$PROJECT_DIR$/krypt-otp" />
+            <option value="$PROJECT_DIR$/krypt-pkce" />
+            <option value="$PROJECT_DIR$/krypt-srp" />
+            <option value="$PROJECT_DIR$/krypt-uuid" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

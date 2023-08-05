@@ -3,32 +3,24 @@ import com.chrynan.krypt.buildSrc.LibraryConstants
 group = LibraryConstants.group
 version = LibraryConstants.versionName
 
-buildscript {
-    repositories {
-        google()
-        jcenter()
-        maven { url = uri("https://repo.repsy.io/mvn/chrynan/public") }
-        maven { url = uri("https://dl.bintray.com/chrynan/chrynan") }
-        maven { url = uri("https://maven.pkg.jetbrains.space/public/p/compose/dev") }
-    }
-    dependencies {
-        classpath("com.android.tools.build:gradle:7.0.4")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.21")
-        classpath("org.jetbrains.dokka:dokka-gradle-plugin:1.7.20")
-        classpath("org.jetbrains.kotlin:kotlin-serialization:1.7.21")
-    }
+plugins {
+    kotlin("jvm") version "1.9.0" apply false
+    kotlin("multiplatform") version "1.9.0" apply false
+    kotlin("android") version "1.9.0" apply false
+    kotlin("plugin.serialization") version "1.9.0" apply false
+    id("com.android.library") version "7.3.1" apply false
+    id("com.android.application") version "7.3.1" apply false
+    id("org.jetbrains.dokka") version "1.8.10"
+    id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.13.2"
+    id("com.mikepenz.aboutlibraries.plugin") version "10.8.3" apply false
 }
-
-apply(plugin = "org.jetbrains.dokka")
 
 allprojects {
     repositories {
         google()
-        jcenter()
         mavenCentral()
         maven { url = uri("https://jitpack.io") }
         maven { url = uri("https://repo.repsy.io/mvn/chrynan/public") }
-        maven { url = uri("https://maven.pkg.jetbrains.space/public/p/compose/dev") }
     }
 }
 

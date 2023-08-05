@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+      website: "https://chrynan.codes"
+contact:
+      website: "https://chrynan.codes"
+title: "krypt"
+type: "software"
+abstract: "Kotlin multiplatform cryptographic utilities."
+license: "Apache-2.0"
+keywords:
+    - "cryptography"
+    - "krypt"
+    - "kotlin"
+    - "kotlin multiplatform"
+    - "hash"
+    - "encoding"
+    - "csprng"
+    - "secure"
+repository-code: "https://github.com/chRyNaN/krypt"
+url: "https://github.com/chRyNaN/krypt"

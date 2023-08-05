@@ -1,4 +1,7 @@
 import com.chrynan.krypt.buildSrc.LibraryConstants
+import com.chrynan.krypt.buildSrc.isBuildingOnLinux
+import com.chrynan.krypt.buildSrc.isBuildingOnOSX
+import com.chrynan.krypt.buildSrc.isBuildingOnWindows
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -12,10 +15,12 @@ group = LibraryConstants.group
 version = LibraryConstants.versionName
 
 kotlin {
-    android {
-        publishAllLibraryVariants()
-    }
+    // Enable the default target hierarchy:
+    targetHierarchy.default()
+
     jvm()
+
+    androidTarget()
 
     sourceSets {
         all {
@@ -28,12 +33,12 @@ kotlin {
         }
         val jvmMain by getting {
             dependencies {
-                implementation("com.password4j:password4j:1.5.4")
+                implementation("com.password4j:password4j:_")
             }
         }
         val androidMain by getting {
             dependencies {
-                implementation("com.password4j:password4j:1.5.4")
+                implementation("com.password4j:password4j:_")
             }
         }
     }

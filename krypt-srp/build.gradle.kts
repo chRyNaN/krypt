@@ -1,4 +1,7 @@
 import com.chrynan.krypt.buildSrc.LibraryConstants
+import com.chrynan.krypt.buildSrc.isBuildingOnLinux
+import com.chrynan.krypt.buildSrc.isBuildingOnOSX
+import com.chrynan.krypt.buildSrc.isBuildingOnWindows
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -12,21 +15,33 @@ group = LibraryConstants.group
 version = LibraryConstants.versionName
 
 kotlin {
-    android {
-        publishAllLibraryVariants()
-    }
+    // Enable the default target hierarchy:
+    targetHierarchy.default()
+
     jvm()
-    ios()
-    iosSimulatorArm64()
-    js(BOTH) {
-        browser {
-            testTask {
-                useKarma {
-                    useFirefox()
-                }
-            }
-        }
+
+    js(IR) {
+        browser()
         nodejs()
+    }
+
+    androidTarget()
+
+    if (isBuildingOnOSX()) {
+        ios()
+        iosSimulatorArm64()
+        tvos()
+        watchos()
+        macosX64()
+        macosArm64()
+    }
+
+    if (isBuildingOnLinux()) {
+        linuxX64()
+    }
+
+    if (isBuildingOnWindows()) {
+        mingwX64()
     }
 
     sourceSets {
@@ -38,21 +53,18 @@ kotlin {
                 implementation(project(":krypt-core"))
                 implementation(project(":krypt-csprng"))
 
-                implementation("com.ionspin.kotlin:bignum:0.3.3")
+                implementation("com.ionspin.kotlin:bignum:_")
 
-                implementation("com.squareup.okio:okio:3.2.0")
+                implementation("com.squareup.okio:okio:_")
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
 
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:_")
             }
         }
-        val iosMain by sourceSets.getting
-        val iosSimulatorArm64Main by sourceSets.getting
-        iosSimulatorArm64Main.dependsOn(iosMain)
     }
 }
 

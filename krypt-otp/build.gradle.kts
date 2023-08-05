@@ -1,4 +1,7 @@
 import com.chrynan.krypt.buildSrc.LibraryConstants
+import com.chrynan.krypt.buildSrc.isBuildingOnLinux
+import com.chrynan.krypt.buildSrc.isBuildingOnOSX
+import com.chrynan.krypt.buildSrc.isBuildingOnWindows
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -12,21 +15,33 @@ group = LibraryConstants.group
 version = LibraryConstants.versionName
 
 kotlin {
-    android {
-        publishAllLibraryVariants()
-    }
+    // Enable the default target hierarchy:
+    targetHierarchy.default()
+
     jvm()
-    ios()
-    iosSimulatorArm64()
-    js(BOTH) {
-        browser {
-            testTask {
-                useKarma {
-                    useFirefox()
-                }
-            }
-        }
+
+    js(IR) {
+        browser()
         nodejs()
+    }
+
+    androidTarget()
+
+    if (isBuildingOnOSX()) {
+        ios()
+        iosSimulatorArm64()
+        tvos()
+        watchos()
+        macosX64()
+        macosArm64()
+    }
+
+    if (isBuildingOnLinux()) {
+        linuxX64()
+    }
+
+    if (isBuildingOnWindows()) {
+        mingwX64()
     }
 
     sourceSets {
@@ -37,12 +52,9 @@ kotlin {
             dependencies {
                 implementation(project(":krypt-core"))
 
-                api("com.chrynan.time:time-core:0.8.0")
+              implementation(KotlinX.datetime)
             }
         }
-        val iosMain by sourceSets.getting
-        val iosSimulatorArm64Main by sourceSets.getting
-        iosSimulatorArm64Main.dependsOn(iosMain)
     }
 }
 
