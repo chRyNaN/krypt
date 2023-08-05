@@ -3,17 +3,13 @@
 package com.chrynan.krypt.csprng
 
 import android.os.Build
-import com.chrynan.krypt.core.SecureString
-import com.chrynan.krypt.core.toSecureString
-import java.nio.charset.Charset
-import kotlin.random.Random
 
-actual class SecureRandom : Random {
+actual class SecureRandom : AbstractSecureRandom {
 
-    private val javaSecureRandom: java.security.SecureRandom
+    private val androidSecureRandom: java.security.SecureRandom
 
     actual constructor() : super() {
-        javaSecureRandom = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        androidSecureRandom = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             try {
                 java.security.SecureRandom.getInstanceStrong()
             } catch (e: Exception) {
@@ -25,66 +21,62 @@ actual class SecureRandom : Random {
     }
 
     constructor(javaSecureRandom: java.security.SecureRandom) : super() {
-        this.javaSecureRandom = javaSecureRandom
+        this.androidSecureRandom = javaSecureRandom
     }
 
-    actual override fun nextBits(bitCount: Int): Int {
-        require(bitCount in 0..32) { "bitCount property must be in the range 0 to 32." }
-
-        if (bitCount == 0) return 0
-
-        return javaSecureRandom.nextInt().takeUpperBits(bitCount = bitCount)
+    constructor(algorithmName: String?) : super() {
+        androidSecureRandom = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            algorithmName?.let { java.security.SecureRandom.getInstance(it) }
+                ?: try {
+                    java.security.SecureRandom.getInstanceStrong()
+                } catch (e: Exception) {
+                    java.security.SecureRandom()
+                }
+        } else {
+            algorithmName?.let { java.security.SecureRandom.getInstance(it) }
+                ?: java.security.SecureRandom()
+        }
     }
 
-    override fun nextBoolean(): Boolean = javaSecureRandom.nextBoolean()
+    actual override fun nextBytes(array: ByteArray, fromIndex: Int, toIndex: Int): ByteArray {
+        androidSecureRandom.nextBytes(array)
 
-    override fun nextInt(): Int = javaSecureRandom.nextInt()
+        return array.copyOfRange(fromIndex = fromIndex, toIndex = toIndex)
+    }
 
-    override fun nextInt(until: Int): Int = javaSecureRandom.nextInt()
+    override fun nextBoolean(): Boolean = androidSecureRandom.nextBoolean()
 
-    override fun nextLong(): Long = javaSecureRandom.nextLong()
+    override fun nextInt(): Int = androidSecureRandom.nextInt()
+
+    override fun nextInt(until: Int): Int = androidSecureRandom.nextInt()
+
+    override fun nextLong(): Long = androidSecureRandom.nextLong()
 
     override fun nextBytes(array: ByteArray): ByteArray {
-        javaSecureRandom.nextBytes(array)
+        androidSecureRandom.nextBytes(array)
         return array
     }
 
-    override fun nextFloat(): Float = javaSecureRandom.nextFloat()
+    override fun nextFloat(): Float = androidSecureRandom.nextFloat()
 
-    override fun nextDouble(): Double = javaSecureRandom.nextDouble()
+    override fun nextDouble(): Double = androidSecureRandom.nextDouble()
 
-    fun nextGaussian(): Double = javaSecureRandom.nextGaussian()
+    fun nextGaussian(): Double = androidSecureRandom.nextGaussian()
 
-    fun generateSeed(numBytes: Int): ByteArray = javaSecureRandom.generateSeed(numBytes)
+    fun generateSeed(numBytes: Int): ByteArray = androidSecureRandom.generateSeed(numBytes)
 
-    actual companion object
-}
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is SecureRandom) return false
 
-fun SecureRandom(algorithmName: String?): SecureRandom {
-    val javaSecureRandom = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        algorithmName?.let { java.security.SecureRandom.getInstance(it) }
-            ?: try {
-                java.security.SecureRandom.getInstanceStrong()
-            } catch (e: Exception) {
-                java.security.SecureRandom()
-            }
-    } else {
-        algorithmName?.let { java.security.SecureRandom.getInstance(it) }
-            ?: java.security.SecureRandom()
+        return androidSecureRandom == other.androidSecureRandom
     }
 
-    return SecureRandom(javaSecureRandom = javaSecureRandom)
-}
+    override fun hashCode(): Int =
+        androidSecureRandom.hashCode()
 
-/**
- * Retrieves a [ByteArray] from this [SecureRandom] to be used as a salt, which is typically used when hashing
- * passwords. This is a convenience function which delegates to the [SecureRandom.nextBytes] function.
- *
- * @param [byteCount] The size of the returned [ByteArray].
- * @param [charset] The [Charset] used for the returned salt. Defaults to [Charsets.UTF_8].
- */
-fun SecureRandom.nextSaltString(byteCount: Int = 16, charset: Charset = Charsets.UTF_8): SecureString {
-    val bytes = nextSalt(byteCount = byteCount)
+    override fun toString(): String =
+        "SecureRandom(androidSecureRandom=$androidSecureRandom)"
 
-    return bytes.toString(charset).toSecureString()
+    actual companion object
 }

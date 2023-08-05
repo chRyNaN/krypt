@@ -51,6 +51,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(project(":krypt-core"))
+                api(project(":krypt-csprng"))
 
                 implementation("com.benasher44:uuid:_")
             }

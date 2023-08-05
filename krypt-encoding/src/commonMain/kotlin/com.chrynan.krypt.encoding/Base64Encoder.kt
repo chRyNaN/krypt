@@ -3,12 +3,14 @@
 package com.chrynan.krypt.encoding
 
 import okio.ByteString.Companion.toByteString
+import kotlin.io.encoding.Base64
 
 /**
  * A Base64 [Encoder].
  *
  * @see [Wikipedia explanation](https://en.wikipedia.org/wiki/Base64)
  */
+// TODO: Replace implementation with new Kotlin Base64 utils.
 interface Base64Encoder : Encoder,
     ByteStringEncoder {
 
@@ -26,6 +28,10 @@ interface Base64Encoder : Encoder,
      * Converts a UTF-8 character encoded [String] into a Base64 [String] representation.
      */
     fun encodeToString(source: String): String = encodeToString(source = source.toUtf8ByteArray())
+
+    fun test() {
+
+    }
 }
 
 /**
@@ -49,10 +55,12 @@ fun Base64UrlEncoder(isWithPadding: Boolean = true): Base64Encoder =
 fun Base64MimeEncoder(isWithPadding: Boolean = true): Base64Encoder =
     Base64Encoder(type = Base64Type.MIME, isWithPadding = isWithPadding)
 
-internal expect fun Base64Encoder(
+fun Base64Encoder(
     type: Base64Type = Base64Type.DEFAULT,
     isWithPadding: Boolean = true
-): Base64Encoder
+): Base64Encoder = OkioBase64Encoder(
+    type = type
+)
 
 /**
  * A multiplatform [Base64Encoder] that uses okio utilities to perform the encoding.

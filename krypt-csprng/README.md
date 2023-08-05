@@ -18,5 +18,11 @@ be used:
 ```kotlin
 val randomInt = secureRandom.nextInt()
 val randomString = secureRandom.nextString(length = 64)
-val randomSalt = secureRandom.nextSalt()
 ```
+
+## Credits
+
+The Linux, Mac, and Windows native cryptography implementations were adapted from
+the [secure-random](https://github.com/KotlinCrypto/secure-random) library (which was created after this krypt library).
+The [secure-random](https://github.com/KotlinCrypto/secure-random) is licensed
+under [Apache 2.0](https://github.com/KotlinCrypto/secure-random/blob/master/LICENSE).

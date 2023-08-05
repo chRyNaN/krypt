@@ -1,0 +1,52 @@
+name: Build
+
+on: [ workflow_dispatch, pull_request ]
+
+jobs:
+  build-on-linux:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: JDK setup
+        uses: actions/setup-java@v3
+        with:
+          java-version: 11
+          distribution: corretto
+
+      - name: Linux build
+        run: |
+          ./gradlew build --no-daemon --stacktrace
+
+  build-on-macos:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: JDK setup
+        uses: actions/setup-java@v3
+        with:
+          java-version: 11
+          distribution: corretto
+
+      - name: Mac build
+        run: |
+          ./gradlew build --no-daemon --stacktrace
+
+  build-on-windows:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: JDK setup
+        uses: actions/setup-java@v3
+        with:
+          java-version: 11
+          distribution: corretto
+
+      - name: Windows build
+        run: |
+          ./gradlew build --no-daemon --stacktrace

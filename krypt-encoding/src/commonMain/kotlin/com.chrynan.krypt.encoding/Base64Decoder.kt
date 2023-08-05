@@ -9,6 +9,7 @@ import okio.ByteString.Companion.decodeBase64
  *
  * @see [Wikipedia explanation](https://en.wikipedia.org/wiki/Base64)
  */
+// TODO: Replace implementation with new Kotlin Base64 utils.
 interface Base64Decoder : Decoder,
     ByteStringDecoder {
 
@@ -49,10 +50,10 @@ fun Base64UrlDecoder(isWithPadding: Boolean = true): Base64Decoder =
 fun Base64MimeDecoder(isWithPadding: Boolean = true): Base64Decoder =
     Base64Decoder(type = Base64Type.MIME, isWithPadding = isWithPadding)
 
-internal expect fun Base64Decoder(
+fun Base64Decoder(
     type: Base64Type = Base64Type.DEFAULT,
     isWithPadding: Boolean = true
-): Base64Decoder
+): Base64Decoder = OkioBase64Decoder(type = type)
 
 /**
  * A multiplatform [Base64Decoder] that uses okio utilities to perform the decoding.
