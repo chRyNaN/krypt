@@ -1,7 +1,6 @@
 package com.chrynan.krypt.hash.sha
 
 import com.chrynan.krypt.encoding.encodeToHexString
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -13,21 +12,20 @@ class SHA224And256HashFunctionTest {
     fun only224And256AlgorithmsSupported() {
         // Should fail
         assertFailsWith<IllegalArgumentException> {
-            SHA224And256HashFunction(algorithm = SHA2HashFunction.SupportedAlgorithm.SHA_384)
+            SHA224And256HashFunction(algorithm = SHA2HashFunction.SupportedAlgorithm.Sha384)
         }
         assertFailsWith<IllegalArgumentException> {
-            SHA224And256HashFunction(algorithm = SHA2HashFunction.SupportedAlgorithm.SHA_512)
+            SHA224And256HashFunction(algorithm = SHA2HashFunction.SupportedAlgorithm.Sha512)
         }
 
         // Does not fail
-        SHA224And256HashFunction(algorithm = SHA2HashFunction.SupportedAlgorithm.SHA_224)
-        SHA224And256HashFunction(algorithm = SHA2HashFunction.SupportedAlgorithm.SHA_256)
+        SHA224And256HashFunction(algorithm = SHA2HashFunction.SupportedAlgorithm.Sha224)
+        SHA224And256HashFunction(algorithm = SHA2HashFunction.SupportedAlgorithm.Sha256)
     }
 
     @Test
-    @OptIn(ExperimentalCoroutinesApi::class)
     fun sha256ReturnsExpectedResult() = runTest {
-        val hashFunction = SHA2HashFunction(algorithm = SHA2HashFunction.SupportedAlgorithm.SHA_256)
+        val hashFunction = SHA2HashFunction(algorithm = SHA2HashFunction.SupportedAlgorithm.Sha256)
 
         val message = "Testing123".encodeToByteArray()
 

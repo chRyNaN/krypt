@@ -4,7 +4,7 @@ package com.chrynan.krypt.core
 
 /**
  * Represents a cryptographic hash function, or a secure one-way hash function that takes arbitrarily sized input data
- * of type [Input] and outputs a value of type [Output], which contains or is a fixed size hash value
+ * of type [ByteArray] and outputs a value of type [ByteArray], which contains or is a fixed size hash value
  * ("message-digest") as a result of this function. The result of performing a hash function cannot be reversed,
  * meaning that the input value cannot be obtained by reversing the hash, as a hash function is a one-way function.
  * Different implementations of this interface may represent different hashing algorithms, such as "SHA256" or
@@ -13,17 +13,13 @@ package com.chrynan.krypt.core
  * @see [Hash Function](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
  * @see [Key Derivation Function](https://en.wikipedia.org/wiki/Key_derivation_function)
  */
-interface HashFunction<Input, Output> {
+@Suppress("FUN_INTERFACE_WITH_SUSPEND_FUNCTION")
+fun interface HashFunction {
 
     /**
-     * The name of the algorithm this [HashFunction] implements.
+     * Performs the hash function with the provided [source] value and returns the hashed result.
      */
-    val algorithmName: String?
-
-    /**
-     * Performs the hash with the provided [source] value and returns a [Output].
-     */
-    suspend operator fun invoke(source: Input): Output
+    suspend operator fun invoke(source: ByteArray): ByteArray
 
     companion object
 }
@@ -32,19 +28,4 @@ interface HashFunction<Input, Output> {
  * A convenience function that delegates to the [invoke] function of the [HashFunction] interface. This is provided for
  * preference, as it may be preferable to use "hash" instead of "invoke" at the call-site.
  */
-suspend fun <Input, Output> HashFunction<Input, Output>.hash(source: Input): Output = invoke(source = source)
-
-/**
- * Creates a [HashFunction] implementation using the provided [algorithmName] and [hash] function block.
- */
-@Suppress("FunctionName")
-fun <Input, Output> HashFunction(
-    algorithmName: String? = null,
-    hash: suspend (source: Input) -> Output
-): HashFunction<Input, Output> =
-    object : HashFunction<Input, Output> {
-
-        override val algorithmName: String? = algorithmName
-
-        override suspend fun invoke(source: Input): Output = hash(source)
-    }
+suspend fun HashFunction.hash(source: ByteArray): ByteArray = invoke(source = source)

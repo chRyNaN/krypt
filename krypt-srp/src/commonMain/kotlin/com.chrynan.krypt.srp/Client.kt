@@ -13,7 +13,7 @@ import kotlin.random.nextUBytes
  *
  * There are three parts of the SRP protocol: Registration, Authentication, and Verification. However, the
  * Authentication and Verification parts could be grouped together for simplicity. The client is responsible for
- * initiating both all the parts.
+ * initiating all the parts.
  *
  * - **Registration** is where a client registers with a host service. The client gives the host service a
  * generated verifier value, which is derived from the hashed password, along with salt and identifier values. The host

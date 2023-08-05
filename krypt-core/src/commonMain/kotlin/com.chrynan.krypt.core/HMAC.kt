@@ -47,7 +47,7 @@ sealed interface HMAC {
 suspend operator fun HMAC.Companion.invoke(
     key: ByteArray,
     message: ByteArray,
-    hash: HashFunction<ByteArray, ByteArray>,
+    hash: HashFunction,
     blockSize: Int
 ): ByteArray {
     val blockSizedKey = computeBlockSizedKey(key = key, hash = hash, blockSize = blockSize)
@@ -67,7 +67,7 @@ suspend operator fun HMAC.Companion.invoke(
 suspend operator fun HMAC.Companion.invoke(
     key: Key,
     message: ByteArray,
-    hash: HashFunction<ByteArray, ByteArray>,
+    hash: HashFunction,
     blockSize: Int
 ): ByteArray = invoke(
     key = key.encoded ?: ByteArray(blockSize),
@@ -84,7 +84,7 @@ suspend operator fun HMAC.Companion.invoke(
  */
 private suspend fun computeBlockSizedKey(
     key: ByteArray,
-    hash: HashFunction<ByteArray, ByteArray>,
+    hash: HashFunction,
     blockSize: Int
 ): ByteArray {
     var blockSizedKey = key

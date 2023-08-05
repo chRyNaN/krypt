@@ -1,20 +1,3 @@
-public abstract interface class com/chrynan/krypt/hash/ByteHasher : com/chrynan/krypt/hash/Hasher {
-	public static final field Companion Lcom/chrynan/krypt/hash/ByteHasher$Companion;
-}
-
-public final class com/chrynan/krypt/hash/ByteHasher$Companion {
-}
-
-public final class com/chrynan/krypt/hash/ByteHasher$DefaultImpls {
-	public static fun getAlgorithmName (Lcom/chrynan/krypt/hash/ByteHasher;)Ljava/lang/String;
-	public static fun matches (Lcom/chrynan/krypt/hash/ByteHasher;[BLcom/chrynan/krypt/hash/HashResult;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-}
-
-public final class com/chrynan/krypt/hash/ByteHasherKt {
-	public static final fun hash (Lcom/chrynan/krypt/hash/ByteHasher;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun invoke (Lcom/chrynan/krypt/hash/ByteHasher;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-}
-
 public abstract interface class com/chrynan/krypt/hash/HashAlgorithm {
 	public abstract fun getName ()Ljava/lang/String;
 	public abstract fun getVersion ()Ljava/lang/String;
@@ -25,46 +8,21 @@ public final class com/chrynan/krypt/hash/HashAlgorithm$DefaultImpls {
 	public static fun isCompatible (Lcom/chrynan/krypt/hash/HashAlgorithm;Lcom/chrynan/krypt/hash/HashAlgorithm;)Z
 }
 
-public abstract interface class com/chrynan/krypt/hash/HashEncoder : com/chrynan/krypt/core/HashFunction {
-	public abstract fun getAlgorithm ()Lcom/chrynan/krypt/hash/HashAlgorithm;
-	public abstract fun getAlgorithmName ()Ljava/lang/String;
-}
-
-public final class com/chrynan/krypt/hash/HashEncoder$DefaultImpls {
-	public static fun getAlgorithmName (Lcom/chrynan/krypt/hash/HashEncoder;)Ljava/lang/String;
-}
-
-public abstract interface class com/chrynan/krypt/hash/HashMatcher {
-	public abstract fun getAlgorithm ()Lcom/chrynan/krypt/hash/HashAlgorithm;
-	public abstract fun matches (Ljava/lang/Object;Lcom/chrynan/krypt/hash/HashResult;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-}
-
 public abstract interface class com/chrynan/krypt/hash/HashResult {
 	public abstract fun getAlgorithm ()Lcom/chrynan/krypt/hash/HashAlgorithm;
-	public abstract fun getHash ()Ljava/lang/Object;
+	public abstract fun getHash ()[B
 }
 
-public abstract interface class com/chrynan/krypt/hash/Hasher : com/chrynan/krypt/hash/HashEncoder, com/chrynan/krypt/hash/HashMatcher {
+public abstract interface class com/chrynan/krypt/hash/Hasher {
 	public static final field Companion Lcom/chrynan/krypt/hash/Hasher$Companion;
 	public abstract fun getAlgorithm ()Lcom/chrynan/krypt/hash/HashAlgorithm;
-	public abstract fun matches (Ljava/lang/Object;Lcom/chrynan/krypt/hash/HashResult;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun invoke ([BLkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class com/chrynan/krypt/hash/Hasher$Companion {
 }
 
-public final class com/chrynan/krypt/hash/Hasher$DefaultImpls {
-	public static fun getAlgorithmName (Lcom/chrynan/krypt/hash/Hasher;)Ljava/lang/String;
-	public static fun matches (Lcom/chrynan/krypt/hash/Hasher;Ljava/lang/Object;Lcom/chrynan/krypt/hash/HashResult;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-}
-
 public final class com/chrynan/krypt/hash/pbkdf/PBKDF2Algorithm : com/chrynan/krypt/hash/HashAlgorithm {
-	public final fun component1 ()[B
-	public final fun component2 ()I
-	public final fun component3 ()I
-	public final fun component4 ()I
-	public final fun copy ([BIII)Lcom/chrynan/krypt/hash/pbkdf/PBKDF2Algorithm;
-	public static synthetic fun copy$default (Lcom/chrynan/krypt/hash/pbkdf/PBKDF2Algorithm;[BIIIILjava/lang/Object;)Lcom/chrynan/krypt/hash/pbkdf/PBKDF2Algorithm;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getDkLength ()I
 	public final fun getHLength ()I
@@ -81,71 +39,86 @@ public final class com/chrynan/krypt/hash/pbkdf/PBKDF2HashResult : com/chrynan/k
 	public fun equals (Ljava/lang/Object;)Z
 	public synthetic fun getAlgorithm ()Lcom/chrynan/krypt/hash/HashAlgorithm;
 	public fun getAlgorithm ()Lcom/chrynan/krypt/hash/pbkdf/PBKDF2Algorithm;
-	public synthetic fun getHash ()Ljava/lang/Object;
 	public fun getHash ()[B
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
-public abstract interface class com/chrynan/krypt/hash/pbkdf/PBKDF2Hasher : com/chrynan/krypt/hash/ByteHasher {
+public final class com/chrynan/krypt/hash/pbkdf/PBKDF2Hasher : com/chrynan/krypt/hash/Hasher {
 	public static final field Companion Lcom/chrynan/krypt/hash/pbkdf/PBKDF2Hasher$Companion;
+	public fun equals (Ljava/lang/Object;)Z
+	public synthetic fun getAlgorithm ()Lcom/chrynan/krypt/hash/HashAlgorithm;
+	public fun getAlgorithm ()Lcom/chrynan/krypt/hash/pbkdf/PBKDF2Algorithm;
+	public fun hashCode ()I
+	public fun invoke ([BLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class com/chrynan/krypt/hash/pbkdf/PBKDF2Hasher$Companion {
 }
 
-public final class com/chrynan/krypt/hash/pbkdf/PBKDF2Hasher$DefaultImpls {
-	public static fun getAlgorithmName (Lcom/chrynan/krypt/hash/pbkdf/PBKDF2Hasher;)Ljava/lang/String;
-	public static fun matches (Lcom/chrynan/krypt/hash/pbkdf/PBKDF2Hasher;[BLcom/chrynan/krypt/hash/pbkdf/PBKDF2HashResult;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-}
-
 public final class com/chrynan/krypt/hash/pbkdf/PBKDF2HasherKt {
+	public static final fun pbkdf2 (Lcom/chrynan/krypt/hash/Hasher$Companion;Lcom/chrynan/krypt/hash/pbkdf/PBKDF2Algorithm;Lcom/chrynan/krypt/core/HashFunction;)Lcom/chrynan/krypt/hash/pbkdf/PBKDF2Hasher;
 	public static final fun pbkdf2 (Lcom/chrynan/krypt/hash/Hasher$Companion;[BIIILcom/chrynan/krypt/core/HashFunction;)Lcom/chrynan/krypt/hash/pbkdf/PBKDF2Hasher;
 }
 
 public abstract interface class com/chrynan/krypt/hash/sha/SHA2HashFunction : com/chrynan/krypt/core/HashFunction {
 	public abstract fun getAlgorithm ()Lcom/chrynan/krypt/hash/sha/SHA2HashFunction$SupportedAlgorithm;
-	public abstract fun getAlgorithmName ()Ljava/lang/String;
 }
 
-public final class com/chrynan/krypt/hash/sha/SHA2HashFunction$DefaultImpls {
-	public static fun getAlgorithmName (Lcom/chrynan/krypt/hash/sha/SHA2HashFunction;)Ljava/lang/String;
-}
-
-public final class com/chrynan/krypt/hash/sha/SHA2HashFunction$SupportedAlgorithm : java/lang/Enum, com/chrynan/krypt/hash/HashAlgorithm {
-	public static final field SHA_224 Lcom/chrynan/krypt/hash/sha/SHA2HashFunction$SupportedAlgorithm;
-	public static final field SHA_256 Lcom/chrynan/krypt/hash/sha/SHA2HashFunction$SupportedAlgorithm;
-	public static final field SHA_384 Lcom/chrynan/krypt/hash/sha/SHA2HashFunction$SupportedAlgorithm;
-	public static final field SHA_512 Lcom/chrynan/krypt/hash/sha/SHA2HashFunction$SupportedAlgorithm;
-	public final fun getAlgorithmName ()Ljava/lang/String;
-	public static fun getEntries ()Lkotlin/enums/EnumEntries;
-	public synthetic fun getName ()Ljava/lang/String;
+public abstract class com/chrynan/krypt/hash/sha/SHA2HashFunction$SupportedAlgorithm : com/chrynan/krypt/hash/HashAlgorithm {
 	public fun getVersion ()Ljava/lang/String;
 	public fun isCompatible (Lcom/chrynan/krypt/hash/HashAlgorithm;)Z
-	public static fun valueOf (Ljava/lang/String;)Lcom/chrynan/krypt/hash/sha/SHA2HashFunction$SupportedAlgorithm;
-	public static fun values ()[Lcom/chrynan/krypt/hash/sha/SHA2HashFunction$SupportedAlgorithm;
+}
+
+public final class com/chrynan/krypt/hash/sha/SHA2HashFunction$SupportedAlgorithm$Sha224 : com/chrynan/krypt/hash/sha/SHA2HashFunction$SupportedAlgorithm {
+	public static final field INSTANCE Lcom/chrynan/krypt/hash/sha/SHA2HashFunction$SupportedAlgorithm$Sha224;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/hash/sha/SHA2HashFunction$SupportedAlgorithm$Sha256 : com/chrynan/krypt/hash/sha/SHA2HashFunction$SupportedAlgorithm {
+	public static final field INSTANCE Lcom/chrynan/krypt/hash/sha/SHA2HashFunction$SupportedAlgorithm$Sha256;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/hash/sha/SHA2HashFunction$SupportedAlgorithm$Sha384 : com/chrynan/krypt/hash/sha/SHA2HashFunction$SupportedAlgorithm {
+	public static final field INSTANCE Lcom/chrynan/krypt/hash/sha/SHA2HashFunction$SupportedAlgorithm$Sha384;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/hash/sha/SHA2HashFunction$SupportedAlgorithm$Sha512 : com/chrynan/krypt/hash/sha/SHA2HashFunction$SupportedAlgorithm {
+	public static final field INSTANCE Lcom/chrynan/krypt/hash/sha/SHA2HashFunction$SupportedAlgorithm$Sha512;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class com/chrynan/krypt/hash/sha/SHA2HashResult : com/chrynan/krypt/hash/HashResult {
 	public fun equals (Ljava/lang/Object;)Z
 	public synthetic fun getAlgorithm ()Lcom/chrynan/krypt/hash/HashAlgorithm;
 	public fun getAlgorithm ()Lcom/chrynan/krypt/hash/sha/SHA2HashFunction$SupportedAlgorithm;
-	public synthetic fun getHash ()Ljava/lang/Object;
 	public fun getHash ()[B
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
-public abstract interface class com/chrynan/krypt/hash/sha/SHA2Hasher : com/chrynan/krypt/hash/ByteHasher {
-	public static final field Companion Lcom/chrynan/krypt/hash/sha/SHA2Hasher$Companion;
-}
-
-public final class com/chrynan/krypt/hash/sha/SHA2Hasher$Companion {
-}
-
-public final class com/chrynan/krypt/hash/sha/SHA2Hasher$DefaultImpls {
-	public static fun getAlgorithmName (Lcom/chrynan/krypt/hash/sha/SHA2Hasher;)Ljava/lang/String;
-	public static fun matches (Lcom/chrynan/krypt/hash/sha/SHA2Hasher;[BLcom/chrynan/krypt/hash/sha/SHA2HashResult;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+public final class com/chrynan/krypt/hash/sha/SHA2Hasher : com/chrynan/krypt/hash/Hasher {
+	public fun equals (Ljava/lang/Object;)Z
+	public synthetic fun getAlgorithm ()Lcom/chrynan/krypt/hash/HashAlgorithm;
+	public fun getAlgorithm ()Lcom/chrynan/krypt/hash/sha/SHA2HashFunction$SupportedAlgorithm;
+	public fun hashCode ()I
+	public fun invoke ([BLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class com/chrynan/krypt/hash/sha/SHA2HasherKt {

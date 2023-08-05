@@ -14,7 +14,7 @@ private val ALPHA_NUMERIC_CHARS = ALPHA_NUMERIC_STRING.toCharArray()
 class JvmSHA224And256HashFunctionTest {
 
     private val javaSha256 = MessageDigest.getInstance("SHA-256")
-    private val kotlinSha256 = SHA224And256HashFunction(algorithm = SHA2HashFunction.SupportedAlgorithm.SHA_256)
+    private val kotlinSha256 = SHA224And256HashFunction(algorithm = SHA2HashFunction.SupportedAlgorithm.Sha256)
 
     @Test
     @ExperimentalCoroutinesApi

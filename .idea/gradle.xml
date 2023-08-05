@@ -13,7 +13,6 @@
             <option value="$PROJECT_DIR$/krypt-csprng" />
             <option value="$PROJECT_DIR$/krypt-encoding" />
             <option value="$PROJECT_DIR$/krypt-hash" />
-            <option value="$PROJECT_DIR$/krypt-hash-argon" />
             <option value="$PROJECT_DIR$/krypt-jwt" />
             <option value="$PROJECT_DIR$/krypt-otp" />
             <option value="$PROJECT_DIR$/krypt-pkce" />

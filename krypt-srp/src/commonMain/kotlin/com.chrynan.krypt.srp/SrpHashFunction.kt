@@ -12,12 +12,12 @@ import com.ionspin.kotlin.bignum.integer.BigInteger
  * expected to be of type [UByteArray].
  */
 @ExperimentalUnsignedTypes
-interface SrpHashFunction : HashFunction<UByteArray, UByteArray> {
+interface SrpHashFunction : HashFunction {
 
     /**
      * Performs the hash function on the provided [source] to generate a [UByteArray] value.
      */
-    override suspend operator fun invoke(source: UByteArray): UByteArray
+    suspend operator fun invoke(source: UByteArray): UByteArray = invoke(source = source.toByteArray()).toUByteArray()
 }
 
 /**

@@ -26,12 +26,9 @@ import com.chrynan.krypt.core.toInt
  * @see [Wikipedia Explanation](https://en.wikipedia.org/wiki/PBKDF2)
  */
 internal class PBKDF2HashFunction(
-    private val hashFunction: HashFunction<ByteArray, ByteArray>,
+    private val hashFunction: HashFunction,
     private val algorithm: PBKDF2Algorithm
-) : HashFunction<ByteArray, ByteArray> {
-
-    override val algorithmName: String
-        get() = algorithm.name
+) : HashFunction {
 
     override suspend fun invoke(source: ByteArray): ByteArray {
         var result = byteArrayOf()

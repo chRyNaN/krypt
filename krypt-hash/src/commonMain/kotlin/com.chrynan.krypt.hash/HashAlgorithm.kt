@@ -15,7 +15,7 @@ interface HashAlgorithm {
     /**
      * The [String] version of the algorithm.
      */
-    val version: String
+    val version: String?
 
     /**
      * Determines whether this [HashAlgorithm] is compatible with the provided [other] [HashAlgorithm].

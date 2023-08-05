@@ -13,22 +13,34 @@ import com.chrynan.krypt.hash.HashAlgorithm
  * @see [SHA2Hasher]
  * @see [sha256]
  */
-sealed interface SHA2HashFunction : HashFunction<ByteArray, ByteArray> {
+sealed interface SHA2HashFunction : HashFunction {
 
     val algorithm: SupportedAlgorithm
-
-    override val algorithmName: String
-        get() = algorithm.name
 
     /**
      * The supported variants of the SHA-2 algorithm that the [SHA2HashFunction] implements.
      */
-    enum class SupportedAlgorithm(val algorithmName: String) : HashAlgorithm {
+    sealed class SupportedAlgorithm : HashAlgorithm {
 
-        SHA_224(algorithmName = "SHA-224"),
-        SHA_256(algorithmName = "SHA-256"),
-        SHA_384(algorithmName = "SHA-384"),
-        SHA_512(algorithmName = "SHA-512");
+        data object Sha224 : SupportedAlgorithm() {
+
+            override val name = "SHA-224"
+        }
+
+        data object Sha256 : SupportedAlgorithm() {
+
+            override val name: String = "SHA-256"
+        }
+
+        data object Sha384 : SupportedAlgorithm() {
+
+            override val name: String = "SHA-384"
+        }
+
+        data object Sha512 : SupportedAlgorithm() {
+
+            override val name: String = "SHA-512"
+        }
 
         override val version: String
             get() = "2"
@@ -42,8 +54,9 @@ internal fun SHA2HashFunction(
     algorithm: SHA2HashFunction.SupportedAlgorithm
 ): SHA2HashFunction =
     when (algorithm) {
-        SHA2HashFunction.SupportedAlgorithm.SHA_224,
-        SHA2HashFunction.SupportedAlgorithm.SHA_256 -> SHA224And256HashFunction(algorithm = algorithm)
-        SHA2HashFunction.SupportedAlgorithm.SHA_384,
-        SHA2HashFunction.SupportedAlgorithm.SHA_512 -> SHA384And512HashFunction(algorithm = algorithm)
+        SHA2HashFunction.SupportedAlgorithm.Sha224,
+        SHA2HashFunction.SupportedAlgorithm.Sha256 -> SHA224And256HashFunction(algorithm = algorithm)
+
+        SHA2HashFunction.SupportedAlgorithm.Sha384,
+        SHA2HashFunction.SupportedAlgorithm.Sha512 -> SHA384And512HashFunction(algorithm = algorithm)
     }

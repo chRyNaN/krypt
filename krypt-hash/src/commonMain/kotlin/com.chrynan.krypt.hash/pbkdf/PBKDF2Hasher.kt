@@ -3,28 +3,19 @@
 package com.chrynan.krypt.hash.pbkdf
 
 import com.chrynan.krypt.core.HashFunction
-import com.chrynan.krypt.hash.ByteHasher
 import com.chrynan.krypt.hash.Hasher
 
 /**
- * A [ByteHasher] that uses the PBKDF2 (password-based key derivation function 2) algorithm. To create an instance of
- * this use the [Hasher.Companion.pbkdf2] function.
+ * A [Hasher] that uses the PBKDF2 (password-based key derivation function 2) algorithm. To create an instance of this
+ * use the [Hasher.Companion.pbkdf2] function.
  *
  * @see [RFC Specification](https://datatracker.ietf.org/doc/html/rfc2898)
  * @see [Wikipedia Explanation](https://en.wikipedia.org/wiki/PBKDF2)
  */
-interface PBKDF2Hasher : ByteHasher<PBKDF2Algorithm, PBKDF2HashResult> {
-
-    companion object
-}
-
-/**
- * Implementation of the [PBKDF2Hasher] interface.
- */
-internal class PBKDF2HasherImpl(
-    hashFunction: HashFunction<ByteArray, ByteArray>,
+class PBKDF2Hasher internal constructor(
+    hashFunction: HashFunction,
     override val algorithm: PBKDF2Algorithm,
-) : PBKDF2Hasher {
+) : Hasher<PBKDF2Algorithm, PBKDF2HashResult> {
 
     private val pbkdf2HashFunction = PBKDF2HashFunction(
         algorithm = algorithm,
@@ -39,6 +30,26 @@ internal class PBKDF2HasherImpl(
             hash = hash
         )
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is PBKDF2Hasher) return false
+
+        if (algorithm != other.algorithm) return false
+
+        return pbkdf2HashFunction == other.pbkdf2HashFunction
+    }
+
+    override fun hashCode(): Int {
+        var result = algorithm.hashCode()
+        result = 31 * result + pbkdf2HashFunction.hashCode()
+        return result
+    }
+
+    override fun toString(): String =
+        "PBKDF2Hasher(algorithm=$algorithm, pbkdf2HashFunction=$pbkdf2HashFunction)"
+
+    companion object
 }
 
 /**
@@ -63,13 +74,36 @@ fun Hasher.Companion.pbkdf2(
     iterationCount: Int,
     hLength: Int,
     dkLength: Int,
-    hashFunction: HashFunction<ByteArray, ByteArray>
-): PBKDF2Hasher = PBKDF2HasherImpl(
+    hashFunction: HashFunction
+): PBKDF2Hasher = PBKDF2Hasher(
     hashFunction = hashFunction,
     algorithm = PBKDF2Algorithm(
         salt = salt,
         iterationCount = iterationCount,
         hLength = hLength,
         dkLength = dkLength
+    )
+)
+
+/**
+ * Creates a [PBKDF2Hasher] for the PBKDF2 function with the provided parameters.
+ *
+ * @param [algorithm] The [PBKDF2Algorithm] used to create an instance of the [PBKDF2Hasher].
+ *
+ * @see [Hasher.Companion.pbkdf2]
+ * @see [RFC Specification](https://datatracker.ietf.org/doc/html/rfc2898)
+ * @see [Wikipedia Explanation](https://en.wikipedia.org/wiki/PBKDF2)
+ */
+@Suppress("unused")
+fun Hasher.Companion.pbkdf2(
+    algorithm: PBKDF2Algorithm,
+    hashFunction: HashFunction
+): PBKDF2Hasher = PBKDF2Hasher(
+    hashFunction = hashFunction,
+    algorithm = PBKDF2Algorithm(
+        salt = algorithm.salt,
+        iterationCount = algorithm.iterationCount,
+        hLength = algorithm.hLength,
+        dkLength = algorithm.dkLength
     )
 )

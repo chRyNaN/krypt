@@ -15,7 +15,7 @@ internal class SHA384And512HashFunction(
 ) : SHA2HashFunction {
 
     init {
-        require(algorithm == SHA2HashFunction.SupportedAlgorithm.SHA_384 || algorithm == SHA2HashFunction.SupportedAlgorithm.SHA_512) {
+        require(algorithm == SHA2HashFunction.SupportedAlgorithm.Sha384 || algorithm == SHA2HashFunction.SupportedAlgorithm.Sha512) {
             "This SHA-2 hash function implementation only supports 384 or 512 bit modes."
         }
     }
@@ -29,7 +29,7 @@ internal class SHA384And512HashFunction(
         // Then process each block, using the result of the previously processed block as the input to the
         // next process call. For the first process call, use the initialization vector for the algorithm.
         var h =
-            if (algorithm == SHA2HashFunction.SupportedAlgorithm.SHA_384) ivH384.toLongArray() else ivH512.toLongArray()
+            if (algorithm == SHA2HashFunction.SupportedAlgorithm.Sha384) ivH384.toLongArray() else ivH512.toLongArray()
         for (i in paddedMessage.indices step 128) {
             val m = LongArray(16)
 
@@ -45,7 +45,7 @@ internal class SHA384And512HashFunction(
         // https://datatracker.ietf.org/doc/html/rfc4634#section-6.4
         // For SHA-512 this is all the values, for SHA-384 this is all except for the last two values.
         // Then convert it back to a ByteArray and return the result.
-        return if (algorithm == SHA2HashFunction.SupportedAlgorithm.SHA_384) {
+        return if (algorithm == SHA2HashFunction.SupportedAlgorithm.Sha384) {
             h.sliceArray(0..5).toByteArray(order = Endian.Big)
         } else {
             h.toByteArray(order = Endian.Big)

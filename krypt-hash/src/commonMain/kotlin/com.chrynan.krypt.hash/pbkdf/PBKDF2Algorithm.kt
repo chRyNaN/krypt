@@ -2,7 +2,7 @@ package com.chrynan.krypt.hash.pbkdf
 
 import com.chrynan.krypt.hash.HashAlgorithm
 
-data class PBKDF2Algorithm internal constructor(
+class PBKDF2Algorithm internal constructor(
     val salt: ByteArray,
     val iterationCount: Int,
     val hLength: Int,
@@ -24,9 +24,8 @@ data class PBKDF2Algorithm internal constructor(
         if (!salt.contentEquals(other.salt)) return false
         if (iterationCount != other.iterationCount) return false
         if (name != other.name) return false
-        if (version != other.version) return false
 
-        return true
+        return version == other.version
     }
 
     override fun hashCode(): Int {
@@ -36,4 +35,13 @@ data class PBKDF2Algorithm internal constructor(
         result = 31 * result + version.hashCode()
         return result
     }
+
+    override fun toString(): String =
+        "PBKDF2Algorithm(" +
+                "salt=${salt.contentToString()}, " +
+                "iterationCount=$iterationCount, " +
+                "hLength=$hLength, " +
+                "dkLength=$dkLength, " +
+                "name='$name', " +
+                "version='$version')"
 }

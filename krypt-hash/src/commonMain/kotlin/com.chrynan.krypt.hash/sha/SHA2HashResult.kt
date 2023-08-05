@@ -1,17 +1,20 @@
-package com.chrynan.krypt.hash.pbkdf
+package com.chrynan.krypt.hash.sha
 
 import com.chrynan.krypt.hash.HashResult
 
-class PBKDF2HashResult internal constructor(
-    override val algorithm: PBKDF2Algorithm,
+/**
+ * The [HashResult] from the [SHA2Hasher].
+ */
+class SHA2HashResult internal constructor(
+    override val algorithm: SHA2HashFunction.SupportedAlgorithm,
     override val hash: ByteArray
-) : HashResult<PBKDF2Algorithm> {
+) : HashResult<SHA2HashFunction.SupportedAlgorithm> {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || this::class != other::class) return false
 
-        other as PBKDF2HashResult
+        other as SHA2HashResult
 
         if (algorithm != other.algorithm) return false
 
@@ -24,6 +27,5 @@ class PBKDF2HashResult internal constructor(
         return result
     }
 
-    override fun toString(): String =
-        "PBKDF2HashResult(algorithm=$algorithm,hash=REDACTED)"
+    override fun toString(): String = "SHA2HashResult(algorithm=$algorithm,hash=REDACTED)"
 }

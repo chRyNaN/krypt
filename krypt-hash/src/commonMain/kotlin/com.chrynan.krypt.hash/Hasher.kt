@@ -2,23 +2,20 @@
 
 package com.chrynan.krypt.hash
 
+import com.chrynan.krypt.core.HashFunction
+
 /**
- * A utility that is both a [HashEncoder] and a [HashMatcher]. Different hash algorithm implementations extend this
- * interface and provide a means of obtaining that [Hasher] implementation, typically via extension functions on the
- * companion object.
+ * A utility that provides a function to convert a [ByteArray] to a [Result] object containing the result of an
+ * associated [HashFunction] operation and related data, such as data about the algorithm. Different hash algorithm
+ * implementations extend this interface and provide a means of obtaining that [Hasher] implementation, typically via
+ * extension functions on the companion object.
  */
 @Suppress("SpellCheckingInspection")
-interface Hasher<Algorithm : HashAlgorithm, Input, Hash, Result : HashResult<Algorithm, Hash>> :
-    HashEncoder<Algorithm, Input, Hash, Result>,
-    HashMatcher<Algorithm, Input, Hash, Result> {
+interface Hasher<Algorithm : HashAlgorithm, Result : HashResult<Algorithm>> {
 
-    override val algorithm: Algorithm
+    val algorithm: Algorithm
 
-    override suspend fun matches(source: Input, result: Result): Boolean {
-        val sourceResult = invoke(source = source)
-
-        return sourceResult.hash == result.hash
-    }
+    suspend operator fun invoke(source: ByteArray): Result
 
     companion object
 }

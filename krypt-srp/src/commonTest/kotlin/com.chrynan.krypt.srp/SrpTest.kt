@@ -183,17 +183,13 @@ class SrpTest {
         @ExperimentalUnsignedTypes
         val NO_OP_HASH_FUNCTION = object : SrpHashFunction {
 
-            override val algorithmName: String? = null
-
-            override suspend fun invoke(source: UByteArray): UByteArray = source
+            override suspend fun invoke(source: ByteArray): ByteArray = source
         }
 
         @ExperimentalUnsignedTypes
         val REVERSE_HASH_FUNCTION = object : SrpHashFunction {
 
-            override val algorithmName: String? = null
-
-            override suspend fun invoke(source: UByteArray): UByteArray = source.reversedArray()
+            override suspend fun invoke(source: ByteArray): ByteArray = source.reversedArray()
         }
     }
 }

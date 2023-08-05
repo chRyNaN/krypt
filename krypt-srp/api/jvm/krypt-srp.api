@@ -46,6 +46,10 @@ public abstract interface class com/chrynan/krypt/srp/SrpHashFunction : com/chry
 	public abstract fun invoke-euJbpgo ([BLkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
+public final class com/chrynan/krypt/srp/SrpHashFunction$DefaultImpls {
+	public static fun invoke-euJbpgo (Lcom/chrynan/krypt/srp/SrpHashFunction;[BLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
 public final class com/chrynan/krypt/srp/SrpHashFunctionKt {
 	public static final fun invoke (Lcom/chrynan/krypt/srp/SrpHashFunction;Lcom/ionspin/kotlin/bignum/integer/BigInteger;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun invoke (Lcom/chrynan/krypt/srp/SrpHashFunction;Ljava/lang/CharSequence;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -63,12 +67,21 @@ public final class com/chrynan/krypt/srp/SrpKeyPair : com/chrynan/krypt/core/Key
 }
 
 public abstract interface class com/chrynan/krypt/srp/SrpKeyPairGenerator : com/chrynan/krypt/core/KeyPairGenerator {
+	public static final field Companion Lcom/chrynan/krypt/srp/SrpKeyPairGenerator$Companion;
 	public abstract fun getAlgorithm ()Ljava/lang/String;
 	public abstract fun invoke (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
+public final class com/chrynan/krypt/srp/SrpKeyPairGenerator$Companion {
+}
+
 public final class com/chrynan/krypt/srp/SrpKeyPairGenerator$DefaultImpls {
 	public static fun getAlgorithm (Lcom/chrynan/krypt/srp/SrpKeyPairGenerator;)Ljava/lang/String;
+}
+
+public final class com/chrynan/krypt/srp/SrpKeyPairGeneratorKt {
+	public static final fun Default (Lcom/chrynan/krypt/srp/SrpKeyPairGenerator$Companion;Lcom/chrynan/krypt/csprng/SecureRandom;Lcom/chrynan/krypt/srp/Group;)Lcom/chrynan/krypt/srp/SrpKeyPairGenerator;
+	public static synthetic fun Default$default (Lcom/chrynan/krypt/srp/SrpKeyPairGenerator$Companion;Lcom/chrynan/krypt/csprng/SecureRandom;Lcom/chrynan/krypt/srp/Group;ILjava/lang/Object;)Lcom/chrynan/krypt/srp/SrpKeyPairGenerator;
 }
 
 public final class com/chrynan/krypt/srp/VerifierResult {

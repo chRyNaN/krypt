@@ -25,17 +25,14 @@ public final class com/chrynan/krypt/core/HMACKt {
 
 public abstract interface class com/chrynan/krypt/core/HashFunction {
 	public static final field Companion Lcom/chrynan/krypt/core/HashFunction$Companion;
-	public abstract fun getAlgorithmName ()Ljava/lang/String;
-	public abstract fun invoke (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun invoke ([BLkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class com/chrynan/krypt/core/HashFunction$Companion {
 }
 
 public final class com/chrynan/krypt/core/HashFunctionKt {
-	public static final fun HashFunction (Ljava/lang/String;Lkotlin/jvm/functions/Function2;)Lcom/chrynan/krypt/core/HashFunction;
-	public static synthetic fun HashFunction$default (Ljava/lang/String;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lcom/chrynan/krypt/core/HashFunction;
-	public static final fun hash (Lcom/chrynan/krypt/core/HashFunction;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun hash (Lcom/chrynan/krypt/core/HashFunction;[BLkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public abstract interface class com/chrynan/krypt/core/Key {
