@@ -240,7 +240,8 @@ internal suspend fun calculateSharedSessionKey(
  * first indexes that are added to the returned [UByteArray], then concatenate the provided [array] items to the end of
  * the returned [UByteArray]. This function is needed for the SRP implementation.
  *
- * **Note:** This function will throw an exception if the provided [size] is greater than or equal to [array]'s size.
+ * **Note:** This function will throw an exception if the provided [array]'s [size] is greater than or equal to the
+ * provided [size].
  */
 @ExperimentalUnsignedTypes
 internal fun pad(array: UByteArray, size: Int): UByteArray {

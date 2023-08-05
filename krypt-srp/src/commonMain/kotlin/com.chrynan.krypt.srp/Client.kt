@@ -77,15 +77,10 @@ class Client(
     private val hash: SrpHashFunction,
     private val random: SecureRandom = SecureRandom(),
     private val saltGenerator: suspend () -> UByteArray = { random.nextUBytes(16) },
-    private val keyPairGenerator: SrpKeyPairGenerator<BigInteger> = object : SrpKeyPairGenerator<BigInteger> {
-
-        override suspend fun invoke(): SrpKeyPair<BigInteger> {
-            val privateKey = random.nextBigInteger()
-            val publicKey = calculateA(group = group, a = privateKey)
-
-            return SrpKeyPair(privateKey = privateKey, publicKey = publicKey)
-        }
-    }
+    private val keyPairGenerator: SrpKeyPairGenerator<BigInteger> = SrpKeyPairGenerator.Default(
+        secureRandom = random,
+        group = group
+    )
 ) {
 
     /**

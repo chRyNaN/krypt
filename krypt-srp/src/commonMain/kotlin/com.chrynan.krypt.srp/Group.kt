@@ -136,6 +136,7 @@ fun Group(
  *
  * @see [Group]
  * @see [Group]
+ * @see [BigInteger.parseString]
  */
 fun Group(
     primeString: String,
